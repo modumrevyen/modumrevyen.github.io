@@ -17,19 +17,17 @@ form.addEventListener('submit', async (e) => {
   messageBox.textContent = 'Uploading image to Google Drive...';
 
   reader.onload = async function () {
-    const base64Data = reader.result.split(',')[1]; // remove data:image/... part
+    const base64Data = reader.result.split(',')[1];
 
-    const imagePayload = {
-      filename: imageFile.name,
-      mimeType: imageFile.type,
-      base64: base64Data
-    };
+    const formData = new FormData();
+    formData.append("filename", imageFile.name);
+    formData.append("mimeType", imageFile.type);
+    formData.append("base64", base64Data);
 
     try {
       const uploadRes = await fetch(imageUploadURL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(imagePayload)
+        body: formData  // ❌ no headers set — prevents preflight!
       });
 
       const uploadData = await uploadRes.json();
@@ -69,5 +67,5 @@ form.addEventListener('submit', async (e) => {
     }
   };
 
-  reader.readAsDataURL(imageFile); // start reading as base64
+  reader.readAsDataURL(imageFile);
 });
