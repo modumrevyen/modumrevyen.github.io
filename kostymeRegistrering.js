@@ -53,7 +53,9 @@ form.addEventListener('submit', async (e) => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(costumeData)
-      });
+      })
+      .then(res => res.text())  // check raw response
+      .then(console.log)
 
       if (!response.ok) throw new Error('Failed to register costume');
 
