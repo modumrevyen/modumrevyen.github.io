@@ -1,5 +1,3 @@
-// kostymeBildeOpplasting.js
-// This script handles the image upload functionality for costume images to Google Drive using a Google Apps Script
 const form = document.getElementById('costumeForm');
 const messageBox = document.getElementById('messageBox');
 
@@ -18,41 +16,38 @@ form.addEventListener('submit', function (e) {
   reader.onload = function () {
     const base64Data = reader.result.split(',')[1];
 
-    const imagePayload = {
-      filename: imageFile.name,
-      mimeType: imageFile.type,
-      base64: base64Data
-    };
+    const formData = new FormData();
+    formData.append('filename', imageFile.name);
+    formData.append('mimeType', imageFile.type);
+    formData.append('base64', base64Data);
 
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', imageUploadURL, true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-
-    xhr.onload = function () {
+    fetch(imageUploadURL, {
+      method: 'POST',
+      body: formData // no headers = no CORS preflight
+    })
+    .then(res => res.text())
+    .then(text => {
+      let response;
       try {
-        const response = JSON.parse(xhr.responseText);
-        if (response.status === 'success') {
-          messageBox.classList.remove('alert-info');
-          messageBox.classList.add('alert-success');
-          messageBox.textContent = '✅ Image uploaded successfully!';
-          console.log('Image URL:', response.url);
-        } else {
-          throw new Error(response.message || 'Unknown error');
-        }
+        response = JSON.parse(text);
       } catch (err) {
-        messageBox.classList.remove('alert-info');
-        messageBox.classList.add('alert-danger');
-        messageBox.textContent = `❌ Upload failed: ${err.message}`;
+        throw new Error('Failed to parse response: ' + text);
       }
-    };
 
-    xhr.onerror = function () {
+      if (response.status === 'success') {
+        messageBox.classList.remove('alert-info');
+        messageBox.classList.add('alert-success');
+        messageBox.textContent = '✅ Image uploaded successfully!';
+        console.log('Image URL:', response.url);
+      } else {
+        throw new Error(response.message);
+      }
+    })
+    .catch(err => {
       messageBox.classList.remove('alert-info');
       messageBox.classList.add('alert-danger');
-      messageBox.textContent = '❌ Upload failed: network error.';
-    };
-
-    xhr.send(JSON.stringify(imagePayload));
+      messageBox.textContent = `❌ Upload failed: ${err.message}`;
+    });
   };
 
   reader.readAsDataURL(imageFile);
