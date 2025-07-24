@@ -1,10 +1,8 @@
-const costumeSubmitURL = 'https://script.google.com/macros/s/AKfycbzkFlchmijZwSPucAfIWlX6A7YF1tSpMC2JTZJVTfGHmHLk1u8pDv3EuVtgZx0Lt7I5/exec';
-
-let uploadedImageURL = null;
-
-// Call this after uploading the image and getting the URL
-function submitCostumeMetadata(imageUrl) {
-  uploadedImageURL = imageUrl;
+function submitCostumeMetadata() {
+  if (!uploadedImageURL) {
+    alert("Please upload an image first.");
+    return;
+  }
 
   const costumeData = {
     title: document.getElementById('title').value,
@@ -19,25 +17,15 @@ function submitCostumeMetadata(imageUrl) {
     returned: false
   };
 
-  fetch(costumeSubmitURL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+  fetch("https://script.google.com/macros/s/AKfycbzkFlchmijZwSPucAfIWlX6A7YF1tSpMC2JTZJVTfGHmHLk1u8pDv3EuVtgZx0Lt7I5/exec", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(costumeData)
-  })
-  .then(res => res.json())
-  .then(result => {
-    if (result.status === 'success') {
-      messageBox.classList.remove('alert-info');
-      messageBox.classList.add('alert-success');
-      messageBox.textContent = '✅ Costume registered successfully!';
-      form.reset();
+  }).then(res => res.json()).then(data => {
+    if (data.status === "success") {
+      alert("✅ Costume registered!");
     } else {
-      throw new Error(result.message);
+      alert("❌ Failed to register: " + data.message);
     }
-  })
-  .catch(err => {
-    messageBox.classList.remove('alert-info');
-    messageBox.classList.add('alert-danger');
-    messageBox.textContent = `❌ Metadata error: ${err.message}`;
   });
 }
