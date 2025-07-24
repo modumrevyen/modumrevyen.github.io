@@ -1,8 +1,7 @@
-// kostymeBildeOpplasting.js
 const form = document.getElementById('costumeForm');
 const messageBox = document.getElementById('messageBox');
-
-const imgbbApiKey = '933a26998801c0f01940deadf23118e5'; // Your real API key
+const imgbbApiKey = '933a26998801c0f01940deadf23118e5';
+const sheetyUrl = 'https://api.sheety.co/939198e750dcf5981e21d4ad618f6849/kostymeUtleie/sheet1';
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -27,21 +26,12 @@ form.addEventListener('submit', async (e) => {
     }
 
     const imageUrl = data.data.url;
-
-    messageBox.classList.remove('alert-info');
-    messageBox.classList.add('alert-success');
-    messageBox.textContent = '✅ Image uploaded successfully!';
-
     console.log("✅ Image URL:", imageUrl);
 
-    // Ensure an image has been uploaded
-    if (!imageUrl) {
-      alert("❌ Please upload an image before submitting.");
-      return;
-    }
+    messageBox.textContent = '✅ Image uploaded! Now submitting costume data...';
 
-    // call the costume metadata submission function
-    submitCostumeMetadata();
+    // Continue to metadata submission
+    await submitCostumeMetadata(imageUrl);
 
   } catch (err) {
     messageBox.classList.remove('alert-info');
@@ -50,70 +40,55 @@ form.addEventListener('submit', async (e) => {
   }
 });
 
-// function to upload the costume metadata
-function submitCostumeMetadata() {
+async function submitCostumeMetadata(imageUrl) {
+  const title = document.getElementById('title').value.trim();
+  const subcategory = document.getElementById('subcategory').value.trim();
+  const size = document.getElementById('size').value.trim();
+  const description = document.getElementById('description').value.trim();
 
-
-  // Grab values from form fields
-  const costumeData = {
-    title: document.getElementById('title').value.trim(),
-    subcategory: document.getElementById('subcategory').value.trim(),
-    size: document.getElementById('size').value.trim(),
-    description: document.getElementById('description').value.trim(),
-    image_url: window.uploadedImageURL,
-    created_at: new Date().toISOString(),
-    reserved_by: null,
-    reserved_from: null,
-    reserved_to: null,
-    returned: false
-  };
-
-  // Optional: validate required fields
-  if (!costumeData.title || !costumeData.size) {
-    alert("Please fill out the required fields: Title and Size.");
+  if (!title || !size) {
+    alert("❌ Title and size are required.");
     return;
   }
 
-  // Show feedback if messageBox exists
-  const messageBox = document.getElementById("messageBox");
-  if (messageBox) {
-    messageBox.classList.remove("d-none", "alert-success", "alert-danger");
-    messageBox.classList.add("alert-info");
-    messageBox.textContent = "⏳ Submitting costume...";
-  }
+  const costumeData = {
+    sheet1: {
+      title: title,
+      subcategory: subcategory,
+      size: size,
+      description: description,
+      image_url: imageUrl,
+      created_at: new Date().toISOString(),
+      reserved_name: "",
+      reserved_phone: "",
+      reserved_email: "",
+      reserved_from: "",
+      reserved_to: "",
+      returned: false,
+      deleted: false
+    }
+  };
 
-  // Send to Google Sheet via Apps Script
-  fetch("https://script.google.com/macros/s/AKfycbzkFlchmijZwSPucAfIWlX6A7YF1tSpMC2JTZJVTfGHmHLk1u8pDv3EuVtgZx0Lt7I5/exec", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(costumeData)
-  })
-    .then(res => res.json())
-    .then(data => {
-        console.log("📄 Sheet response:", data);
-      if (data.status === "success") {
-        if (messageBox) {
-          messageBox.classList.remove("alert-info");
-          messageBox.classList.add("alert-success");
-          messageBox.textContent = "✅ Costume registered!";
-        } else {
-          alert("✅ Costume registered!");
-        }
-
-        // Reset form + image state
-        document.getElementById("costumeForm").reset();
-        window.uploadedImageURL = null;
-      } else {
-        throw new Error(data.message);
-      }
-    })
-    .catch(err => {
-      if (messageBox) {
-        messageBox.classList.remove("alert-info");
-        messageBox.classList.add("alert-danger");
-        messageBox.textContent = "❌ Failed to register: " + err.message;
-      } else {
-        alert("❌ Failed to register: " + err.message);
-      }
+  try {
+    const res = await fetch(sheetyUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(costumeData)
     });
+
+    const result = await res.json();
+    console.log("📄 Sheety response:", result);
+
+    messageBox.classList.remove("alert-info");
+    messageBox.classList.add("alert-success");
+    messageBox.textContent = "✅ Costume registered successfully!";
+
+    form.reset();
+    window.uploadedImageURL = null;
+
+  } catch (err) {
+    messageBox.classList.remove("alert-info");
+    messageBox.classList.add("alert-danger");
+    messageBox.textContent = `❌ Failed to register costume: ${err.message}`;
+  }
 }
