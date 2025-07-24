@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head><title>Test 1 Field</title></head>
+<body>
+  <button onclick="sendData()">Send Title</button>
+
+  <script>
+    function sendData() {
+      fetch("https://script.google.com/macros/s/AKfycbzkFlchmijZwSPucAfIWlX6A7YF1tSpMC2JTZJVTfGHmHLk1u8pDv3EuVtgZx0Lt7I5/exec", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ title: "Jacket" })
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log("✅ Server response:", data);
+        alert("Success: " + data.received);
+      })
+      .catch(err => {
+        console.error("❌ Error:", err);
+        alert("Failed: " + err.message);
+      });
+    }
+  </script>
+</body>
+</html>
