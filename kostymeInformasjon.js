@@ -1,3 +1,4 @@
+// kostymeBildeOpplasting.js
 function submitCostumeMetadata() {
   // Ensure an image has been uploaded
   if (!window.uploadedImageURL) {
@@ -41,6 +42,7 @@ function submitCostumeMetadata() {
   })
     .then(res => res.json())
     .then(data => {
+        console.log("📄 Sheet response:", data);
       if (data.status === "success") {
         if (messageBox) {
           messageBox.classList.remove("alert-info");

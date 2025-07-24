@@ -1,3 +1,5 @@
+// kostymeBildeOpplasting.js
+// This script handles the image upload to ImgBB and displays the result
 const form = document.getElementById('costumeForm');
 const messageBox = document.getElementById('messageBox');
 
