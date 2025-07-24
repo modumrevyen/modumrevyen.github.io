@@ -1,6 +1,6 @@
 const form = document.getElementById('costumeForm');
 const messageBox = document.getElementById('messageBox');
-const imgbbApiKey = '933a26998801c0f01940deadf23118e5';
+const imgbbApiKey = 'bf189b771afc247e23db317a703b5e4d';
 const sheetyUrl = 'https://api.sheety.co/939198e750dcf5981e21d4ad618f6849/kostymeUtleie/sheet1';
 
 form.addEventListener('submit', async (e) => {
@@ -8,6 +8,7 @@ form.addEventListener('submit', async (e) => {
 
   const imageFile = document.getElementById('imageInput').files[0];
   const formData = new FormData();
+
   formData.append("image", imageFile);
 
   messageBox.classList.remove('d-none', 'alert-success', 'alert-danger');
@@ -25,7 +26,7 @@ form.addEventListener('submit', async (e) => {
       throw new Error("ImgBB returned invalid response");
     }
 
-    const imageUrl = data.data.url;
+    const imageUrl = data.data.image.url;
     console.log("✅ Image URL:", imageUrl);
 
     messageBox.textContent = '✅ Image uploaded! Now submitting costume data...';
@@ -41,10 +42,15 @@ form.addEventListener('submit', async (e) => {
 });
 
 async function submitCostumeMetadata(imageUrl) {
+  // print image url
+  console.log("📄 Submitting costume metadata:", imageUrl);
   const title = document.getElementById('title').value.trim();
   const subcategory = document.getElementById('subcategory').value.trim();
   const size = document.getElementById('size').value.trim();
   const description = document.getElementById('description').value.trim();
+  const imageurl = imageUrl.trim();
+  // print new image_url
+  console.log("📄 Image URL:", imageurl);
 
   if (!title || !size) {
     alert("❌ Title and size are required.");
@@ -57,17 +63,26 @@ async function submitCostumeMetadata(imageUrl) {
       subcategory: subcategory,
       size: size,
       description: description,
-      image_url: imageUrl,
-      created_at: new Date().toISOString(),
-      reserved_name: "",
-      reserved_phone: "",
-      reserved_email: "",
-      reserved_from: "",
-      reserved_to: "",
+      imageurl: imageurl,
+      createdat: new Date().toISOString().split('T')[0],
+      reservedname: "",
+      reservedphone: "",
+      reservedemail: "",
+      reservedfrom: "",
+      reservedto: "",
       returned: false,
       deleted: false
     }
   };
+  // print image_url
+  console.log("📄 Costume data:", costumeData);
+
+  kostymeliste.addCostumeCard({
+    title,
+    subcategory,
+    size,
+    imageurl
+  });
 
   try {
     const res = await fetch(sheetyUrl, {
@@ -82,6 +97,8 @@ async function submitCostumeMetadata(imageUrl) {
     messageBox.classList.remove("alert-info");
     messageBox.classList.add("alert-success");
     messageBox.textContent = "✅ Costume registered successfully!";
+
+
 
     form.reset();
     window.uploadedImageURL = null;

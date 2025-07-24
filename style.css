@@ -1,0 +1,62 @@
+/* style.css */
+
+.vertical-scroll-only {
+  max-height: 95vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.card-text {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+
+/* Card container layout */
+.card.small-costume-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0.75rem;
+  gap: 1rem;
+  height: 100px;
+  cursor: pointer;
+}
+
+/* Thumbnail image inside the card */
+.card.small-costume-card img.card-img-thumbnail {
+  height: 100%;
+  width: auto;
+  max-width: 100px;
+  object-fit: contain;
+}
+
+/* Text area */
+.card.small-costume-card .card-body {
+  flex-grow: 1;
+  padding: 0;
+}
+
+/* Prevent horizontal scroll */
+#costumeList {
+  overflow-x: hidden;
+}
+
+
+/* Only apply scroll blocking when body has .no-body-scroll */
+body.no-body-scroll {
+  height: 80vh;
+  overflow: hidden;
+}
+
+/* Optional: prevent horizontal scroll too */
+body.no-body-scroll,
+body.no-body-scroll html {
+  overflow-x: hidden;
+}
+
+.vertical-scroll-only {
+  max-height: calc(100vh - 100px); /* Adjust if needed */
+  overflow-y: auto;
+  padding-right: 6px; /* optional for scroll spacing */
+}
