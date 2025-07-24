@@ -7,9 +7,13 @@ form.addEventListener('submit', async (e) => {
   e.preventDefault();
 
   const imageFile = document.getElementById('imageInput').files[0];
-  const formData = new FormData();
 
+  const formData = new FormData();
   formData.append("image", imageFile);
+
+  // Confirm the name you're uploading
+  console.log("📦 Uploading file with name:", imageFile.name);
+
 
   messageBox.classList.remove('d-none', 'alert-success', 'alert-danger');
   messageBox.classList.add('alert-info');

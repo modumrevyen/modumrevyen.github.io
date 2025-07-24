@@ -47,6 +47,6 @@ kostymeliste.loadCostumes = async function () {
     }
 
   } catch (err) {
-    console.error("❌ Failed to load costumes:", err.message);
+    console.error("❌ Feil ved lasting av kostymer:", err.message);
   }
 };
