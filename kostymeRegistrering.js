@@ -1,7 +1,7 @@
 const form = document.getElementById('costumeForm');
 const messageBox = document.getElementById('messageBox');
 
-const imageUploadURL = 'https://script.google.com/macros/s/AKfycbwy4SWWgAT1_mjmxMCeFZ7k_pe7hYRiVUYbXQnfURqT/dev';
+const imageUploadURL = 'https://script.google.com/macros/s/AKfycbwlyA3wA0il_nb7Ls0apCnhtcyXKCy5ZCgBCaQUzqy5d2vQN8PKnBr_mqtGdD-v61sfBw/exec';
 const costumeSubmitURL = 'https://script.google.com/macros/s/AKfycbzkFlchmijZwSPucAfIWlX6A7YF1tSpMC2JTZJVTfGHmHLk1u8pDv3EuVtgZx0Lt7I5/exec';
 
 form.addEventListener('submit', async (e) => {
