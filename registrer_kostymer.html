@@ -9,7 +9,8 @@
 <body class="p-4">
   <div class="container">
     <h2 class="mb-4">Register New Costume</h2>
-    <form id="costumeForm">
+      <form id="costumeForm" onsubmit="event.preventDefault(); submitCostumeMetadata();">
+
       <div class="mb-3">
         <label for="title" class="form-label">Main Category (Title)</label>
         <input type="text" class="form-control" id="title" required>
