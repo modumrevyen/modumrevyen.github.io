@@ -1,5 +1,6 @@
 /* style.css */
 
+/* used in registrer_kostymer.html */
 .vertical-scroll-only {
   max-height: 95vh;
   overflow-y: auto;
@@ -10,7 +11,6 @@
   word-break: break-word;
   overflow-wrap: break-word;
 }
-
 
 /* Card container layout */
 .card.small-costume-card {
@@ -42,7 +42,6 @@
   overflow-x: hidden;
 }
 
-
 /* Only apply scroll blocking when body has .no-body-scroll */
 body.no-body-scroll {
   height: 80vh;
@@ -59,4 +58,50 @@ body.no-body-scroll html {
   max-height: calc(100vh - 100px); /* Adjust if needed */
   overflow-y: auto;
   padding-right: 6px; /* optional for scroll spacing */
+}
+/* used in registrer_kostymer.html */
+
+/* Sidebar base styles */
+.sidebar {
+  width: 240px;
+  min-height: 100vh;
+  position: sticky;
+  top: 0;
+  transition: transform 0.3s ease;
+}
+
+/* Hidden on mobile by default */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    z-index: 1040;
+    transform: translateX(-100%);
+    height: 100vh;
+    top: 54px; /* Push down to avoid overlap with topbar */
+  }
+
+  .sidebar.sidebar-open {
+    transform: translateX(0);
+  }
+
+  .content-area {
+    margin-top: 40px; /* height of the top navbar */
+    overflow-x: hidden;
+  }
+
+  #menu-toggle {
+    z-index: 1050;
+  }
+}
+
+
+.sidebar .nav-link {
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+  background-color: #495057;
+  border-radius: 5px;
 }
