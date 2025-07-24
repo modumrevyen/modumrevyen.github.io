@@ -8,18 +8,17 @@
     function sendData() {
       fetch("https://script.google.com/macros/s/AKfycbzim8N1VYHLwJHeoWXQdaMqaZAtE1RPMr80zxbaDibhW7KsuiXmysP5tSabl9_hdE_D/exec", {
         method: "POST",
-        headers: { "Content-Type": "text/plain" },
-        body: JSON.stringify({ title: "Jacket" })
-      })
-      .then(res => res.json())
-      .then(data => {
-        console.log("✅ Server response:", data);
-        alert("Success: " + data.received);
-      })
-      .catch(err => {
-        console.error("❌ Error:", err);
-        alert("Failed: " + err.message);
-      });
+        headers: {
+            "Content-Type": "text/plain" // 👈 Important!
+        },
+        body: JSON.stringify({
+            title: "Jacket"
+        }),
+        redirect: "follow" // 👈 Some responses are redirected to googleusercontent.com
+        })
+        .then(res => res.json())
+        .then(console.log)
+        .catch(console.error);
     }
   </script>
 </body>
