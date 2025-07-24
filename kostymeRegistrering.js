@@ -1,8 +1,8 @@
 const form = document.getElementById('costumeForm');
 const messageBox = document.getElementById('messageBox');
 
-const imageUploadURL = 'https://script.google.com/macros/s/AKfycbwlyA3wA0il_nb7Ls0apCnhtcyXKCy5ZCgBCaQUzqy5d2vQN8PKnBr_mqtGdD-v61sfBw/exec'; // Google Drive upload
-const costumeSubmitURL = 'https://script.google.com/macros/s/AKfycbzkFlchmijZwSPucAfIWlX6A7YF1tSpMC2JTZJVTfGHmHLk1u8pDv3EuVtgZx0Lt7I5/exec'; // Google Sheet
+const imageUploadURL = 'https://script.google.com/macros/s/AKfycbwlyA3wA0il_nb7Ls0apCnhtcyXKCy5ZCgBCaQUzqy5d2vQN8PKnBr_mqtGdD-v61sfBw/exec';
+const costumeSubmitURL = 'https://script.google.com/macros/s/AKfycbzkFlchmijZwSPucAfIWlX6A7YF1tSpMC2JTZJVTfGHmHLk1u8pDv3EuVtgZx0Lt7I5/exec';
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -10,7 +10,7 @@ form.addEventListener('submit', async (e) => {
   const imageFile = document.getElementById('imageInput').files[0];
   const formData = new FormData();
   formData.append("filename", imageFile.name);
-  formData.append("file", imageFile); // send raw image file
+  formData.append("file", imageFile);
 
   messageBox.classList.remove('d-none', 'alert-success', 'alert-danger');
   messageBox.classList.add('alert-info');
@@ -44,8 +44,8 @@ form.addEventListener('submit', async (e) => {
       body: JSON.stringify(costumeData)
     });
 
-    const result = await response.json(); // Parse the final response
-    if (result.status !== 'success') throw new Error(result.message || 'Unknown error');
+    const result = await response.json();
+    if (result.status !== 'success') throw new Error(result.message);
 
     messageBox.classList.remove('alert-info');
     messageBox.classList.add('alert-success');
