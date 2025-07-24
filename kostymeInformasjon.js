@@ -1,10 +1,6 @@
 // kostymeBildeOpplasting.js
 function submitCostumeMetadata() {
-  // Ensure an image has been uploaded
-  if (!window.uploadedImageURL) {
-    alert("❌ Please upload an image before submitting.");
-    return;
-  }
+
 
   // Grab values from form fields
   const costumeData = {
