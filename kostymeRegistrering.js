@@ -23,14 +23,14 @@ form.addEventListener('submit', async (e) => {
         base64: base64Data
       };
 
-    const uploadRes = await fetch(imageUploadURL, {
+      const uploadRes = await fetch(imageUploadURL, {
         method: 'POST',
-        mode: 'no-cors', // ← bypass CORS block
         body: JSON.stringify(imagePayload),
         headers: {
-            'Content-Type': 'application/json'
+          'Content-Type': 'application/json'
         }
-    });
+      });
+
 
 
       const uploadData = await uploadRes.json();
