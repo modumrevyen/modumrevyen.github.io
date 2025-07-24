@@ -8,7 +8,7 @@
     function sendData() {
       fetch("https://script.google.com/macros/s/AKfycbzim8N1VYHLwJHeoWXQdaMqaZAtE1RPMr80zxbaDibhW7KsuiXmysP5tSabl9_hdE_D/exec", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "text/plain" },
         body: JSON.stringify({ title: "Jacket" })
       })
       .then(res => res.json())
