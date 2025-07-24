@@ -13,7 +13,7 @@ form.addEventListener('submit', async (e) => {
 
   messageBox.classList.remove('d-none', 'alert-success', 'alert-danger');
   messageBox.classList.add('alert-info');
-  messageBox.textContent = 'Uploading image to ImgBB...';
+  messageBox.textContent = 'Opplasting av bilde til ImgBB...';
 
   try {
     const res = await fetch(`https://api.imgbb.com/1/upload?key=${imgbbApiKey}`, {
@@ -29,7 +29,7 @@ form.addEventListener('submit', async (e) => {
     const imageUrl = data.data.image.url;
     console.log("✅ Image URL:", imageUrl);
 
-    messageBox.textContent = '✅ Image uploaded! Now submitting costume data...';
+    messageBox.textContent = '✅ Image opplastet! Nå sender vi kostymedata...';
 
     // Continue to metadata submission
     await submitCostumeMetadata(imageUrl);
@@ -37,7 +37,7 @@ form.addEventListener('submit', async (e) => {
   } catch (err) {
     messageBox.classList.remove('alert-info');
     messageBox.classList.add('alert-danger');
-    messageBox.textContent = `❌ Upload failed: ${err.message}`;
+    messageBox.textContent = `❌ Opplasting feilet: ${err.message}`;
   }
 });
 
@@ -52,8 +52,8 @@ async function submitCostumeMetadata(imageUrl) {
   // print new image_url
   console.log("📄 Image URL:", imageurl);
 
-  if (!title || !size) {
-    alert("❌ Title and size are required.");
+  if (!title) {
+    alert("❌ Tittel er påkrevd ved registrering av kostyme.");
     return;
   }
 
@@ -96,7 +96,7 @@ async function submitCostumeMetadata(imageUrl) {
 
     messageBox.classList.remove("alert-info");
     messageBox.classList.add("alert-success");
-    messageBox.textContent = "✅ Costume registered successfully!";
+    messageBox.textContent = "✅ Kostyme registrert!";
 
 
 
@@ -106,6 +106,6 @@ async function submitCostumeMetadata(imageUrl) {
   } catch (err) {
     messageBox.classList.remove("alert-info");
     messageBox.classList.add("alert-danger");
-    messageBox.textContent = `❌ Failed to register costume: ${err.message}`;
+    messageBox.textContent = `❌ Feil ved registrering av kostyme: ${err.message}`;
   }
 }
