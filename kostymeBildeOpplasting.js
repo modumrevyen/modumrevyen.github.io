@@ -35,7 +35,7 @@ form.addEventListener('submit', async (e) => {
     console.log("✅ Image URL:", imageUrl);
 
     // Ensure an image has been uploaded
-    if (imageUrl) {
+    if (!imageUrl) {
       alert("❌ Please upload an image before submitting.");
       return;
     }
