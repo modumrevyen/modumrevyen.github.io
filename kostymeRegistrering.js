@@ -1,3 +1,5 @@
+// kostymeRegistrering.js
+// This script handles the costume registration form submission, image upload to Google Drive,
 const form = document.getElementById('costumeForm');
 const messageBox = document.getElementById('messageBox');
 
@@ -8,53 +10,64 @@ form.addEventListener('submit', async (e) => {
   e.preventDefault();
 
   const imageFile = document.getElementById('imageInput').files[0];
-  const formData = new FormData();
-  formData.append("filename", imageFile.name);
-  formData.append("file", imageFile);
+  const reader = new FileReader();
 
   messageBox.classList.remove('d-none', 'alert-success', 'alert-danger');
   messageBox.classList.add('alert-info');
   messageBox.textContent = 'Uploading image to Google Drive...';
 
-  try {
-    const uploadRes = await fetch(imageUploadURL, {
-      method: 'POST',
-      body: formData
-    });
+  reader.onload = async function () {
+    const base64Data = reader.result.split(',')[1]; // remove data:image/... part
 
-    const uploadData = await uploadRes.json();
-    if (uploadData.status !== 'success') throw new Error(uploadData.message);
-
-    const costumeData = {
-      title: document.getElementById('title').value,
-      subcategory: document.getElementById('subcategory').value,
-      size: document.getElementById('size').value,
-      description: document.getElementById('description').value,
-      image_url: uploadData.url,
-      created_at: new Date().toISOString(),
-      reserved_by: null,
-      reserved_from: null,
-      reserved_to: null,
-      returned: false
+    const imagePayload = {
+      filename: imageFile.name,
+      mimeType: imageFile.type,
+      base64: base64Data
     };
 
-    const response = await fetch(costumeSubmitURL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(costumeData)
-    });
+    try {
+      const uploadRes = await fetch(imageUploadURL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(imagePayload)
+      });
 
-    const result = await response.json();
-    if (result.status !== 'success') throw new Error(result.message);
+      const uploadData = await uploadRes.json();
+      if (uploadData.status !== 'success') throw new Error(uploadData.message);
 
-    messageBox.classList.remove('alert-info');
-    messageBox.classList.add('alert-success');
-    messageBox.textContent = '✅ Costume registered successfully!';
-    form.reset();
+      const costumeData = {
+        title: document.getElementById('title').value,
+        subcategory: document.getElementById('subcategory').value,
+        size: document.getElementById('size').value,
+        description: document.getElementById('description').value,
+        image_url: uploadData.url,
+        created_at: new Date().toISOString(),
+        reserved_by: null,
+        reserved_from: null,
+        reserved_to: null,
+        returned: false
+      };
 
-  } catch (err) {
-    messageBox.classList.remove('alert-info');
-    messageBox.classList.add('alert-danger');
-    messageBox.textContent = `❌ Error: ${err.message}`;
-  }
+      const response = await fetch(costumeSubmitURL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(costumeData)
+      });
+
+      const result = await response.json();
+      if (result.status !== 'success') throw new Error(result.message);
+
+      messageBox.classList.remove('alert-info');
+      messageBox.classList.add('alert-success');
+      messageBox.textContent = '✅ Costume registered successfully!';
+      form.reset();
+
+    } catch (err) {
+      messageBox.classList.remove('alert-info');
+      messageBox.classList.add('alert-danger');
+      messageBox.textContent = `❌ Error: ${err.message}`;
+    }
+  };
+
+  reader.readAsDataURL(imageFile); // start reading as base64
 });
