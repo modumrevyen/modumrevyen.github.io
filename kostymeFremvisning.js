@@ -5,7 +5,7 @@ const modalImage = document.getElementById("modalImage");
 
 async function loadCostumesFromSheety() {
   try {
-    const res = await fetch("https://api.sheety.co/939198e750dcf5981e21d4ad618f6849/kostymeUtleie/sheet1");
+    const res = await fetch("https://script.google.com/macros/s/AKfycbwGyq1qrj2AKjmiuWMwMt8NApojFvHuwuIGggYr9YOUFHZbCsT_WI5mXulTqlQQ9f3k9A/exec");
     const data = await res.json();
 
     if (data.sheet1 && Array.isArray(data.sheet1)) {
