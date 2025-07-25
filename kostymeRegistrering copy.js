@@ -1,9 +1,7 @@
-// kostymeRegistrering.js
 const form = document.getElementById('costumeForm');
 const messageBox = document.getElementById('messageBox');
 const imgbbApiKey = 'bf189b771afc247e23db317a703b5e4d';
 const sheetyUrl = 'https://api.sheety.co/939198e750dcf5981e21d4ad618f6849/kostymeUtleie/sheet1';
-const googleurl = 'https://script.google.com/macros/s/AKfycbwGyq1qrj2AKjmiuWMwMt8NApojFvHuwuIGggYr9YOUFHZbCsT_WI5mXulTqlQQ9f3k9A/exec';
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -99,9 +97,9 @@ async function submitCostumeMetadata(imageUrl) {
   });
 
   try {
-    const res = await fetch(googleurl, {
+    const res = await fetch(sheetyUrl, {
       method: "POST",
-      headers: { "Content-Type": "text/plain" },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(costumeData)
     });
 
