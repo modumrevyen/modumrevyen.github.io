@@ -5,19 +5,35 @@ const modalImage = document.getElementById("modalImage");
 
 async function loadCostumesFromSheety() {
   try {
-    const res = await fetch("https://script.google.com/macros/s/AKfycbwGyq1qrj2AKjmiuWMwMt8NApojFvHuwuIGggYr9YOUFHZbCsT_WI5mXulTqlQQ9f3k9A/exec");
+    console.log("📡 Fetching costumes from Google Apps Script...");
+
+    const res = await fetch("https://script.google.com/macros/s/AKfycbzAnHlwvw8OJhRij_EpE1nsGA0PDwuAAGIL80v5WjKVdVskgwjU4_YLoC3lBGBEV80QKg/exec", {
+      method: "POST",
+      headers: {
+        "Content-Type": "text/plain"
+      },
+      body: JSON.stringify({ action: "getCostumes" })
+    });
+
+    // if (!res.ok) {
+    //   throw new Error(`❌ HTTP error! status: ${res.status}`);
+    // }
+
     const data = await res.json();
+    console.log("✅ Costume data received:", data);
 
     if (data.sheet1 && Array.isArray(data.sheet1)) {
-      // Clear existing cards
       container.innerHTML = "";
+      const filtered = data.sheet1.filter(c => !c.deleted);
+      console.log(`🎭 Displaying ${filtered.length} costumes`);
 
-      // Filter out deleted entries and sort by ID (oldest first)
-      data.sheet1
-        .filter(c => !c.deleted)
-        .sort((a, b) => Number(a.id) - Number(b.id))
+      filtered
+        .sort((a, b) => a.kostymeid.localeCompare(b.kostymeid))
         .forEach(c => addCostumeCard(c));
+    } else {
+      console.warn("⚠️ sheet1 data not found or not an array");
     }
+
   } catch (err) {
     console.error("❌ Feil ved lasting av kostymer:", err.message);
   }
