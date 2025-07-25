@@ -7,13 +7,12 @@ async function loadCostumesFromSheety() {
   try {
     console.log("📡 Fetching costumes from Google Apps Script...");
 
-    const res = await fetch("https://script.google.com/macros/s/AKfycbzAnHlwvw8OJhRij_EpE1nsGA0PDwuAAGIL80v5WjKVdVskgwjU4_YLoC3lBGBEV80QKg/exec", {
-      method: "POST",
-      headers: {
-        "Content-Type": "text/plain"
-      },
-      body: JSON.stringify({ action: "getCostumes" })
-    });
+    const googleUrl = "https://script.google.com/macros/s/AKfycbzAnHlwvw8OJhRij_EpE1nsGA0PDwuAAGIL80v5WjKVdVskgwjU4_YLoC3lBGBEV80QKg/exec";
+    const proxyUrl = "https://modumrevyen.sayver.net/proxy.php?url=" + encodeURIComponent(googleUrl);
+
+    const res = await fetch(proxyUrl);
+
+
     console.log("📡 Response status:", res.status);
 
     if (!res.ok) {
