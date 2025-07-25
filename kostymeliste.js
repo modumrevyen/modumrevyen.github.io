@@ -37,6 +37,11 @@ kostymeliste.loadCostumes = async function () {
     const proxyUrl = "https://modumrevyen.sayver.net/proxy.php?url=" + encodeURIComponent(googleUrl);
 
     const res = await fetch(proxyUrl);
+        if (!res.ok) {
+      throw new Error(`❌ HTTP error! status: ${res.status}`);
+    }
+
+    const data = await res.json();
 
     if (data.sheet1 && Array.isArray(data.sheet1)) {
       data.sheet1
