@@ -14,10 +14,11 @@ async function loadCostumesFromSheety() {
       },
       body: JSON.stringify({ action: "getCostumes" })
     });
+    console.log("📡 Response status:", res.status);
 
-    // if (!res.ok) {
-    //   throw new Error(`❌ HTTP error! status: ${res.status}`);
-    // }
+    if (!res.ok) {
+      throw new Error(`❌ HTTP error! status: ${res.status}`);
+    }
 
     const data = await res.json();
     console.log("✅ Costume data received:", data);
