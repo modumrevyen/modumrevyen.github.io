@@ -2,8 +2,10 @@
 const form = document.getElementById('costumeForm');
 const messageBox = document.getElementById('messageBox');
 const imgbbApiKey = 'bf189b771afc247e23db317a703b5e4d';
-const sheetyUrl = 'https://api.sheety.co/939198e750dcf5981e21d4ad618f6849/kostymeUtleie/sheet1';
-const googleurl = 'https://script.google.com/macros/s/AKfycbwGyq1qrj2AKjmiuWMwMt8NApojFvHuwuIGggYr9YOUFHZbCsT_WI5mXulTqlQQ9f3k9A/exec';
+const googleurl = 'https://script.google.com/macros/s/AKfycbz0z5LgJHF8bzjz9nofyBT2hc0XEke_-QVxlRWSzIVr-MKlktakP19krYjIIfNIDKUO9g/exec';
+// Compose the proxy POST URL
+const proxy = "https://modumrevyen.sayver.net/proxy.php";
+const proxiedUrl = `${proxy}?url=${encodeURIComponent(googleurl)}`;
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -99,14 +101,16 @@ async function submitCostumeMetadata(imageUrl) {
   });
 
   try {
-    const res = await fetch(googleurl, {
+    const res = await fetch(proxiedUrl, {
       method: "POST",
-      headers: { "Content-Type": "text/plain" },
+      headers: {
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify(costumeData)
     });
 
-    const result = await res.json();
-    console.log("📄 Sheety response:", result);
+    const result = await res.text(); // or .json() if Apps Script returns JSON
+    console.log("📄 Google Script response:", result);
 
     messageBox.classList.remove("alert-info");
     messageBox.classList.add("alert-success");
