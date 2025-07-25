@@ -33,8 +33,10 @@ kostymeliste.loadCostumes = async function () {
   container.innerHTML = '';
 
   try {
-    const res = await fetch("https://api.sheety.co/939198e750dcf5981e21d4ad618f6849/kostymeUtleie/sheet1");
-    const data = await res.json();
+    const googleUrl = "https://script.google.com/macros/s/AKfycbz0z5LgJHF8bzjz9nofyBT2hc0XEke_-QVxlRWSzIVr-MKlktakP19krYjIIfNIDKUO9g/exec";
+    const proxyUrl = "https://modumrevyen.sayver.net/proxy.php?url=" + encodeURIComponent(googleUrl);
+
+    const res = await fetch(proxyUrl);
 
     if (data.sheet1 && Array.isArray(data.sheet1)) {
       data.sheet1
