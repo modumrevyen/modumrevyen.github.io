@@ -39,19 +39,22 @@ async function loadCostumesFromSheety() {
 }
 
 function addCostumeCard(c) {
-  const imageId = c.imagecurl?.match(/[-\w]{25,}/)?.[0]; // Extract file ID from imageurl
-  const directImageUrl = imageId
-    ? `https://drive.google.com/thumbnail?id=${imageId}`
-    : "placeholder.png"; // fallback image if needed
+  const imageId = c.imagecurl?.match(/[-\w]{25,}/)?.[0]; // Extract file ID
+  const thumbUrl = imageId
+    ? `https://drive.google.com/thumbnail?id=${imageId}&sz=s600`
+    : "placeholder.png";
+  const fullSizeUrl = imageId
+    ? `https://drive.google.com/thumbnail?id=${imageId}&sz=s4000`
+    : "placeholder.png";
 
   const col = document.createElement("div");
   col.className = "col-sm-6 col-md-4 col-lg-3 mb-4";
 
   col.innerHTML = `
     <div class="card shadow-sm h-100">
-      <img src="${directImageUrl}" alt="${c.title}" class="card-img-top"
+      <img src="${thumbUrl}" alt="${c.title}" class="card-img-top"
         data-bs-toggle="modal" data-bs-target="#imageModal"
-        data-img="${directImageUrl}" style="cursor:pointer;">
+        data-img="${fullSizeUrl}" style="cursor:pointer;">
       <div class="card-body">
         <h5 class="card-title">${c.title}</h5>
         <p class="mb-1"><strong>Underkategori:</strong> ${c.subcategory}</p>
