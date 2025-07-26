@@ -84,6 +84,8 @@ async function submitCostumeMetadata(imagename, imagecname, imagebase64, imagecb
       deleted: false
     }
   };
+  console.log("📄 Costume data:", costumeData);
+
 
   const previewUrl = `data:image/jpeg;base64,${imagecbase64}`;
   kostymeliste.addCostumeCard({ title, subcategory, size, imageurl: previewUrl });
