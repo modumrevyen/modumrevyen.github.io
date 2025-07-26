@@ -50,7 +50,7 @@ form.addEventListener("submit", async (e) => {
   }
 });
 
-async function submitCostumeMetadata(imageurl, imagecurl, imagebase64, imagecbase64) {
+async function submitCostumeMetadata(imagename, imagecname, imagebase64, imagecbase64) {
   const title = document.getElementById('title').value.trim();
   const subcategory = document.getElementById('subcategory').value.trim();
   const size = document.getElementById('size').value.trim();
@@ -68,8 +68,10 @@ async function submitCostumeMetadata(imageurl, imagecurl, imagebase64, imagecbas
       subcategory,
       size,
       description,
+      imagename,
       imageurl,
       imagebase64,
+      imagecname,
       imagecurl,
       imagecbase64,
       createdat: new Date().toISOString().split("T")[0],
