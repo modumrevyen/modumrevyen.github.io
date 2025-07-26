@@ -20,6 +20,8 @@ form.addEventListener('submit', async (e) => {
 
   // Proper filename with spaces replaced
   const compressedFileName = `compressed_${Date.now()}_${imageFile.name.replace(/\s+/g, "-")}`;
+  // image compressed console log
+  console.log("📦 Compressed file name:", compressedFileName);
 
   // Upload original
   const originalForm = new FormData();
