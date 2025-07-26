@@ -4,16 +4,18 @@ window.kostymeliste = window.kostymeliste || {};
 
 kostymeliste.addCostumeCard = function({ title, subcategory, size, imageurl }) {
 
-    // if imageurl start with "https://drive.google.com/" do this part if not skip it
-    if (!imageurl || !imageurl.startsWith("https://drive.google.com/")) {
-        const imageId = imageurl?.match(/[-\w]{25,}/)?.[0]; // Extract file ID from imageurl
-        const directImageUrl = imageId
-            ? `https://drive.google.com/thumbnail?id=${imageId}`
-            : "placeholder.png"; // fallback image if needed
-    } else {
-        // if imageurl is base64 or direct URL, use it directly
-        directImageUrl = imageurl;
-    }
+  let directImageUrl;
+
+  if (imageurl && imageurl.startsWith("https://drive.google.com/")) {
+    // Case 1: Google Drive image — extract ID and use thumbnail
+    const imageId = imageurl.match(/[-\w]{25,}/)?.[0];
+    directImageUrl = imageId
+      ? `https://drive.google.com/thumbnail?id=${imageId}&sz=s4000`
+      : "placeholder.png";
+  } else {
+    // Case 2: Base64 or direct link
+    directImageUrl = imageurl || "placeholder.png";
+  }
 
 
   const container = document.getElementById('costumeList');
