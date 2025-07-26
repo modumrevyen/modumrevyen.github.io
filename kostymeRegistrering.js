@@ -36,7 +36,7 @@ form.addEventListener('submit', async (e) => {
 
   messageBox.classList.remove('d-none', 'alert-success', 'alert-danger');
   messageBox.classList.add('alert-info');
-  messageBox.textContent = 'Opplasting av bilde til ImgBB...';
+  messageBox.textContent = 'Opplasting av bilde til Google Drive...';
 
   try {
     const [originalRes, compressedRes] = await Promise.all([
