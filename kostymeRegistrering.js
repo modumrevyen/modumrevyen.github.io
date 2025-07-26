@@ -10,25 +10,44 @@ const proxiedUrl = `${proxy}?url=${encodeURIComponent(googleurl)}`;
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const imageFile = document.getElementById("imageInput").files[0];
-  if (!imageFile) {
-    alert("❌ Vennligst velg et bilde først.");
-    return;
+  messageBox.classList.remove("alert-success", "alert-danger", "d-none");
+  messageBox.classList.add("alert-info");
+  messageBox.textContent = "⏳ Behandler bildet...";
+
+  try {
+    const imageFile = document.getElementById("imageInput").files[0];
+    if (!imageFile) {
+      throw new Error("Vennligst velg et bilde først.");
+    }
+
+    const timestamp = Date.now();
+    const originalFileName = `${timestamp}_${imageFile.name.replace(/\s+/g, "-")}`;
+    const compressedFileName = `compressed_${originalFileName}`;
+
+    // Compress and convert
+    const compressedimage = await compressImage(imageFile, 0.6);
+
+    if (!compressedimage) {
+      throw new Error("Feil under bildekomprimering.");
+    }
+
+    const imagebase64 = await imageToBase64(imageFile);
+    const imagecbase64 = await imageToBase64(compressedimage);
+
+    // Submit metadata
+    await submitCostumeMetadata(originalFileName, compressedFileName, imagebase64, imagecbase64);
+
+    messageBox.classList.remove("alert-info");
+    messageBox.classList.add("alert-success");
+    messageBox.textContent = "✅ Kostyme registrert!";
+    form.reset();
+
+  } catch (err) {
+    console.error("❌ Skjema-feil:", err);
+    messageBox.classList.remove("alert-info");
+    messageBox.classList.add("alert-danger");
+    messageBox.textContent = `❌ Feil: ${err.message || "Ukjent feil"}`;
   }
-
-  const timestamp = Date.now();
-  const originalFileName = `${timestamp}_${imageFile.name.replace(/\s+/g, "-")}`;
-  const compressedFileName = `compressed_${originalFileName}`;
-
-  // Create compressed version
-  const compressedimage = await compressImage(imageFile, 0.6);
-
-  // Convert both to base64
-  const imagebase64 = await imageToBase64(imageFile);
-  const imagecbase64 = await imageToBase64(compressedimage);
-
-  // Submit metadata
-  await submitCostumeMetadata(originalFileName, compressedFileName, imagebase64, imagecbase64);
 });
 
 async function submitCostumeMetadata(imageurl, imagecurl, imagebase64, imagecbase64) {
