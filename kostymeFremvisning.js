@@ -5,13 +5,11 @@ const modalImage = document.getElementById("modalImage");
 
 async function loadCostumesFromSheety() {
   try {
-    console.log("📡 Fetching costumes from Google Apps Script...");
+    console.log("📡 Fetching costumes from GitHub...");
 
-    const googleUrl = "https://script.google.com/macros/s/AKfycbz0z5LgJHF8bzjz9nofyBT2hc0XEke_-QVxlRWSzIVr-MKlktakP19krYjIIfNIDKUO9g/exec";
-    const proxyUrl = "https://modumrevyen.sayver.net/proxy.php?url=" + encodeURIComponent(googleUrl);
+    const githubUrl = "https://modumrevyen.github.io/kostymer.json";
 
-    const res = await fetch(proxyUrl);
-
+    const res = await fetch(githubUrl);
 
     console.log("📡 Response status:", res.status);
 
