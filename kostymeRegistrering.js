@@ -51,11 +51,16 @@ form.addEventListener('submit', async (e) => {
     const originalData = await originalRes.json();
     const compressedData = await compressedRes.json();
 
+    console.log("🧾 Original upload response:", originalData);
+    console.log("🧾 Compressed upload response:", compressedData);
+
     if (
       originalData.status !== "success" ||
       compressedData.status !== "success"
     ) {
-      throw new Error("Upload failed");
+      throw new Error(
+        `Upload failed: ${originalData.message || "Unknown error"} | ${compressedData.message || "Unknown error"}`
+      );
     }
 
     const imageurl = originalData.url;
@@ -64,15 +69,15 @@ form.addEventListener('submit', async (e) => {
     console.log("✅ Original uploaded:", imageurl);
     console.log("✅ Compressed uploaded:", imagecurl);
 
-    // Proceed to send metadata with both URLs
     await submitCostumeMetadata(imageurl, imagecurl);
 
-
   } catch (err) {
-    messageBox.classList.remove('alert-info');
-    messageBox.classList.add('alert-danger');
+    console.error("❌ Detailed upload error:", err);
+    messageBox.classList.remove("alert-info");
+    messageBox.classList.add("alert-danger");
     messageBox.textContent = `❌ Opplasting feilet: ${err.message}`;
   }
+
 });
 
 async function submitCostumeMetadata(imageurl, imagecurl) {
