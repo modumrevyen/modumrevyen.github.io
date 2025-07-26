@@ -9,6 +9,7 @@ const proxiedUrl = `${proxy}?url=${encodeURIComponent(googleurl)}`;
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
+  console.log("📄 Form submitted");
 
   messageBox.classList.remove("alert-success", "alert-danger", "d-none");
   messageBox.classList.add("alert-info");
@@ -23,14 +24,18 @@ form.addEventListener("submit", async (e) => {
     const timestamp = Date.now();
     const originalFileName = `${timestamp}_${imageFile.name.replace(/\s+/g, "-")}`;
     const compressedFileName = `compressed_${originalFileName}`;
-
+ 
     // Compress and convert
     const compressedimage = await compressImage(imageFile, 0.6);
+    console.log("📦 Original file name:", originalFileName);
+    console.log("📦 Compressed file name:", compressedFileName);
 
     if (!compressedimage) {
       throw new Error("Feil under bildekomprimering.");
     }
 
+    // Convert to base64
+    messageBox.textContent = "⏳ Konverterer bilde...";
     const imagebase64 = await imageToBase64(imageFile);
     const imagecbase64 = await imageToBase64(compressedimage);
 
@@ -39,7 +44,7 @@ form.addEventListener("submit", async (e) => {
 
     messageBox.classList.remove("alert-info");
     messageBox.classList.add("alert-success");
-    messageBox.textContent = "✅ Kostyme registrert!";
+    messageBox.textContent = "✅ Kostyme er lagt til!, du kan nå legge neste kostyme.";
     form.reset();
 
   } catch (err) {
