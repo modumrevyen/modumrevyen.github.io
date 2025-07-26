@@ -26,7 +26,7 @@ form.addEventListener("submit", async (e) => {
     const compressedFileName = `compressed_${originalFileName}`;
  
     // Compress and convert
-    const compressedimage = await compressImage(imageFile, 0.6);
+    const compressedimage = await compressImage(imageFile, 0.8);
     console.log("📦 Original file name:", originalFileName);
     console.log("📦 Compressed file name:", compressedFileName);
 
@@ -154,7 +154,7 @@ function compressImage(file, quality = 0.6, maxSize = 800) {
           resolve(blob);
         },
         "image/jpeg",
-        quality // e.g., 0.6 = 60% quality
+        quality // e.g., 0.8 = 80% quality
       );
     };
 
