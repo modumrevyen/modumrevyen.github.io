@@ -42,7 +42,7 @@ async function loadCostumesFromSheety() {
 function addCostumeCard(c) {
   const imageId = c.imageurl?.match(/[-\w]{25,}/)?.[0]; // Extract file ID from imageurl
   const directImageUrl = imageId
-    ? `https://drive.google.com/uc?export=view&id=${imageId}`
+    ? `https://drive.google.com/thumbnail?id=${imageId}`
     : "placeholder.png"; // fallback image if needed
 
   const col = document.createElement("div");

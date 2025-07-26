@@ -3,6 +3,10 @@
 window.kostymeliste = window.kostymeliste || {};
 
 kostymeliste.addCostumeCard = function({ title, subcategory, size, imageurl }) {
+  const imageId = imageurl?.match(/[-\w]{25,}/)?.[0]; // Extract file ID from imageurl
+  const directImageUrl = imageId
+    ? `https://drive.google.com/thumbnail?id=${imageId}`
+    : "placeholder.png"; // fallback image if needed
   const container = document.getElementById('costumeList');
   const card = document.createElement('div');
   card.className = "col";
@@ -11,9 +15,9 @@ kostymeliste.addCostumeCard = function({ title, subcategory, size, imageurl }) {
     <div class="card small-costume-card shadow-sm"
         data-bs-toggle="modal"
         data-bs-target="#imageModal"
-        data-img="${imageurl}">
+        data-img="${directImageUrl}">
 
-        <img src="${imageurl}" class="card-img-thumbnail" alt="Kostyme bilde">
+        <img src="${directImageUrl}" class="card-img-thumbnail" alt="Kostyme bilde">
         <div class="card-body">
         <h6 class="mb-1">${title}</h6>
         <div style="font-size: 0.85rem;">
