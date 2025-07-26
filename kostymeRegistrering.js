@@ -6,65 +6,32 @@ const googleurl = 'https://script.google.com/macros/s/AKfycbz0z5LgJHF8bzjz9nofyB
 // Compose the proxy POST URL
 const proxy = "https://modumrevyen.sayver.net/proxy.php";
 const proxiedUrl = `${proxy}?url=${encodeURIComponent(googleurl)}`;
-// Google Apps Script URL for uploading image
-const uploadScriptUrl = "https://script.google.com/macros/s/AKfycbwlyA3wA0il_nb7Ls0apCnhtcyXKCy5ZCgBCaQUzqy5d2vQN8PKnBr_mqtGdD-v61sfBw/exec";
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const imageFile = document.getElementById("imageInput").files[0];
-  const compressedBlob = await compressImage(imageFile, 0.6);
-  const compressedFileName = `compressed_${Date.now()}_${imageFile.name.replace(/\s+/g, "-")}`;
-
-  const originalForm = new FormData();
-  originalForm.append("file", imageFile);
-  originalForm.append("filename", imageFile.name);
-
-  const compressedForm = new FormData();
-  compressedForm.append("file", compressedBlob, compressedFileName);
-  compressedForm.append("filename", compressedFileName);
-
-  messageBox.classList.remove("d-none", "alert-success", "alert-danger");
-  messageBox.classList.add("alert-info");
-  messageBox.textContent = "Opplasting av bilde til Google Drive...";
-
-  try {
-    const [originalRes, compressedRes] = await Promise.all([
-      fetch(uploadScriptUrl, {
-        method: "POST",
-        body: originalForm,
-        headers: { Origin: "https://modumrevyen.github.io" }
-      }),
-      fetch(uploadScriptUrl, {
-        method: "POST",
-        body: compressedForm,
-        headers: { Origin: "https://modumrevyen.github.io" }
-      })
-    ]);
-
-    const originalData = await originalRes.json();
-    const compressedData = await compressedRes.json();
-
-    if (originalData.status !== "success" || compressedData.status !== "success") {
-      throw new Error("Upload failed: " + originalData.message + " | " + compressedData.message);
-    }
-
-    const imageurl = originalData.url;
-    const imagecurl = compressedData.url;
-
-    console.log("✅ Original uploaded:", imageurl);
-    console.log("✅ Compressed uploaded:", imagecurl);
-
-    await submitCostumeMetadata(imageurl, imagecurl);
-  } catch (err) {
-    console.error("❌ Detailed upload error:", err);
-    messageBox.classList.remove("alert-info");
-    messageBox.classList.add("alert-danger");
-    messageBox.textContent = `❌ Opplasting feilet: ${err.message}`;
+  if (!imageFile) {
+    alert("❌ Vennligst velg et bilde først.");
+    return;
   }
+
+  const timestamp = Date.now();
+  const originalFileName = `${timestamp}_${imageFile.name.replace(/\s+/g, "-")}`;
+  const compressedFileName = `compressed_${originalFileName}`;
+
+  // Create compressed version
+  const compressedimage = await compressImage(imageFile, 0.6);
+
+  // Convert both to base64
+  const imagebase64 = await imageToBase64(imageFile);
+  const imagecbase64 = await imageToBase64(compressedimage);
+
+  // Submit metadata
+  await submitCostumeMetadata(originalFileName, compressedFileName, imagebase64, imagecbase64);
 });
 
-async function submitCostumeMetadata(imageurl, imagecurl) {
+async function submitCostumeMetadata(imageurl, imagecurl, imagebase64, imagecbase64) {
   const title = document.getElementById('title').value.trim();
   const subcategory = document.getElementById('subcategory').value.trim();
   const size = document.getElementById('size').value.trim();
@@ -83,7 +50,9 @@ async function submitCostumeMetadata(imageurl, imagecurl) {
       size,
       description,
       imageurl,
+      imagebase64,
       imagecurl,
+      imagecbase64,
       createdat: new Date().toISOString().split("T")[0],
       reservedname: "",
       reservedphone: "",
@@ -159,5 +128,16 @@ function compressImage(file, quality = 0.6, maxSize = 800) {
 
     reader.onerror = reject;
     reader.readAsDataURL(file);
+  });
+}
+
+function imageToBase64(blob) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      resolve(reader.result.split(",")[1]); // Remove prefix
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
   });
 }
