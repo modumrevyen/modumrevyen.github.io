@@ -26,7 +26,7 @@ form.addEventListener("submit", async (e) => {
     const compressedFileName = `compressed_${originalFileName}`;
  
     // Compress and convert
-    const compressedimage = await compressImage(imageFile, 0.8);
+    const compressedimage = await compressImage(imageFile, 0.9);
     console.log("📦 Original file name:", originalFileName);
     // console.log("📦 Compressed file name:", compressedFileName);
 
@@ -117,7 +117,7 @@ async function submitCostumeMetadata(imagecname, imagecbase64, imagecurl = "") {
 }
 
 // compress image to for better loading performance
-function compressImage(file, quality = 0.6, maxSize = 800) {
+function compressImage(file, quality = 0.9, maxSize = 1200) {
   return new Promise((resolve, reject) => {
     const img = new Image();
     const reader = new FileReader();
