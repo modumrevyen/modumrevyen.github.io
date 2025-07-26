@@ -188,6 +188,27 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753538392430",
+      "title": 10,
+      "subcategory": "",
+      "size": "",
+      "description": "",
+      "imagename": "1753538392337_ChatGPT-Image-Jul-20,-2025,-02_14_40-PM.png",
+      "imageurl": "https://drive.google.com/file/d/1udW4JG-CCJsY-0iwT5M-AKZPAbHDUh_F/view?usp=drivesdk",
+      "imagebase64": "",
+      "imagecname": "compressed_1753538392337_ChatGPT-Image-Jul-20,-2025,-02_14_40-PM.png",
+      "imagecurl": "https://drive.google.com/file/d/1QeGOv98xRuWz3zl83yaOSlavrZGhbXUy/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-25T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
