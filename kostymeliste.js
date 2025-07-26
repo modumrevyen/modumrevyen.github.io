@@ -3,10 +3,19 @@
 window.kostymeliste = window.kostymeliste || {};
 
 kostymeliste.addCostumeCard = function({ title, subcategory, size, imageurl }) {
-  const imageId = imageurl?.match(/[-\w]{25,}/)?.[0]; // Extract file ID from imageurl
-  const directImageUrl = imageId
-    ? `https://drive.google.com/thumbnail?id=${imageId}`
-    : "placeholder.png"; // fallback image if needed
+
+    // if imageurl start with "https://drive.google.com/" do this part if not skip it
+    if (!imageurl || !imageurl.startsWith("https://drive.google.com/")) {
+        const imageId = imageurl?.match(/[-\w]{25,}/)?.[0]; // Extract file ID from imageurl
+        const directImageUrl = imageId
+            ? `https://drive.google.com/thumbnail?id=${imageId}`
+            : "placeholder.png"; // fallback image if needed
+    } else {
+        // if imageurl is a direct link, use it as is
+        directImageUrl = imageurl;
+    }
+
+
   const container = document.getElementById('costumeList');
   const card = document.createElement('div');
   card.className = "col";
