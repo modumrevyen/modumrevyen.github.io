@@ -151,7 +151,7 @@ function compressImage(file, quality = 0.9, maxSize = 1200) {
           resolve(blob);
         },
         "image/jpeg",
-        quality // e.g., 0.8 = 80% quality
+        quality // e.g., 0.9 = 90% quality
       );
     };
 
