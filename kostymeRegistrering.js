@@ -85,7 +85,8 @@ async function submitCostumeMetadata(imagename, imagecname, imagebase64, imagecb
     }
   };
 
-  kostymeliste.addCostumeCard({ title, subcategory, size, imageurl });
+  const previewUrl = `data:image/jpeg;base64,${imagecbase64}`;
+  kostymeliste.addCostumeCard({ title, subcategory, size, imageurl: previewUrl });
 
   try {
     const res = await fetch(proxiedUrl, {
