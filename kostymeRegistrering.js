@@ -17,7 +17,9 @@ form.addEventListener('submit', async (e) => {
   const imageFile = document.getElementById('imageInput').files[0];
 
   const compressedBlob = await compressImage(imageFile, 0.6);
-  const compressedFileName = `compressed_${Date.now()}_${imageFile.name}`;
+
+  // Proper filename with spaces replaced
+  const compressedFileName = `compressed_${Date.now()}_${imageFile.name.replace(/\s+/g, "-")}`;
 
   // Upload original
   const originalForm = new FormData();
