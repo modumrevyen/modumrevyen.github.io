@@ -7,60 +7,46 @@ const googleurl = 'https://script.google.com/macros/s/AKfycbz0z5LgJHF8bzjz9nofyB
 const proxy = "https://modumrevyen.sayver.net/proxy.php";
 const proxiedUrl = `${proxy}?url=${encodeURIComponent(googleurl)}`;
 // Google Apps Script URL for uploading image
-const imageUploadUrl = "https://modumrevyen.sayver.net/proxy.php?url=" +
-  encodeURIComponent("https://script.google.com/macros/s/AKfycbwlyA3wA0il_nb7Ls0apCnhtcyXKCy5ZCgBCaQUzqy5d2vQN8PKnBr_mqtGdD-v61sfBw/exec");
+const uploadScriptUrl = "https://script.google.com/macros/s/AKfycbwlyA3wA0il_nb7Ls0apCnhtcyXKCy5ZCgBCaQUzqy5d2vQN8PKnBr_mqtGdD-v61sfBw/exec";
 
-
-form.addEventListener('submit', async (e) => {
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const imageFile = document.getElementById('imageInput').files[0];
-
+  const imageFile = document.getElementById("imageInput").files[0];
   const compressedBlob = await compressImage(imageFile, 0.6);
-
-  // Proper filename with spaces replaced
   const compressedFileName = `compressed_${Date.now()}_${imageFile.name.replace(/\s+/g, "-")}`;
-  // image compressed console log
-  console.log("📦 Compressed file name:", compressedFileName);
 
-  // Upload original
   const originalForm = new FormData();
   originalForm.append("file", imageFile);
   originalForm.append("filename", imageFile.name);
 
-  // Upload compressed
   const compressedForm = new FormData();
   compressedForm.append("file", compressedBlob, compressedFileName);
   compressedForm.append("filename", compressedFileName);
 
-
-  // Confirm the name you're uploading
-  console.log("📦 Uploading file with name:", imageFile.name);
-
-
-  messageBox.classList.remove('d-none', 'alert-success', 'alert-danger');
-  messageBox.classList.add('alert-info');
-  messageBox.textContent = 'Opplasting av bilde til Google Drive...';
+  messageBox.classList.remove("d-none", "alert-success", "alert-danger");
+  messageBox.classList.add("alert-info");
+  messageBox.textContent = "Opplasting av bilde til Google Drive...";
 
   try {
     const [originalRes, compressedRes] = await Promise.all([
-      fetch(imageUploadUrl, { method: "POST", body: originalForm }),
-      fetch(imageUploadUrl, { method: "POST", body: compressedForm })
+      fetch(uploadScriptUrl, {
+        method: "POST",
+        body: originalForm,
+        headers: { Origin: "https://modumrevyen.github.io" }
+      }),
+      fetch(uploadScriptUrl, {
+        method: "POST",
+        body: compressedForm,
+        headers: { Origin: "https://modumrevyen.github.io" }
+      })
     ]);
 
     const originalData = await originalRes.json();
     const compressedData = await compressedRes.json();
 
-    console.log("🧾 Original upload response:", originalData);
-    console.log("🧾 Compressed upload response:", compressedData);
-
-    if (
-      originalData.status !== "success" ||
-      compressedData.status !== "success"
-    ) {
-      throw new Error(
-        `Upload failed: ${originalData.message || "Unknown error"} | ${compressedData.message || "Unknown error"}`
-      );
+    if (originalData.status !== "success" || compressedData.status !== "success") {
+      throw new Error("Upload failed: " + originalData.message + " | " + compressedData.message);
     }
 
     const imageurl = originalData.url;
@@ -70,14 +56,12 @@ form.addEventListener('submit', async (e) => {
     console.log("✅ Compressed uploaded:", imagecurl);
 
     await submitCostumeMetadata(imageurl, imagecurl);
-
   } catch (err) {
     console.error("❌ Detailed upload error:", err);
     messageBox.classList.remove("alert-info");
     messageBox.classList.add("alert-danger");
     messageBox.textContent = `❌ Opplasting feilet: ${err.message}`;
   }
-
 });
 
 async function submitCostumeMetadata(imageurl, imagecurl) {
