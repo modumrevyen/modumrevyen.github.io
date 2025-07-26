@@ -28,7 +28,7 @@ form.addEventListener("submit", async (e) => {
     // Compress and convert
     const compressedimage = await compressImage(imageFile, 0.8);
     console.log("📦 Original file name:", originalFileName);
-    // console.log("📦 Compressed file name:", compressedFileName);
+    console.log("📦 Compressed file name:", compressedFileName);
 
     if (!compressedimage) {
       throw new Error("Feil under bildekomprimering.");
@@ -36,11 +36,11 @@ form.addEventListener("submit", async (e) => {
 
     // Convert to base64
     messageBox.textContent = "⏳ Konverterer bilde...";
-    // const imagebase64 = await imageToBase64(imageFile);
+    const imagebase64 = await imageToBase64(imageFile);
     const imagecbase64 = await imageToBase64(compressedimage);
 
     // Submit metadata
-    await submitCostumeMetadata(compressedFileName, imagecbase64, "");
+    await submitCostumeMetadata(originalFileName, compressedFileName, imagebase64, imagecbase64, "", "");
 
     messageBox.classList.remove("alert-info");
     messageBox.classList.add("alert-success");
@@ -55,9 +55,9 @@ form.addEventListener("submit", async (e) => {
   }
 });
 
-async function submitCostumeMetadata(imagecname, imagecbase64, imagecurl = "") {
+async function submitCostumeMetadata(imagename, imagecname, imagebase64, imagecbase64, imageurl = "", imagecurl = "") {
   // console log for all parameters
-  console.log("📄 Submitting costume metadata:", imagecname, imagecbase64, imagecurl);
+  console.log("📄 Submitting costume metadata:", imagename, imagecname, imagebase64, imagecbase64, imageurl, imagecurl);
 
   const title = document.getElementById('title').value.trim();
   const subcategory = document.getElementById('subcategory').value.trim();
@@ -76,6 +76,9 @@ async function submitCostumeMetadata(imagecname, imagecbase64, imagecurl = "") {
       subcategory,
       size,
       description,
+      imagename,
+      imageurl,
+      imagebase64,
       imagecname,
       imagecurl,
       imagecbase64,
@@ -93,7 +96,7 @@ async function submitCostumeMetadata(imagecname, imagecbase64, imagecurl = "") {
 
 
   const previewUrl = `data:image/jpeg;base64,${imagecbase64}`;
-  kostymeliste.addCostumeCard({ title, subcategory, size, imagecurl: previewUrl });
+  kostymeliste.addCostumeCard({ title, subcategory, size, imageurl: previewUrl });
 
   try {
     const res = await fetch(proxiedUrl, {

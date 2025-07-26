@@ -2,7 +2,7 @@
 // global variables
 window.kostymeliste = window.kostymeliste || {};
 
-kostymeliste.addCostumeCard = function({ title, subcategory, size, imageurl }) {
+kostymeliste.addCostumeCard = function({ title, subcategory, size, imagecurl }) {
 
   let directImageUrl;
 
