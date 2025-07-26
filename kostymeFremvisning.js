@@ -7,7 +7,8 @@ async function loadCostumesFromSheety() {
   try {
     console.log("📡 Fetching costumes from GitHub...");
 
-    const githubUrl = "https://modumrevyen.github.io/kostymer.json";
+    // const githubUrl = "https://modumrevyen.github.io/kostymer.json"; // caching json as normal
+    const githubUrl = "https://modumrevyen.github.io/kostymer.json?ts=" + Date.now(); // no json caching
 
     const res = await fetch(githubUrl);
 

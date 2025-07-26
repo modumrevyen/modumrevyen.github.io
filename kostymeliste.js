@@ -48,8 +48,8 @@ kostymeliste.loadCostumes = async function () {
   container.innerHTML = '';
 
   try {
-    const githubUrl = "https://modumrevyen.github.io/kostymer.json"; // ✅ GitHub version
-
+    // const githubUrl = "https://modumrevyen.github.io/kostymer.json"; // caching json as normal
+    const githubUrl = "https://modumrevyen.github.io/kostymer.json?ts=" + Date.now(); // no json caching
     const res = await fetch(githubUrl);
     if (!res.ok) {
       throw new Error(`❌ HTTP error! status: ${res.status}`);
