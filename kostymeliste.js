@@ -11,7 +11,7 @@ kostymeliste.addCostumeCard = function({ title, subcategory, size, imageurl }) {
             ? `https://drive.google.com/thumbnail?id=${imageId}`
             : "placeholder.png"; // fallback image if needed
     } else {
-        // if imageurl is a direct link, use it as is
+        // if imageurl is base64 or direct URL, use it directly
         directImageUrl = imageurl;
     }
 
