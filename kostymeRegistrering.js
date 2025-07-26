@@ -35,7 +35,7 @@ form.addEventListener("submit", async (e) => {
     const imagecbase64 = await imageToBase64(compressedimage);
 
     // Submit metadata
-    await submitCostumeMetadata(originalFileName, compressedFileName, imagebase64, imagecbase64);
+    await submitCostumeMetadata(originalFileName, compressedFileName, imagebase64, imagecbase64, "", "");
 
     messageBox.classList.remove("alert-info");
     messageBox.classList.add("alert-success");
@@ -50,7 +50,7 @@ form.addEventListener("submit", async (e) => {
   }
 });
 
-async function submitCostumeMetadata(imagename, imagecname, imagebase64, imagecbase64) {
+async function submitCostumeMetadata(imagename, imagecname, imagebase64, imagecbase64, imageurl, imagecurl) {
   const title = document.getElementById('title').value.trim();
   const subcategory = document.getElementById('subcategory').value.trim();
   const size = document.getElementById('size').value.trim();
@@ -69,10 +69,10 @@ async function submitCostumeMetadata(imagename, imagecname, imagebase64, imagecb
       size,
       description,
       imagename,
-      imageurl: "",
+      imageurl,
       imagebase64,
       imagecname,
-      imagecurl: "",
+      imagecurl,
       imagecbase64,
       createdat: new Date().toISOString().split("T")[0],
       reservedname: "",
