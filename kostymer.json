@@ -125,6 +125,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753735962565",
+      "title": "Rekvisitter",
+      "subcategory": "Fisk lue",
+      "size": "",
+      "description": "",
+      "imagecname": "compressed_1753735962138_1000001627.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1us3XVhzyLHqkbQKoNnymVFvPw7W_3DmG/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-27T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
