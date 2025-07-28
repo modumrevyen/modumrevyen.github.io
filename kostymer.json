@@ -233,6 +233,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753736385227",
+      "title": "Rekvisitter",
+      "subcategory": "Dyr ?rer",
+      "size": "",
+      "description": "",
+      "imagecname": "compressed_1753736384820_1000001622.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1gMwmLJnsshxgPo3eLG7h-TMFunUbgtZZ/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-27T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
