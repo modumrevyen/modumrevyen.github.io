@@ -431,6 +431,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753737946755",
+      "title": "Dyr",
+      "subcategory": "Ku",
+      "size": "Uniseks onesize 4stk",
+      "description": "",
+      "imagecname": "compressed_1753737946325_1000001616.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1tVSZZnd3Dz03ySjxzsxWXYdZ-Pc0YAhD/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-27T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
