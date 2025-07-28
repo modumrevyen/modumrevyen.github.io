@@ -161,6 +161,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753736091603",
+      "title": "Rekvisitter",
+      "subcategory": "L?ve manke",
+      "size": "",
+      "description": "",
+      "imagecname": "compressed_1753736091165_1000001624.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1BRvfLq_zqmWp_J5BNAICsJjgLP9-qiNE/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-27T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
