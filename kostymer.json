@@ -377,6 +377,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753737611335",
+      "title": "Dyr",
+      "subcategory": "Fl?tt",
+      "size": "Uniseks onezei 2stk",
+      "description": "",
+      "imagecname": "compressed_1753737610848_1000001393.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1HILRSIRr_vZ_dke7CC_a7guP238OIFOL/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-27T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
