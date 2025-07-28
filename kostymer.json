@@ -53,6 +53,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753735743097",
+      "title": "Rekvisitter",
+      "subcategory": "Hund ?rer og snute",
+      "size": "",
+      "description": "",
+      "imagecname": "compressed_1753735742699_1000001408.jpg",
+      "imagecurl": "https://drive.google.com/file/d/18ldixDB3n_UY3DYVg5Jyt05ynwb1kl3u/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-27T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
