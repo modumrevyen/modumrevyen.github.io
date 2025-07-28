@@ -323,6 +323,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753736804047",
+      "title": "Rekvisitter",
+      "subcategory": "Frosk hatt",
+      "size": "",
+      "description": "",
+      "imagecname": "compressed_1753736803553_1000001620.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1o5jwxDHvim0lREWU08mI-wQDzLKVAMx5/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-27T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
