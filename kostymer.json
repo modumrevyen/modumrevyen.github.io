@@ -449,6 +449,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753738014361",
+      "title": "Dyr",
+      "subcategory": "Sau",
+      "size": "Uniseks onesize 5stk",
+      "description": "",
+      "imagecname": "compressed_1753738013955_1000001615.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1nqxb4A_FWZG0c_hdQjiPHLhjXwRSoD-b/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-27T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
