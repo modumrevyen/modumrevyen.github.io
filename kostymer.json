@@ -611,6 +611,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753739742483",
+      "title": "Overdel Dame",
+      "subcategory": "Skjorte",
+      "size": 38,
+      "description": "",
+      "imagecname": "compressed_1753739742004_1000001610.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1ElckUyNk9tDKqJB-1HclV5NbUXhZxX1T/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-27T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
