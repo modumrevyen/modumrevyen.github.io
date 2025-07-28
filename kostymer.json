@@ -1,22 +1,3 @@
 {
-  "sheet1": [
-    {
-      "kostymeid": "k_1753695295175",
-      "title": "Test",
-      "subcategory": "Te",
-      "size": "S",
-      "description": "",
-      "imagecname": "compressed_1753695294855_1000001244.jpg",
-      "imagecurl": "https://drive.google.com/file/d/1QtRzCoOJ_dFeoxDgrp2F9Hfwl37uZMS1/view?usp=drivesdk",
-      "imagecbase64": "",
-      "createdat": "2025-07-27T22:00:00.000Z",
-      "reservedname": "",
-      "reservedphone": "",
-      "reservedemail": "",
-      "reservedfrom": "",
-      "reservedto": "",
-      "returned": false,
-      "deleted": false
-    }
-  ]
+  "sheet1": []
 }
