@@ -287,6 +287,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753736593534",
+      "title": "Rekvisitter",
+      "subcategory": "Sebra ?rer og hale",
+      "size": "",
+      "description": "",
+      "imagecname": "compressed_1753736593011_1000001398.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1RGKbu8mPO-eeoLkPV5Oti4GXhr1kMAaD/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-27T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
