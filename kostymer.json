@@ -17,6 +17,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753735486197",
+      "title": "Rekvisitter",
+      "subcategory": "Gris ?rer, nese og hale",
+      "size": "",
+      "description": "",
+      "imagecname": "compressed_1753735485789_1000001618.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1gqKvpoUHst9FkR2k_8XirP9cD2Pm_fc_/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-27T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
