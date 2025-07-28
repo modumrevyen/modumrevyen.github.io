@@ -143,6 +143,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753736035776",
+      "title": "Rekvisitter",
+      "subcategory": "Pels krage",
+      "size": "",
+      "description": "",
+      "imagecname": "compressed_1753736035347_1000001625.jpg",
+      "imagecurl": "https://drive.google.com/file/d/11qO_6oAfJWyDOatB5zu8kKFc16KCJZtw/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-27T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
