@@ -1,3 +1,22 @@
 {
-  "sheet1": []
+  "sheet1": [
+    {
+      "kostymeid": "k_1753735360347",
+      "title": "Rekvisitter",
+      "subcategory": "Ku horn og ?rer",
+      "size": "",
+      "description": "",
+      "imagecname": "compressed_1753735359845_1000001399.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1QgC3MDLu86P62GVf7tPR00__EKSAZxOE/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-27T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
+    }
+  ]
 }
