@@ -269,6 +269,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753736523748",
+      "title": "Rekvisitter",
+      "subcategory": "Giraff ?rer og hale",
+      "size": "",
+      "description": "",
+      "imagecname": "compressed_1753736523347_1000001576.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1iHIz14VJgzzaa8Cmjd4zV17yeQYzhyo8/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-27T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
