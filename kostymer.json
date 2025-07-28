@@ -485,6 +485,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753738519676",
+      "title": "Overdel Dame",
+      "subcategory": "Skjorte olastoff",
+      "size": "M",
+      "description": "",
+      "imagecname": "compressed_1753738519191_1000001583.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1lSVZteYe6mycQXNQuks9OlPWU7w-9KyU/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-27T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
