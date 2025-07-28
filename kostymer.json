@@ -305,6 +305,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753736677041",
+      "title": "Rekvisitter",
+      "subcategory": "Elefant ?rer, snabel og hale",
+      "size": "",
+      "description": "",
+      "imagecname": "compressed_1753736676620_1000001575.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1p3-8unlP4bpHShNrX_lBPFmIpTD6i-59/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-27T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
