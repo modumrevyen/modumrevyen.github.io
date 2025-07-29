@@ -1385,6 +1385,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753827432462",
+      "title": "Rekvisitter",
+      "subcategory": "Uniform",
+      "size": "",
+      "description": "Hatt",
+      "imagecname": "compressed_1753827432061_1000001696.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1D8bT8kaAr--nQ4CB2HZUuKU4fdxs2GK1/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-28T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
