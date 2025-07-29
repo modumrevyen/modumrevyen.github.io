@@ -1601,6 +1601,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753829368994",
+      "title": "Shorts",
+      "subcategory": "Trening",
+      "size": "M og L",
+      "description": "2 stk",
+      "imagecname": "compressed_1753829368578_1000001682.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1FEcZ7yhX6PRq4WweBcEKDDiWg9vg4lpo/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-28T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
