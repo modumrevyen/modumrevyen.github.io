@@ -1205,6 +1205,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753820383134",
+      "title": "Kjortel",
+      "subcategory": "Gospel",
+      "size": "Uniseks",
+      "description": "9 stk",
+      "imagecname": "compressed_1753820382731_1000001681.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1BWwzV5qe3reyuRoOvROHloIsAumbbcbI/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-28T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
