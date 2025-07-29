@@ -701,6 +701,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753808643368",
+      "title": "Overdel",
+      "subcategory": "Bluse",
+      "size": "M",
+      "description": "",
+      "imagecname": "compressed_1753808642956_1000001383.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1rbZdhwef_Sqwm6Tv9n0s83Y9LTixVY2D/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-28T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
