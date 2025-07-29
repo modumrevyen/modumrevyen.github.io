@@ -1583,6 +1583,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753829141764",
+      "title": "Kjole",
+      "subcategory": "Trening",
+      "size": "M",
+      "description": "2 stk",
+      "imagecname": "compressed_1753829141196_1000001477.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1JWBdunZEfXwomP3-DD4LeCBkj-nbYHa_/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-28T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
