@@ -1565,6 +1565,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753828936558",
+      "title": "Jakke",
+      "subcategory": "Trening",
+      "size": "XL",
+      "description": "Vikersund",
+      "imagecname": "compressed_1753828936128_1000001473.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1p83DH4TsmuJD0dENie_PZICJbcvOLeNX/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-28T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
