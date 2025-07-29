@@ -1259,6 +1259,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753825682605",
+      "title": "Onesize",
+      "subcategory": "Snekkerbukse",
+      "size": "S",
+      "description": "Russebukse",
+      "imagecname": "compressed_1753825682232_1000001554.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1PQ-OIUCIr5Vr6jeT6nKYJE0OjUSb0SvK/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-28T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
