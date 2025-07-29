@@ -1511,6 +1511,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753828712474",
+      "title": "Jakke",
+      "subcategory": "Trening",
+      "size": "S",
+      "description": "",
+      "imagecname": "compressed_1753828712027_1000001277.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1l0vo9KKD187Fhx4Vda2tDyHeKrAEfRTm/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-28T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
