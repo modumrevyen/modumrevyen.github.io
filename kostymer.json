@@ -935,6 +935,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753817429974",
+      "title": "Overdel",
+      "subcategory": "Skjorte",
+      "size": "XL",
+      "description": "Lin",
+      "imagecname": "compressed_1753817429601_1000001654.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1eWepz0j9WCG5Nd3_bLl3Jw1Yoaj1jHFP/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-28T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
