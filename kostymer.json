@@ -1367,6 +1367,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753827324481",
+      "title": "Bukse",
+      "subcategory": "Uniform",
+      "size": "S, M, L",
+      "description": "4 stk",
+      "imagecname": "compressed_1753827324084_1000001695.jpg",
+      "imagecurl": "https://drive.google.com/file/d/175tQiJ1HmgNhu9Bvk4-5RdJZJIjanmKu/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-28T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
