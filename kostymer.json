@@ -1241,6 +1241,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753825586585",
+      "title": "Onesize",
+      "subcategory": "Snekkerbukse",
+      "size": 54,
+      "description": "",
+      "imagecname": "compressed_1753825586182_1000001599.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1GMxvsYb3gqjdvPGHOtqsrF9CcLEPEsan/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-28T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
