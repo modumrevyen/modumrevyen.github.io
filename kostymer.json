@@ -1619,6 +1619,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753829399321",
+      "title": "Shorts",
+      "subcategory": "Trening",
+      "size": "M",
+      "description": "",
+      "imagecname": "compressed_1753829398891_1000001684.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1n2cEo8L0Qz5fO7M6poMaiaR0699G_mBB/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-28T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
