@@ -1313,6 +1313,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753827155737",
+      "title": "Jakke",
+      "subcategory": "Uniform",
+      "size": "L",
+      "description": "",
+      "imagecname": "compressed_1753827155331_1000001694.jpg",
+      "imagecurl": "https://drive.google.com/file/d/15LlZzoD67wc8g-20VVkVPf-qR5xrFDm8/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-28T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
