@@ -1547,6 +1547,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753828851080",
+      "title": "Jakke",
+      "subcategory": "Trening",
+      "size": "XL",
+      "description": "Geithus",
+      "imagecname": "compressed_1753828850661_1000001471.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1l7cNInLazj6DmmP8CBk21cjrjewu90tx/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-28T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
