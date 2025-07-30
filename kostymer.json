@@ -2879,6 +2879,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753892257692",
+      "title": "Kjole",
+      "subcategory": "Indisk",
+      "size": "L/XL",
+      "description": "",
+      "imagecname": "compressed_1753892257127_1000001511.jpg",
+      "imagecurl": "https://drive.google.com/file/d/10U9QR4XNLrXnYIuBIqk9H-v0bHPIJMpu/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-29T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
