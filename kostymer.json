@@ -3455,6 +3455,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753901841522",
+      "title": "Overdel",
+      "subcategory": "Semska skinnjakke",
+      "size": "L/46",
+      "description": "",
+      "imagecname": "compressed_1753901841095_1000001249.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1aZ33K7j_r2B62Gx9uNLv3Rnmigs8DYyY/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-29T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
