@@ -2033,6 +2033,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753882521853",
+      "title": "Kjole",
+      "subcategory": "Sykepleier",
+      "size": "S",
+      "description": "",
+      "imagecname": "compressed_1753882521448_1000001363.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1U18P096hPF3RkY9F-_5iVytro7-XYLaS/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-29T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
