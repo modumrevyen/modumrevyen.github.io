@@ -2465,6 +2465,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753889978608",
+      "title": "Overdel",
+      "subcategory": "Vest",
+      "size": "L",
+      "description": "",
+      "imagecname": "compressed_1753889978218_1000001440.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1vubUr_Hu0jVEr7IOaO2_e1e3betmzg6R/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-29T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
