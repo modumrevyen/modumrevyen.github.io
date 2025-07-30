@@ -3653,6 +3653,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753902900158",
+      "title": "Overdel",
+      "subcategory": "Dressjakke",
+      "size": 36,
+      "description": "",
+      "imagecname": "compressed_1753902899816_1000001259.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1XElRX4VG1FSQ_0cqMJbXtFKOxyDq50VY/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-29T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
