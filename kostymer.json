@@ -2339,6 +2339,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753887091414",
+      "title": "Badet?y",
+      "subcategory": "Badedrakt Dame",
+      "size": "M, L, XL, XXL,  XXXL, XXXXL",
+      "description": "7 stk",
+      "imagecname": "compressed_1753887090849_1000001705.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1ba6n6DlGsb_2TxcMEbut1P06h7nnkrWO/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-29T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
