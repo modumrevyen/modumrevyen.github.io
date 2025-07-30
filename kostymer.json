@@ -2969,6 +2969,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753892517884",
+      "title": "Kjole",
+      "subcategory": "70 tallet",
+      "size": 42,
+      "description": "",
+      "imagecname": "compressed_1753892517258_1000001481.jpg",
+      "imagecurl": "https://drive.google.com/file/d/176pXplWqHHz_7ucYJWnhJJnle_NuFHi6/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-29T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
