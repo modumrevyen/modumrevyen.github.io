@@ -2663,6 +2663,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753891182482",
+      "title": "Kjole",
+      "subcategory": "Ballkjole",
+      "size": "L",
+      "description": "",
+      "imagecname": "compressed_1753891181990_1000001488.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1wzrwvi2cWwicgAYUVORv9c5JiYX_CciC/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-29T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
