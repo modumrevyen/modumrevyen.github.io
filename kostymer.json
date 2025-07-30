@@ -3473,6 +3473,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753901958000",
+      "title": "Overdel",
+      "subcategory": "Friluftsjakke",
+      "size": "L",
+      "description": "",
+      "imagecname": "compressed_1753901957579_1000001452.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1v7QJrIzqJSMKIKu6ZQJZ2hy7esAibK1c/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-29T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
