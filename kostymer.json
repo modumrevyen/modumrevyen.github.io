@@ -2069,6 +2069,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753882660284",
+      "title": "Overdel",
+      "subcategory": "Sykepleier",
+      "size": "XL",
+      "description": "",
+      "imagecname": "compressed_1753882659892_1000001553.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1E8484U8TkydkBl7NZRIgomknz6gK-CPo/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-29T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
