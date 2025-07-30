@@ -2717,6 +2717,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753891595866",
+      "title": "Kjole",
+      "subcategory": "Paljett dress",
+      "size": "14/L",
+      "description": "Skj?rt og Jakke",
+      "imagecname": "compressed_1753891595301_1000001522.jpg",
+      "imagecurl": "https://drive.google.com/file/d/18BCp2gI85DTEzHPEK_Q66BsY6tcmNfi_/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-29T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
