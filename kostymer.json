@@ -2699,6 +2699,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753891368488",
+      "title": "Kjole",
+      "subcategory": "Cowboy",
+      "size": "L",
+      "description": "",
+      "imagecname": "compressed_1753891368038_1000001298.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1E1hU533fvtejyqXoTYSkg5WweFim3QSm/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-29T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
