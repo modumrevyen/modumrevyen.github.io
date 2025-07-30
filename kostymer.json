@@ -3185,6 +3185,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753893364553",
+      "title": "Kjole",
+      "subcategory": "Nattkjole",
+      "size": "L",
+      "description": "",
+      "imagecname": "compressed_1753893364093_1000001533.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1cIH-ZLboS6Kd05Zhim7ZCIGv851PjBCl/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-29T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
