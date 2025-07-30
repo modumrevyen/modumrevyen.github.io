@@ -1691,6 +1691,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753874583715",
+      "title": "Underdel",
+      "subcategory": "Skj?rt",
+      "size": "S/M",
+      "description": "Ull",
+      "imagecname": "compressed_1753874583008_1000001528.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1evj1Zfc1gPxqq7tuLbEKZEy97STprzA2/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-29T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
