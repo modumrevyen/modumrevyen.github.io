@@ -2933,6 +2933,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753892416050",
+      "title": "Kjole",
+      "subcategory": "",
+      "size": "XL",
+      "description": "",
+      "imagecname": "compressed_1753892415573_1000001296.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1bJ7aeXShyxj7X6e-IUkd3CeOBu9EFCFK/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-29T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
