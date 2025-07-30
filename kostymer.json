@@ -2915,6 +2915,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753892356205",
+      "title": "Kjole",
+      "subcategory": "",
+      "size": "M",
+      "description": "Ull",
+      "imagecname": "compressed_1753892355699_1000001302.jpg",
+      "imagecurl": "https://drive.google.com/file/d/10alSvFTzlA1i1fG07YA3agdIwezbczpq/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-29T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
