@@ -2429,6 +2429,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753887598952",
+      "title": "Overdel",
+      "subcategory": "Vest",
+      "size": "36/38 - 48/50 - 52/54 - 56/58",
+      "description": "5 stk",
+      "imagecname": "compressed_1753887598384_1000001443.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1Cd8N91-50rHa4AcrmEllT81bTq4WzwdG/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-29T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
