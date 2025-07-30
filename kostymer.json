@@ -3257,6 +3257,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753893714890",
+      "title": "Kjole",
+      "subcategory": "Skjortel",
+      "size": "Onesize",
+      "description": "",
+      "imagecname": "compressed_1753893714278_1000001509.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1ainV5Iic8KFtb5VHN-D34jH_dG5jIKkM/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-29T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
