@@ -2285,6 +2285,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753883694516",
+      "title": "Overdel",
+      "subcategory": "Bolero",
+      "size": "38/40",
+      "description": "",
+      "imagecname": "compressed_1753883694103_1000001437.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1afAyP1pPVasOzmsyKpA63zGNWqSTXFOI/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-29T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
