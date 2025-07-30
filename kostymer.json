@@ -2249,6 +2249,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753883564809",
+      "title": "Overdel",
+      "subcategory": "Jakke Dame",
+      "size": "XL",
+      "description": "",
+      "imagecname": "compressed_1753883564385_1000001354.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1G578yEVtCGw87pt0RasYYUdn39g9AFAL/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-29T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
