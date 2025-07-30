@@ -2681,6 +2681,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753891261278",
+      "title": "Kjole",
+      "subcategory": "Paljettkjole",
+      "size": "XXXXL",
+      "description": "",
+      "imagecname": "compressed_1753891260693_1000001308.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1jhoHstBaGo8raFbICscMQvC_xuhnxx5V/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-29T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
