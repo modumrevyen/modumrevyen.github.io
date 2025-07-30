@@ -3293,6 +3293,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753894280368",
+      "title": "One piece",
+      "subcategory": "Monkekappe",
+      "size": "L",
+      "description": "4 stk",
+      "imagecname": "compressed_1753894279892_1000001535.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1ceBXtWslD4xkEfUwWjB4OMJ7gbqkrlJi/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-29T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
