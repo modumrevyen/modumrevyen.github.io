@@ -2519,6 +2519,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753890285303",
+      "title": "Overdel",
+      "subcategory": "Korsett",
+      "size": "XL, XXL, XXXXL, XXXXXXL",
+      "description": "5 stk",
+      "imagecname": "compressed_1753890284791_1000001707.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1imQhDQY7kHR3CpagYCVTZ4hIbqat2S2Y/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-29T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
