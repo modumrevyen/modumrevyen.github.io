@@ -2555,6 +2555,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753890686929",
+      "title": "Rekvisitter",
+      "subcategory": "Cowboy",
+      "size": "",
+      "description": "3 stk",
+      "imagecname": "compressed_1753890686480_1000001499.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1WRT_3IPWB4marf2N3LyfhriRCVWoMFbn/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-29T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
