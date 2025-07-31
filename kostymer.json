@@ -4553,6 +4553,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753973842339",
+      "title": "Dress",
+      "subcategory": "Dame",
+      "size": "",
+      "description": "",
+      "imagecname": "compressed_1753973841882_1000001465.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1QB80QaZyGnqS6GRQiq5T2BVkoe35Shs8/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-30T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
