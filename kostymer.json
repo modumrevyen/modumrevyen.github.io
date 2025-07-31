@@ -4103,6 +4103,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753953508095",
+      "title": "Underdel",
+      "subcategory": "Bukse",
+      "size": "XL",
+      "description": "",
+      "imagecname": "compressed_1753953507657_1000001675.jpg",
+      "imagecurl": "https://drive.google.com/file/d/11bnrBa746Q0MIXMVW1qEb07NbtFnnbZF/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-30T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
