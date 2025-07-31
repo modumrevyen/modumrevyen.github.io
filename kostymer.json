@@ -4535,6 +4535,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753973808247",
+      "title": "Dress",
+      "subcategory": "Herre",
+      "size": "",
+      "description": "",
+      "imagecname": "compressed_1753973807722_1000001461.jpg",
+      "imagecurl": "https://drive.google.com/file/d/14fTSeIEvon2aO1cFGmW0TNFbkXUK0-4y/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-30T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
