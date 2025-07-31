@@ -3887,6 +3887,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753952926034",
+      "title": "Underdel",
+      "subcategory": "Sykepleier Bukse",
+      "size": "S/M",
+      "description": "",
+      "imagecname": "compressed_1753952925681_1000001668.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1FVssnntLlnU99jMC8IVX9fM3CC_itCqO/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-30T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
