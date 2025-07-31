@@ -3761,6 +3761,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753952268027",
+      "title": "Underdel",
+      "subcategory": "Bukse",
+      "size": 34,
+      "description": "Ull",
+      "imagecname": "compressed_1753952267604_1000001660.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1mjEr4HyUqCj71yw-H5uhE0VwaVr5PYt6/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-30T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
