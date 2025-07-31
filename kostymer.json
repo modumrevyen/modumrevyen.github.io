@@ -4481,6 +4481,24 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1753973071649",
+      "title": "Sko",
+      "subcategory": "",
+      "size": 37,
+      "description": "",
+      "imagecname": "compressed_1753973071195_1000001798.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1zMvo3SpLSBkPKTCmfhD5pl-f6OeyHHDR/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-30T22:00:00.000Z",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
