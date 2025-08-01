@@ -80,6 +80,7 @@ async function submitCostumeMetadata(imagecname, imagecbase64, imagecurl = "") {
       imagecurl,
       imagecbase64,
       createdat: new Date().toISOString().split("T")[0],
+      reservasjonid: "",
       reservedname: "",
       reservedphone: "",
       reservedemail: "",
