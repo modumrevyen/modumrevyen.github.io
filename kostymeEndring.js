@@ -68,17 +68,21 @@ function loadCostumeForEdit(card) {
 
   // Set current image
   const currentImage = document.getElementById('currentImage');
-  let directImageUrl;
+  let directImageUrl, fullImageUrl;
   if (imageUrl && imageUrl.startsWith("https://drive.google.com/")) {
     const imageId = imageUrl.match(/[-\w]{25,}/)?.[0];
     directImageUrl = imageId
+      ? `https://drive.google.com/thumbnail?id=${imageId}&sz=s150`
+      : "placeholder.png";
+    fullImageUrl = imageId
       ? `https://drive.google.com/thumbnail?id=${imageId}&sz=s4000`
       : "placeholder.png";
   } else {
     directImageUrl = imageUrl || "placeholder.png";
+    fullImageUrl = imageUrl || "placeholder.png";
   }
   currentImage.src = directImageUrl;
-  currentImage.setAttribute('data-img', directImageUrl); // For modal functionality
+  currentImage.setAttribute('data-img', fullImageUrl); // For modal functionality
 
   // Show edit section, hide no selection message
   editSection.classList.remove('d-none');
@@ -89,6 +93,25 @@ function loadCostumeForEdit(card) {
   
   // Clear file input
   document.getElementById('editImageInput').value = '';
+
+  // Try multiple scroll approaches
+  console.log('🔝 Attempting to scroll to top...');
+  console.log('Current scroll position:', window.pageYOffset || document.documentElement.scrollTop);
+  
+  // Try different scroll methods
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.scrollTo(0, 0);
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+  
+  // Also try scrolling the content area specifically
+  const contentArea = document.querySelector('.content-area');
+  if (contentArea) {
+    contentArea.scrollTop = 0;
+    console.log('Content area scrollTop set to 0');
+  }
+  
+  console.log('🔝 All scroll commands executed');
 }
 
 // Handle form submission

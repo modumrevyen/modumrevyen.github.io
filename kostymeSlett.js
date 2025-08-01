@@ -68,17 +68,21 @@ function loadCostumeForDelete(card) {
   // Set up image
   const deleteImage = document.getElementById('deleteImage');
   if (imageUrl) {
-    let directImageUrl;
+    let directImageUrl, fullImageUrl;
     if (imageUrl.startsWith("https://drive.google.com/")) {
       const imageId = imageUrl.match(/[-\w]{25,}/)?.[0];
       directImageUrl = imageId
+        ? `https://drive.google.com/thumbnail?id=${imageId}&sz=s150`
+        : "placeholder.png";
+      fullImageUrl = imageId
         ? `https://drive.google.com/thumbnail?id=${imageId}&sz=s4000`
         : "placeholder.png";
     } else {
       directImageUrl = imageUrl;
+      fullImageUrl = imageUrl;
     }
     deleteImage.src = directImageUrl;
-    deleteImage.setAttribute('data-img', directImageUrl);
+    deleteImage.setAttribute('data-img', fullImageUrl);
   }
 
   // Show delete section, hide no selection message
@@ -87,6 +91,25 @@ function loadCostumeForDelete(card) {
   
   // Clear any previous messages
   hideMessage();
+
+  // Try multiple scroll approaches
+  console.log('🔝 Attempting to scroll to top...');
+  console.log('Current scroll position:', window.pageYOffset || document.documentElement.scrollTop);
+  
+  // Try different scroll methods
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.scrollTo(0, 0);
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+  
+  // Also try scrolling the content area specifically
+  const contentArea = document.querySelector('.content-area');
+  if (contentArea) {
+    contentArea.scrollTop = 0;
+    console.log('Content area scrollTop set to 0');
+  }
+  
+  console.log('🔝 All scroll commands executed');
 }
 
 // Handle confirm delete button

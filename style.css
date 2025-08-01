@@ -169,6 +169,32 @@ body {
   overflow-x: hidden;
 }
 
+/* Admin panel costume list scrolling */
+.admin-costume-list {
+  max-height: calc(100vh - 270px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 5px;
+}
+
+/* On mobile, account for top navbar */
+@media (max-width: 767.98px) {
+  .admin-costume-list {
+    max-height: calc(100vh - 320px);
+  }
+}
+
+/* Stack layout for very small screens */
+@media (max-width: 600px) {
+  .admin-two-column {
+    flex-direction: column !important;
+  }
+  
+  .admin-costume-list {
+    max-height: 60vh;
+  }
+}
+
 .card-text {
   word-break: break-word;
   overflow-wrap: break-word;
@@ -294,10 +320,37 @@ body {
   overflow-x: hidden;
 }
 
+/* Fix Bootstrap row overflow issue that causes unwanted scroll */
+#costumeList.row {
+  overflow: hidden;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Ensure child cols don't cause overflow */
+#costumeList .col {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
 /* Only apply scroll blocking when body has .no-body-scroll */
 body.no-body-scroll {
   height: 80vh;
   overflow: hidden;
+}
+
+/* Allow scrolling on small screens for admin pages */
+@media (max-width: 600px) {
+  body.no-body-scroll {
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  
+  .content-area {
+    overflow-y: auto;
+    max-height: calc(100vh - 54px); /* Account for mobile navbar */
+  }
 }
 
 /* Optional: prevent horizontal scroll too */

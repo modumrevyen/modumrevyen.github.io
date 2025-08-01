@@ -8,18 +8,22 @@ kostymeliste.filteredCostumes = [];
 
 kostymeliste.addCostumeCard = function({ title, subcategory, size, description, imagecurl }) {
 
-  let directImageUrl;
+  let directImageUrl, fullImageUrl;
   // console log for imagecurl
     console.log("📷 Image URL:", imagecurl);
   if (imagecurl && imagecurl.startsWith("https://drive.google.com/")) {
     // Case 1: Google Drive image — extract ID and use thumbnail
     const imageId = imagecurl.match(/[-\w]{25,}/)?.[0];
     directImageUrl = imageId
+      ? `https://drive.google.com/thumbnail?id=${imageId}&sz=s150`
+      : "placeholder.png";
+    fullImageUrl = imageId
       ? `https://drive.google.com/thumbnail?id=${imageId}&sz=s4000`
       : "placeholder.png";
   } else {
     // Case 2: Base64 or direct link
     directImageUrl = imagecurl || "placeholder.png";
+    fullImageUrl = imagecurl || "placeholder.png";
   }
 
   // Determine what to show in the second line based on category
@@ -42,7 +46,7 @@ kostymeliste.addCostumeCard = function({ title, subcategory, size, description, 
     <div class="card small-costume-card shadow-sm"
         data-bs-toggle="modal"
         data-bs-target="#imageModal"
-        data-img="${directImageUrl}">
+        data-img="${fullImageUrl}">
 
         <img src="${directImageUrl}" class="card-img-thumbnail" alt="Kostyme bilde">
         <div class="card-body">
@@ -62,18 +66,22 @@ kostymeliste.addCostumeCard = function({ title, subcategory, size, description, 
 // Function to add costume card with edit button (for endre.html)
 kostymeliste.addEditableCostumeCard = function({ kostymeid, title, subcategory, size, description, imagecurl }) {
 
-  let directImageUrl;
+  let directImageUrl, fullImageUrl;
   // console log for imagecurl
     console.log("📷 Image URL:", imagecurl);
   if (imagecurl && imagecurl.startsWith("https://drive.google.com/")) {
     // Case 1: Google Drive image — extract ID and use thumbnail
     const imageId = imagecurl.match(/[-\w]{25,}/)?.[0];
     directImageUrl = imageId
+      ? `https://drive.google.com/thumbnail?id=${imageId}&sz=s400`
+      : "placeholder.png";
+    fullImageUrl = imageId
       ? `https://drive.google.com/thumbnail?id=${imageId}&sz=s4000`
       : "placeholder.png";
   } else {
     // Case 2: Base64 or direct link
     directImageUrl = imagecurl || "placeholder.png";
+    fullImageUrl = imagecurl || "placeholder.png";
   }
 
   // Determine what to show in the second line based on category
@@ -102,7 +110,7 @@ kostymeliste.addEditableCostumeCard = function({ kostymeid, title, subcategory, 
          data-image-url="${imagecurl || ''}">
 
         <img src="${directImageUrl}" class="card-img-thumbnail clickable-image" alt="Kostyme bilde"
-             data-bs-toggle="modal" data-bs-target="#imageModal" data-img="${directImageUrl}">
+             data-bs-toggle="modal" data-bs-target="#imageModal" data-img="${fullImageUrl}">
         <div class="card-body">
           <div class="d-flex justify-content-between align-items-start mb-1">
             <h6 class="mb-0 flex-grow-1">${title}</h6>
@@ -124,18 +132,22 @@ kostymeliste.addEditableCostumeCard = function({ kostymeid, title, subcategory, 
 // Function to add costume card with delete button (for slett.html)
 kostymeliste.addDeletableCostumeCard = function({ kostymeid, title, subcategory, size, description, imagecurl }) {
 
-  let directImageUrl;
+  let directImageUrl, fullImageUrl;
   // console log for imagecurl
     console.log("📷 Image URL:", imagecurl);
   if (imagecurl && imagecurl.startsWith("https://drive.google.com/")) {
     // Case 1: Google Drive image — extract ID and use thumbnail
     const imageId = imagecurl.match(/[-\w]{25,}/)?.[0];
     directImageUrl = imageId
+      ? `https://drive.google.com/thumbnail?id=${imageId}&sz=s400`
+      : "placeholder.png";
+    fullImageUrl = imageId
       ? `https://drive.google.com/thumbnail?id=${imageId}&sz=s4000`
       : "placeholder.png";
   } else {
     // Case 2: Base64 or direct link
     directImageUrl = imagecurl || "placeholder.png";
+    fullImageUrl = imagecurl || "placeholder.png";
   }
 
   // Determine what to show in the second line based on category
@@ -164,7 +176,7 @@ kostymeliste.addDeletableCostumeCard = function({ kostymeid, title, subcategory,
          data-image-url="${imagecurl || ''}">
 
         <img src="${directImageUrl}" class="card-img-thumbnail clickable-image" alt="Kostyme bilde"
-             data-bs-toggle="modal" data-bs-target="#imageModal" data-img="${directImageUrl}">
+             data-bs-toggle="modal" data-bs-target="#imageModal" data-img="${fullImageUrl}">
         <div class="card-body">
           <div class="d-flex justify-content-between align-items-start mb-1">
             <h6 class="mb-0 flex-grow-1">${title}</h6>
