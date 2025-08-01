@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Innlogging | Modum Revyen</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-dark">
+
+<div class="container">
+  <div class="row justify-content-center align-items-center min-vh-100">
+    <div class="col-md-6 col-lg-4">
+      <div class="card shadow-lg">
+        <div class="card-body p-5">
+          <div class="text-center mb-4">
+            <h1 class="h3 mb-3">🎭 Admin Panel</h1>
+            <p class="text-muted">Modum Revyen - Administratortilgang</p>
+          </div>
+          
+          <form id="adminLoginForm">
+            <div class="mb-3">
+              <label for="username" class="form-label">Brukernavn</label>
+              <div class="input-group">
+                <span class="input-group-text">
+                  <i class="fas fa-user"></i>
+                </span>
+                <input type="text" class="form-control" id="username" required
+                       placeholder="admin1, admin2, eller admin3">
+              </div>
+            </div>
+            
+            <div class="mb-3">
+              <label for="password" class="form-label">Passord</label>
+              <div class="input-group">
+                <span class="input-group-text">
+                  <i class="fas fa-lock"></i>
+                </span>
+                <input type="password" class="form-control" id="password" required
+                       placeholder="Skriv inn passordet">
+                <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                  <i class="fas fa-eye" id="toggleIcon"></i>
+                </button>
+              </div>
+            </div>
+            
+            <div class="alert alert-danger d-none" id="errorMessage">
+              <i class="fas fa-exclamation-triangle"></i>
+              <span id="errorText">Feil brukernavn eller passord. Prøv igjen.</span>
+            </div>
+            
+            <button type="submit" class="btn btn-danger w-100" id="loginBtn">
+              <i class="fas fa-shield-alt me-2"></i>
+              Admin Innlogging
+            </button>
+          </form>
+          
+          <div class="text-center mt-4">
+            <small class="text-muted">
+              <i class="fas fa-exclamation-triangle me-1"></i>
+              Kun for autoriserte administratorer
+            </small>
+          </div>
+          
+          <div class="text-center mt-3">
+            <small>
+              <a href="login.html" class="text-decoration-none">
+                <i class="fas fa-arrow-left me-1"></i>
+                Tilbake til medlemsinnlogging
+              </a>
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="auth.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if already authenticated
+    if (auth.isAdminAuthenticated()) {
+        window.location.href = 'admin.html';
+        return;
+    }
+    
+    const form = document.getElementById('adminLoginForm');
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const errorMessage = document.getElementById('errorMessage');
+    const errorText = document.getElementById('errorText');
+    const loginBtn = document.getElementById('loginBtn');
+    const togglePassword = document.getElementById('togglePassword');
+    const toggleIcon = document.getElementById('toggleIcon');
+    
+    // Toggle password visibility
+    togglePassword.addEventListener('click', function() {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        
+        if (type === 'text') {
+            toggleIcon.classList.remove('fa-eye');
+            toggleIcon.classList.add('fa-eye-slash');
+        } else {
+            toggleIcon.classList.remove('fa-eye-slash');
+            toggleIcon.classList.add('fa-eye');
+        }
+    });
+    
+    // Handle form submission
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const username = usernameInput.value.trim();
+        const password = passwordInput.value.trim();
+        
+        if (!username || !password) {
+            showError('Vennligst fyll inn både brukernavn og passord');
+            return;
+        }
+        
+        // Show loading state
+        loginBtn.disabled = true;
+        loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sjekker legitimasjon...';
+        
+        // Simulate a small delay for better UX and security
+        setTimeout(async () => {
+            try {
+                const success = await auth.authenticateAdmin(username, password);
+                if (success) {
+                    // Success - redirect to admin panel
+                    window.location.href = 'admin.html';
+                } else {
+                    // Failed
+                    showError('Feil brukernavn eller passord. Kontakt hovedadministrator hvis du har glemt legitimasjonen.');
+                    passwordInput.value = '';
+                    usernameInput.focus();
+                }
+            } catch (error) {
+                showError('En feil oppstod. Prøv igjen.');
+                console.error('Authentication error:', error);
+            }
+            
+            // Reset button
+            loginBtn.disabled = false;
+            loginBtn.innerHTML = '<i class="fas fa-shield-alt me-2"></i>Admin Innlogging';
+        }, 800);
+    });
+    
+    function showError(message) {
+        errorText.textContent = message;
+        errorMessage.classList.remove('d-none');
+        
+        // Hide error after 7 seconds
+        setTimeout(() => {
+            errorMessage.classList.add('d-none');
+        }, 7000);
+    }
+    
+    // Focus username input
+    usernameInput.focus();
+    
+    // Auto-suggest usernames for better UX
+    usernameInput.addEventListener('input', function() {
+        const value = this.value.toLowerCase();
+        if (value === 'a' || value === 'ad' || value === 'adm') {
+            // Could add autocomplete suggestions here
+        }
+    });
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

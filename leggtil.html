@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Admin Panel – Modum Revyen</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="no-body-scroll">
 
 <!-- Top navbar -->
 <nav class="navbar navbar-dark bg-dark d-md-none fixed-top">
@@ -29,17 +30,119 @@
       <li class="nav-item"><a class="nav-link text-white" href="leggtil.html">Legg til</a></li>
       <li class="nav-item"><a class="nav-link text-white" href="endre.html">Endre</a></li>
       <li class="nav-item"><a class="nav-link text-white" href="slett.html">Slett</a></li>
+      <li class="nav-item mt-3">
+        <button class="btn btn-outline-light btn-sm w-100" id="logoutBtn">
+          <i class="fas fa-sign-out-alt me-1"></i>Logg ut
+        </button>
+      </li>
     </ul>
   </nav>
 
   <!-- Main content -->
   <div class="flex-grow-1 p-4 content-area">
     <h1>Legg til Kostymer</h1>
+    
+    <div class="d-flex gap-4">
+      <div style="flex: 1;">
+        <h2 class="mb-4">Registrer Kostyme</h2>
+        <form id="costumeForm" onsubmit="event.preventDefault();">
+
+        <div class="mb-3">
+          <label for="title" class="form-label">Hovedkategori (Tittel)</label>
+          <input type="text" class="form-control" id="title" required>
+        </div>
+        <div class="mb-3">
+          <label for="subcategory" class="form-label">Underkategori</label>
+          <input type="text" class="form-control" id="subcategory">
+        </div>
+        <div class="mb-3">
+          <label for="size" class="form-label">Størrelse</label>
+          <input type="text" class="form-control" id="size">
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">Beskrivelse</label>
+          <textarea class="form-control" id="description" rows="3"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="imageInput" class="form-label">Last opp bilde</label>
+          <input class="form-control" type="file" id="imageInput" accept="image/*" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Registrer Kostyme</button>
+      </form>
+
+      <div class="alert alert-info mt-4 d-none" id="messageBox"></div>
+      </div>
+      
+      <div style="flex: 1;">
+        <h3>Kostymeliste</h3>
+        
+        <!-- Filter Controls -->
+        <div class="mb-3">
+          <div class="row g-2">
+            <div class="col-md-6">
+              <label for="titleFilter" class="form-label">Filtrer etter kategori:</label>
+              <select class="form-select" id="titleFilter">
+                <option value="">Alle kategorier</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="subcategoryFilter" class="form-label">Filtrer etter underkategori:</label>
+              <select class="form-select" id="subcategoryFilter" disabled>
+                <option value="">Alle underkategorier</option>
+              </select>
+            </div>
+          </div>
+          <div class="mt-2">
+            <button class="btn btn-outline-secondary btn-sm" id="clearFilters">Fjern alle filtre</button>
+            <span class="ms-2 text-muted" id="filterCount"></span>
+          </div>
+        </div>
+
+        <div class="vertical-scroll-only">
+          <div id="costumeList" class="row row-cols-1 row-cols-xl-2 gy-3">
+            <!-- Costume cards will appear here -->
+          </div>
+        </div>
+      </div>
+    </div>
 
   </div>
 </div>
 
+<!-- Image Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-transparent border-0 shadow-none">
+      <div class="position-relative">
+        <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-2" 
+                data-bs-dismiss="modal" aria-label="Close" style="z-index: 1050;"></button>
+        <img id="modalImage" src="" class="img-fluid rounded shadow-lg" 
+             style="max-height: 90vh; max-width: 90vw; border: 3px solid #fff;" alt="Full costume">
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="auth.js"></script>
+<script>
+    // Check authentication before loading the page
+    if (!auth.requireAdminAuth()) {
+        // Will redirect to admin-login.html if not authenticated
+    } else {
+        // Setup logout functionality
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            if (confirm('Er du sikker på at du vil logge ut?')) {
+                auth.logoutAdmin();
+                window.location.href = 'admin-login.html';
+            }
+        });
+    }
+</script>
 <script src="adminPanel.js"></script>
+<script src="kostymeRegistrering.js"></script>
+<script src="kostymeliste.js"></script>
+<script src="kostyme.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

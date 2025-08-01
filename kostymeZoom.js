@@ -1,29 +1,5 @@
-document.addEventListener("DOMContentLoaded", () => {
-
-  const modalImage = document.getElementById('modalImage');
-
-  document.body.addEventListener('click', function (e) {
-    const card = e.target.closest('[data-bs-toggle="modal"][data-img]');
-    if (card) {
-      const imageUrl = card.getAttribute('data-img');
-      modalImage.src = imageUrl;
-      // Reset zoom when new image is loaded
-      resetImageZoom();
-    }
-  });
-
-  kostymeliste.loadCostumes();
-  
-  // Initialize filters after a short delay to ensure DOM is ready
-  setTimeout(() => {
-    if (typeof kostymeliste.initializeFilters === 'function') {
-      kostymeliste.initializeFilters();
-    }
-  }, 100);
-  
-  // Initialize zoom functionality
-  initializeImageZoom();
-});
+// kostymeZoom.js - Standalone zoom functionality for costume image modals
+// This file provides zoom and pan functionality for image modals without dependencies
 
 // Image zoom and pan functionality
 let imageZoom = {
@@ -91,7 +67,14 @@ function updateImageTransformWithoutTransition() {
   }
 }
 
-function initializeImageZoom() {
+function getDistance(touch1, touch2) {
+  const dx = touch1.clientX - touch2.clientX;
+  const dy = touch1.clientY - touch2.clientY;
+  return Math.sqrt(dx * dx + dy * dy);
+}
+
+// Initialize zoom functionality when page loads
+document.addEventListener('DOMContentLoaded', function() {
   const imageModal = document.getElementById('imageModal');
   const modalImage = document.getElementById('modalImage');
 
@@ -225,10 +208,4 @@ function initializeImageZoom() {
       updateImageTransform();
     });
   }
-}
-
-function getDistance(touch1, touch2) {
-  const dx = touch1.clientX - touch2.clientX;
-  const dy = touch1.clientY - touch2.clientY;
-  return Math.sqrt(dx * dx + dy * dy);
-}
+});

@@ -63,6 +63,96 @@ body {
   padding: 0;
 }
 
+/* Edit card specific styles */
+.card.small-costume-card.costume-edit-card {
+  cursor: default;
+}
+
+.card.small-costume-card.costume-edit-card .card-body {
+  padding: 0;
+}
+
+/* Edit button styling */
+.edit-costume-btn {
+  min-width: 32px;
+  height: 32px;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  flex-shrink: 0;
+}
+
+/* Make images clickable for modal */
+.clickable-image {
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.clickable-image:hover {
+  opacity: 0.8;
+}
+
+/* Modal image styling */
+#imageModal .modal-dialog {
+  margin: 1rem;
+  max-width: none;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 2rem);
+}
+
+#imageModal .modal-content {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  width: auto;
+}
+
+#modalImage {
+  max-height: 90vh;
+  max-width: 90vw;
+  width: auto;
+  height: auto;
+  border: 3px solid #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  cursor: grab;
+  transition: transform 0.1s ease;
+  transform-origin: center center;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+#modalImage:active {
+  cursor: grabbing;
+}
+
+#modalImage.zoomed {
+  cursor: grab;
+}
+
+/* Close button styling */
+#imageModal .btn-close {
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  opacity: 0.8;
+}
+
+#imageModal .btn-close:hover {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Ensure modal backdrop is darker */
+.modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
 /* Prevent horizontal scroll */
 #costumeList {
   overflow-x: hidden;
@@ -130,4 +220,26 @@ body.no-body-scroll html {
 .sidebar .nav-link.active {
   background-color: #495057;
   border-radius: 5px;
+}
+
+/* Delete card styling */
+.costume-delete-card {
+  position: relative;
+}
+
+.costume-delete-card .delete-costume-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 10;
+  opacity: 0.9;
+  transition: opacity 0.2s ease;
+}
+
+.costume-delete-card:hover .delete-costume-btn {
+  opacity: 1;
+}
+
+.costume-delete-card .delete-costume-btn:hover {
+  transform: scale(1.1);
 }

@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Admin Panel – Modum Revyen</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="no-body-scroll">
 
 <!-- Top navbar -->
 <nav class="navbar navbar-dark bg-dark d-md-none fixed-top">
@@ -29,6 +30,11 @@
       <li class="nav-item"><a class="nav-link text-white" href="leggtil.html">Legg til</a></li>
       <li class="nav-item"><a class="nav-link text-white" href="endre.html">Endre</a></li>
       <li class="nav-item"><a class="nav-link text-white" href="slett.html">Slett</a></li>
+      <li class="nav-item mt-3">
+        <button class="btn btn-outline-light btn-sm w-100" id="logoutBtn">
+          <i class="fas fa-sign-out-alt me-1"></i>Logg ut
+        </button>
+      </li>
     </ul>
   </nav>
 
@@ -39,6 +45,21 @@
   </div>
 </div>
 
+<script src="auth.js"></script>
+<script>
+    // Check authentication before loading the page
+    if (!auth.requireAdminAuth()) {
+        // Will redirect to admin-login.html if not authenticated
+    } else {
+        // Setup logout functionality
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            if (confirm('Er du sikker på at du vil logge ut?')) {
+                auth.logoutAdmin();
+                window.location.href = 'admin-login.html';
+            }
+        });
+    }
+</script>
 <script src="adminPanel.js"></script>
 
 </body>

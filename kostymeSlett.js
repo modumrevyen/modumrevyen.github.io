@@ -1,0 +1,191 @@
+// kostymeSlett.js
+// Delete functionality for costumes
+
+const deleteSection = document.getElementById('deleteSection');
+const noSelectionMessage = document.getElementById('noSelectionMessage');
+const deleteMessageBox = document.getElementById('deleteMessageBox');
+
+// Google Apps Script URL and proxy setup (same as registration and editing)
+const googleurl = 'https://script.google.com/macros/s/AKfycbz0z5LgJHF8bzjz9nofyBT2hc0XEke_-QVxlRWSzIVr-MKlktakP19krYjIIfNIDKUO9g/exec';
+const proxy = "https://modumrevyen.sayver.net/proxy.php";
+const proxiedUrl = `${proxy}?url=${encodeURIComponent(googleurl)}`;
+
+let currentDeletingCostume = null;
+
+// Initialize delete functionality
+document.addEventListener('DOMContentLoaded', function() {
+  // The kostymeliste.js will automatically detect this is the delete page and show delete buttons
+});
+
+// Handle delete button clicks
+document.addEventListener('click', function(e) {
+  if (e.target.closest('.delete-costume-btn')) {
+    const button = e.target.closest('.delete-costume-btn');
+    const card = button.closest('.costume-delete-card');
+    
+    if (card) {
+      loadCostumeForDelete(card);
+    }
+  }
+  
+  // Handle modal image clicks for costume list images
+  if (e.target.closest('.clickable-image')) {
+    const img = e.target.closest('.clickable-image');
+    const imageUrl = img.getAttribute('data-img') || img.src;
+    const modalImage = document.getElementById('modalImage');
+    if (modalImage) {
+      modalImage.src = imageUrl;
+    }
+  }
+});
+
+// Load costume data for deletion confirmation
+function loadCostumeForDelete(card) {
+  const kostymeId = card.getAttribute('data-kostyme-id');
+  const title = card.getAttribute('data-title');
+  const subcategory = card.getAttribute('data-subcategory');
+  const size = card.getAttribute('data-size');
+  const description = card.getAttribute('data-description');
+  const imageUrl = card.getAttribute('data-image-url');
+
+  // Store current costume data
+  currentDeletingCostume = {
+    id: kostymeId,
+    title,
+    subcategory,
+    size,
+    description,
+    imageUrl
+  };
+
+  // Populate delete confirmation section
+  document.getElementById('deleteTitle').textContent = title || 'Ikke angitt';
+  document.getElementById('deleteSubcategory').textContent = subcategory || 'Ikke angitt';
+  document.getElementById('deleteSize').textContent = size || 'Ikke angitt';
+  document.getElementById('deleteDescription').textContent = description || 'Ingen beskrivelse';
+  document.getElementById('deleteKostymeId').textContent = kostymeId;
+
+  // Set up image
+  const deleteImage = document.getElementById('deleteImage');
+  if (imageUrl) {
+    let directImageUrl;
+    if (imageUrl.startsWith("https://drive.google.com/")) {
+      const imageId = imageUrl.match(/[-\w]{25,}/)?.[0];
+      directImageUrl = imageId
+        ? `https://drive.google.com/thumbnail?id=${imageId}&sz=s4000`
+        : "placeholder.png";
+    } else {
+      directImageUrl = imageUrl;
+    }
+    deleteImage.src = directImageUrl;
+    deleteImage.setAttribute('data-img', directImageUrl);
+  }
+
+  // Show delete section, hide no selection message
+  deleteSection.classList.remove('d-none');
+  noSelectionMessage.classList.add('d-none');
+  
+  // Clear any previous messages
+  hideMessage();
+}
+
+// Handle confirm delete button
+document.getElementById('confirmDelete').addEventListener('click', async function() {
+  if (!currentDeletingCostume) {
+    showMessage('Ingen kostyme valgt for sletting.', 'danger');
+    return;
+  }
+
+  const button = this;
+  const originalText = button.innerHTML;
+  
+  try {
+    // Disable button and show loading
+    button.disabled = true;
+    button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sletter...';
+    
+    showMessage('Sletter kostyme...', 'info');
+
+    // Prepare data for deletion (just mark as deleted)
+    const formData = new URLSearchParams();
+    formData.append('action', 'delete');
+    formData.append('kostymeid', currentDeletingCostume.id);
+
+    const response = await fetch(proxiedUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: formData
+    });
+
+    const result = await response.text();
+    console.log('Delete response:', result);
+
+    if (result.includes('Success') || result.includes('success')) {
+      showMessage(`Kostyme "${currentDeletingCostume.title}" er slettet og vil ikke lenger vises i listen.`, 'success');
+      
+      // Remove the costume from the current view
+      const costumeCard = document.querySelector(`[data-kostyme-id="${currentDeletingCostume.id}"]`);
+      if (costumeCard) {
+        costumeCard.closest('.col').remove();
+      }
+      
+      // Update the costume data in kostymeliste
+      if (typeof kostymeliste !== 'undefined' && kostymeliste.allCostumes) {
+        const costume = kostymeliste.allCostumes.find(c => c.kostymeid === currentDeletingCostume.id);
+        if (costume) {
+          costume.deleted = true;
+        }
+        // Update filtered costumes as well
+        kostymeliste.filteredCostumes = kostymeliste.filteredCostumes.filter(c => c.kostymeid !== currentDeletingCostume.id);
+        
+        // Update filter count
+        if (typeof kostymeliste.updateFilterCount === 'function') {
+          kostymeliste.updateFilterCount();
+        }
+      }
+      
+      // Clear the delete section after successful deletion
+      setTimeout(() => {
+        cancelDelete();
+      }, 2000);
+      
+    } else {
+      throw new Error('Sletting feilet');
+    }
+
+  } catch (error) {
+    console.error('Error deleting costume:', error);
+    showMessage('Feil ved sletting av kostyme. Prøv igjen.', 'danger');
+  } finally {
+    // Re-enable button
+    button.disabled = false;
+    button.innerHTML = originalText;
+  }
+});
+
+// Handle cancel delete button
+document.getElementById('cancelDelete').addEventListener('click', cancelDelete);
+
+function cancelDelete() {
+  // Hide delete section, show no selection message
+  deleteSection.classList.add('d-none');
+  noSelectionMessage.classList.remove('d-none');
+  
+  // Clear current costume data
+  currentDeletingCostume = null;
+  
+  // Clear any messages
+  hideMessage();
+}
+
+function showMessage(message, type = 'info') {
+  deleteMessageBox.className = `alert alert-${type} mt-4`;
+  deleteMessageBox.textContent = message;
+  deleteMessageBox.classList.remove('d-none');
+}
+
+function hideMessage() {
+  deleteMessageBox.classList.add('d-none');
+}
