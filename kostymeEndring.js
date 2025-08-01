@@ -182,9 +182,9 @@ editForm.addEventListener('submit', async function(e) {
       }
     };
 
-    // Submit to Google Apps Script
+    // Submit to Google Apps Script using PUT for updates
     const response = await fetch(proxiedUrl, {
-      method: "POST",
+      method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updateData)
     });
