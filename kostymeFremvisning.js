@@ -79,8 +79,20 @@ function addCostumeCard(c) {
       <img src="${thumbUrl}" alt="${c.title}" class="card-img-top"
         data-bs-toggle="modal" data-bs-target="#imageModal"
         data-img="${fullSizeUrl}" style="cursor:pointer;">
-      <div class="card-body">
-        <h5 class="card-title">${c.title}</h5>
+      <div class="card-body d-flex flex-column">
+        <div class="d-flex justify-content-between align-items-start mb-2">
+          <h5 class="card-title mb-0 flex-grow-1">${c.title}</h5>
+          <button class="btn btn-primary btn-sm add-to-cart-btn ms-2" 
+                  data-costume-id="${c.kostymeid}" 
+                  data-costume-title="${c.title}"
+                  data-costume-subcategory="${c.subcategory || ''}"
+                  data-costume-size="${c.size || ''}"
+                  data-costume-description="${c.description || ''}"
+                  data-costume-image="${thumbUrl}">
+            <i class="fas fa-plus"></i>
+            <span class="d-none d-sm-inline ms-1">Legg til</span>
+          </button>
+        </div>
         <p class="mb-1"><strong>Underkategori:</strong> ${c.subcategory || 'Ikke angitt'}</p>
         ${secondLineContent}
       </div>
@@ -170,6 +182,11 @@ function displayCostumes() {
   filteredCostumes.forEach(c => {
     addCostumeCard(c);
   });
+  
+  // Update cart button states after displaying costumes
+  if (window.cart) {
+    window.cart.updateButtonStates();
+  }
 }
 
 // Function to update filter count display

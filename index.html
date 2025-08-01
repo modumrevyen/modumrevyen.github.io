@@ -11,24 +11,37 @@
 <body>
 
 
-    <!-- Top buttons -->
-    <div class="position-fixed top-0 end-0 m-3 top-buttons">
-        <div class="d-flex gap-2">
-            <button class="btn btn-outline-primary btn-sm d-none" id="adminPanelBtn">
-                <i class="fas fa-tools me-1"></i>Admin Panel
-            </button>
-            <button class="btn btn-outline-danger btn-sm" id="logoutBtn">
-                <i class="fas fa-sign-out-alt me-1"></i>Logg ut
-            </button>
+    <!-- Header with navigation buttons -->
+    <header class="bg-white shadow-sm">
+        <div class="container-fluid">
+            <div class="d-flex justify-content-end align-items-center py-2">
+                <div class="d-flex gap-2">
+                    <button class="btn btn-outline-primary btn-sm d-none" id="adminPanelBtn">
+                        <i class="fas fa-tools me-1"></i>Admin Panel
+                    </button>
+                    <button class="btn btn-outline-danger btn-sm" id="logoutBtn">
+                        <i class="fas fa-sign-out-alt me-1"></i>Logg ut
+                    </button>
+                    <button class="btn btn-outline-success btn-sm position-relative" id="cartBtn">
+                        <i class="fas fa-shopping-cart me-1"></i>
+                        Handlekurv
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none" id="cartCount">
+                            0
+                        </span>
+                    </button>
+                </div>
+            </div>
         </div>
-    </div>
+    </header>
 
-    <h1 class="text-center mb-4 mt-3">🎭 Modum Revyen's Kostyme Reservering!</h1>
-    <!-- Legg til informasjon om at denne nettsiden er under utvikling og reservering av kostymer fungerer ikke ennå -->
-    <div class="alert alert-warning alert-dismissible fade show text-center mb-4" role="alert">
-        <strong>⚠️ Merk:</strong> Denne nettsiden er under utvikling. Reservasjon av kostymer fungerer ikke ennå.
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Lukk"></button>
-    </div>
+    <!-- Main content -->
+    <main class="main-content">
+        <h1 class="text-center mb-4 mt-4">🎭 Modum Revyen's Kostymer</h1>
+        <!-- Legg til informasjon om at denne nettsiden er under utvikling og reservering av kostymer fungerer ikke ennå -->
+        <div class="alert alert-warning alert-dismissible fade show text-center mb-4 mx-3" role="alert">
+            <strong>⚠️ Merk:</strong> Denne nettsiden er under utvikling. Reservasjon av kostymer fungerer ikke ennå.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Lukk"></button>
+        </div>
 
     <div class="container py-4">
         <!-- Filter Controls -->
@@ -57,6 +70,7 @@
         
         <div class="row" id="cardContainer"></div>
     </div>
+    </main>
 
     <!-- Modal for full image -->
     <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
@@ -72,8 +86,101 @@
         </div>
     </div>
 
+    <!-- Cart Modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cartModalLabel">
+                        <i class="fas fa-shopping-cart me-2"></i>
+                        Din handlekurv
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="cartItems">
+                        <!-- Cart items will be populated here -->
+                    </div>
+                    <div id="emptyCartMessage" class="text-center text-muted py-4">
+                        <i class="fas fa-shopping-cart fa-3x mb-3"></i>
+                        <p>Handlekurven er tom</p>
+                        <p class="small">Legg til kostymer ved å klikke på "Legg i handlekurv" på kostymekortene</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Lukk</button>
+                    <button type="button" class="btn btn-danger" id="clearCartBtn">
+                        <i class="fas fa-trash me-1"></i>Tøm handlekurv
+                    </button>
+                    <button type="button" class="btn btn-success" id="proceedToReservationBtn" disabled>
+                        <i class="fas fa-calendar-check me-1"></i>Gå til reservasjon
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reservation Modal -->
+    <div class="modal fade" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="reservationModalLabel">
+                        <i class="fas fa-calendar-check me-2"></i>
+                        Reservér kostymer
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-4">
+                        <h6>Kostymer du skal reservere:</h6>
+                        <div id="reservationSummary" class="border rounded p-3 bg-light" style="max-height: 300px; overflow-y: auto;">
+                            <!-- Summary will be populated here -->
+                        </div>
+                    </div>
+                    
+                    <form id="reservationForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="customerName" class="form-label">Fullt navn *</label>
+                                <input type="text" class="form-control" id="customerName" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="customerPhone" class="form-label">Telefonnummer *</label>
+                                <input type="tel" class="form-control" id="customerPhone" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="customerEmail" class="form-label">E-post (valgfritt)</label>
+                            <input type="email" class="form-control" id="customerEmail">
+                        </div>
+                        <div class="mb-3">
+                            <label for="reservationNotes" class="form-label">Kommentarer (valgfritt)</label>
+                            <textarea class="form-control" id="reservationNotes" rows="3" 
+                                      placeholder="Spesielle ønsker eller kommentarer..."></textarea>
+                        </div>
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <strong>Merk:</strong> Dette er foreløpig en demo. Reservasjoner blir ikke faktisk lagret ennå.
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Avbryt</button>
+                    <button type="button" class="btn btn-primary" id="backToCartBtn">
+                        <i class="fas fa-arrow-left me-1"></i>Handlekurv
+                    </button>
+                    <button type="submit" form="reservationForm" class="btn btn-success" id="confirmReservationBtn">
+                        <i class="fas fa-check me-1"></i>Bekreft reservasjon
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
   <script src="auth.js"></script>
+  <script src="cart.js"></script>
   <script>
       // Check authentication before loading the page
       if (!auth.requireMemberAuth()) {
@@ -91,7 +198,7 @@
           document.getElementById('logoutBtn').addEventListener('click', function() {
               if (confirm('Er du sikker på at du vil logge ut?')) {
                   auth.logoutMember();
-                  window.location.href = 'login.html';
+                  window.location.href = 'velkommen.html';
               }
           });
       }

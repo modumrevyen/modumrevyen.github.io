@@ -23,6 +23,142 @@ body {
 .card-title {
     font-weight: bold;
 }
+
+/* Cart system styles */
+.add-to-cart-btn {
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.add-to-cart-btn:disabled {
+    opacity: 0.8;
+}
+
+/* Card title and button layout */
+.card-title {
+    font-weight: bold;
+    line-height: 1.2;
+    word-break: break-word;
+}
+
+/* Ensure the title and button row aligns properly */
+.card-body .d-flex.justify-content-between {
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+#cartCount {
+    font-size: 0.75rem;
+    min-width: 1.2rem;
+    height: 1.2rem;
+    line-height: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.cart-item-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+}
+
+/* Compact cart item styling */
+.cart-item-compact {
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.cart-item-compact .card-body {
+    padding: 0.5rem;
+}
+
+.cart-item-compact h6 {
+    font-size: 0.9rem;
+    line-height: 1.2;
+}
+
+.cart-item-compact small {
+    font-size: 0.75rem;
+    line-height: 1.1;
+}
+
+/* Cart modal body scrolling */
+#cartItems {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+#cartItems::-webkit-scrollbar {
+    width: 6px;
+}
+
+#cartItems::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+#cartItems::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+#cartItems::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Reservation summary scrolling */
+#reservationSummary {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+}
+
+#reservationSummary::-webkit-scrollbar {
+    width: 6px;
+}
+
+#reservationSummary::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+#reservationSummary::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+#reservationSummary::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Custom toast positioning */
+.toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+/* Responsive cart adjustments */
+@media (max-width: 768px) {
+    .cart-item-image {
+        width: 60px;
+        height: 60px;
+    }
+    
+    #cartCount {
+        font-size: 0.7rem;
+        min-width: 1rem;
+        height: 1rem;
+        line-height: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
 /* index.html */
 
 
@@ -245,4 +381,40 @@ body.no-body-scroll html {
 
 .costume-delete-card .delete-costume-btn:hover {
   transform: scale(1.1);
+}
+
+/* Header and main content styling for index.html */
+header {
+  border-bottom: 1px solid #dee2e6;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.main-content {
+  min-height: calc(100vh - 60px);
+}
+
+/* Responsive header buttons */
+@media (max-width: 576px) {
+  header .container-fluid {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  
+  header .btn {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+  }
+  
+  header .btn i {
+    font-size: 0.75rem;
+  }
+}
+
+/* Remove any conflicting styles for mobile */
+@media (max-width: 768px) {
+  .main-content h1 {
+    margin-top: 1rem !important;
+  }
 }
