@@ -4863,6 +4863,25 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1754076504240",
+      "title": "Kåpe",
+      "subcategory": "test",
+      "size": "",
+      "description": "test dette er en endring",
+      "imagecname": "compressed_1754076504174_ChatGPT-Image-Aug-1,-2025,-01_45_47-AM.png",
+      "imagecurl": "https://drive.google.com/file/d/1TKfz0PWjvY4OAzoPSaVkmYvaAWqQ3Cut/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-07-31T22:00:00.000Z",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
