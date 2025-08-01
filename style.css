@@ -179,11 +179,14 @@ body.no-body-scroll html {
 
 /* Sidebar base styles */
 .sidebar {
-  width: 240px;
+  width: 180px; /* Reduced from 240px to make it consistently narrow */
+  min-width: 180px; /* Ensure it never goes below this width */
+  max-width: 180px; /* Ensure it never goes above this width */
   min-height: 100vh;
   position: sticky;
   top: 0;
   transition: transform 0.3s ease;
+  flex-shrink: 0; /* Prevent the sidebar from shrinking in flex layouts */
 }
 
 /* Hidden on mobile by default */

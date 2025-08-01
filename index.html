@@ -11,11 +11,16 @@
 <body>
 
 
-    <!-- Logout button -->
-    <div class="position-fixed top-0 end-0 m-3" style="z-index: 1000;">
-        <button class="btn btn-outline-danger btn-sm" id="logoutBtn">
-            <i class="fas fa-sign-out-alt me-1"></i>Logg ut
-        </button>
+    <!-- Top buttons -->
+    <div class="position-fixed top-0 end-0 m-3 top-buttons">
+        <div class="d-flex gap-2">
+            <button class="btn btn-outline-primary btn-sm d-none" id="adminPanelBtn">
+                <i class="fas fa-tools me-1"></i>Admin Panel
+            </button>
+            <button class="btn btn-outline-danger btn-sm" id="logoutBtn">
+                <i class="fas fa-sign-out-alt me-1"></i>Logg ut
+            </button>
+        </div>
     </div>
 
     <h1 class="text-center mb-4 mt-3">🎭 Modum Revyen's Kostyme Reservering!</h1>
@@ -74,6 +79,14 @@
       if (!auth.requireMemberAuth()) {
           // Will redirect to login.html if not authenticated
       } else {
+          // Check if user is also an admin and show admin panel button
+          if (auth.isAdminAuthenticated()) {
+              document.getElementById('adminPanelBtn').classList.remove('d-none');
+              document.getElementById('adminPanelBtn').addEventListener('click', function() {
+                  window.location.href = 'admin.html';
+              });
+          }
+          
           // Setup logout functionality
           document.getElementById('logoutBtn').addEventListener('click', function() {
               if (confirm('Er du sikker på at du vil logge ut?')) {
