@@ -52,12 +52,11 @@ async function handleReservationSubmit(event) {
         customername: customerName,
         customeremail: customerEmail || "",
         customerphone: customerPhone,
-        comment: reservationNotes || "",
+        notes: reservationNotes || "",
         reservedfrom: "", // Will be filled when admin approves
         reservedto: "",   // Will be filled when admin approves
         status: "pending",
-        createdat: currentDate,
-        notes: reservationNotes || ""
+        createdat: currentDate
       }
     };
     
