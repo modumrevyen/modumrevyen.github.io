@@ -54,6 +54,7 @@ function loadCostumeForEdit(card) {
   const title = card.getAttribute('data-title');
   const subcategory = card.getAttribute('data-subcategory');
   const size = card.getAttribute('data-size');
+  const amount = card.getAttribute('data-amount');
   const description = card.getAttribute('data-description');
   const imageUrl = card.getAttribute('data-image-url');
 
@@ -70,6 +71,7 @@ function loadCostumeForEdit(card) {
   document.getElementById('editTitle').value = title;
   document.getElementById('editSubcategory').value = subcategory;
   document.getElementById('editSize').value = size;
+  document.getElementById('editAmount').value = amount || "1";
   document.getElementById('editDescription').value = description;
 
   // Set current image
@@ -186,6 +188,7 @@ editForm.addEventListener('submit', async function(e) {
     const title = document.getElementById('editTitle').value.trim();
     const subcategory = document.getElementById('editSubcategory').value.trim();
     const size = document.getElementById('editSize').value.trim();
+    const amount = document.getElementById('editAmount').value.trim();
     const description = document.getElementById('editDescription').value.trim();
     const imageFile = document.getElementById('editImageInput').files[0];
 
@@ -223,6 +226,7 @@ editForm.addEventListener('submit', async function(e) {
       title,
       subcategory,
       size,
+      amount,
       description,
       imagecname,
       imagecurl,
@@ -275,6 +279,7 @@ editForm.addEventListener('submit', async function(e) {
         title, 
         subcategory, 
         size, 
+        amount,
         description,
         imagecname,
         imagecurl

@@ -51,8 +51,220 @@
 
   <!-- Main content -->
   <div class="flex-grow-1 px-3 py-2 content-area">
-    <h1>Reservasjoner for Kostymer</h1>
+    <h1><i class="fas fa-calendar-check me-2"></i>Reservasjonsadministrasjon</h1>
+    
+    <!-- Stats Overview -->
+    <div class="row mb-4">
+      <div class="col-md-3">
+        <div class="card bg-warning text-dark">
+          <div class="card-body text-center">
+            <h5 class="card-title"><i class="fas fa-clock me-2"></i>Ventende</h5>
+            <h2 id="pendingCount">0</h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card bg-success text-white">
+          <div class="card-body text-center">
+            <h5 class="card-title"><i class="fas fa-check me-2"></i>Godkjent</h5>
+            <h2 id="approvedCount">0</h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card bg-info text-white">
+          <div class="card-body text-center">
+            <h5 class="card-title"><i class="fas fa-handshake me-2"></i>Utleid</h5>
+            <h2 id="rentedCount">0</h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card bg-danger text-white">
+          <div class="card-body text-center">
+            <h5 class="card-title"><i class="fas fa-times me-2"></i>Avslått</h5>
+            <h2 id="declinedCount">0</h2>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <!-- Filter Controls -->
+    <div class="card mb-4">
+      <div class="card-body">
+        <div class="row g-3">
+          <div class="col-md-3">
+            <label for="statusFilter" class="form-label">Status:</label>
+            <select class="form-select" id="statusFilter">
+              <option value="">Alle statuser</option>
+              <option value="pending">Ventende</option>
+              <option value="approved">Godkjent</option>
+              <option value="rented">Utleid</option>
+              <option value="declined">Avslått</option>
+              <option value="returned">Returnert</option>
+            </select>
+          </div>
+          <div class="col-md-3">
+            <label for="dateFilter" class="form-label">Opprettet dato:</label>
+            <input type="date" class="form-control" id="dateFilter">
+          </div>
+          <div class="col-md-3">
+            <label for="customerFilter" class="form-label">Kundesøk:</label>
+            <input type="text" class="form-control" id="customerFilter" placeholder="Navn eller telefon...">
+          </div>
+          <div class="col-md-3 d-flex align-items-end">
+            <button class="btn btn-outline-secondary me-2" id="clearFilters">
+              <i class="fas fa-eraser me-1"></i>Nullstill
+            </button>
+            <button class="btn btn-primary" id="refreshData">
+              <i class="fas fa-sync me-1"></i>Oppdater
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reservations List -->
+    <div class="card">
+      <div class="card-header">
+        <h5 class="mb-0">
+          <i class="fas fa-list me-2"></i>Reservasjoner
+          <span class="badge bg-secondary ms-2" id="totalCount">0</span>
+        </h5>
+      </div>
+      <div class="card-body">
+        <div id="loadingSpinner" class="text-center py-4">
+          <div class="spinner-border" role="status">
+            <span class="visually-hidden">Laster...</span>
+          </div>
+        </div>
+        <div id="reservationsList" class="d-none">
+          <!-- Reservations will be populated here -->
+        </div>
+        <div id="noReservations" class="text-center text-muted py-4 d-none">
+          <i class="fas fa-inbox fa-3x mb-3"></i>
+          <p>Ingen reservasjoner funnet</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Reservation Detail Modal -->
+<div class="modal fade" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="reservationModalLabel">
+          <i class="fas fa-calendar-check me-2"></i>Reservasjonsdetaljer
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <!-- Customer Info -->
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header">
+                <h6 class="mb-0"><i class="fas fa-user me-2"></i>Kundeinformasjon</h6>
+              </div>
+              <div class="card-body">
+                <dl class="row">
+                  <dt class="col-sm-4">Navn:</dt>
+                  <dd class="col-sm-8" id="modalCustomerName">-</dd>
+                  <dt class="col-sm-4">Telefon:</dt>
+                  <dd class="col-sm-8" id="modalCustomerPhone">-</dd>
+                  <dt class="col-sm-4">E-post:</dt>
+                  <dd class="col-sm-8" id="modalCustomerEmail">-</dd>
+                  <dt class="col-sm-4">Opprettet:</dt>
+                  <dd class="col-sm-8" id="modalCreatedAt">-</dd>
+                  <dt class="col-sm-4">Status:</dt>
+                  <dd class="col-sm-8">
+                    <span class="badge" id="modalStatus">-</span>
+                  </dd>
+                </dl>
+                <div class="mt-3">
+                  <label class="form-label"><strong>Kommentarer:</strong></label>
+                  <p class="border p-2 rounded bg-light" id="modalNotes">Ingen kommentarer</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Rental Dates -->
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header">
+                <h6 class="mb-0"><i class="fas fa-calendar me-2"></i>Utleieperiode</h6>
+              </div>
+              <div class="card-body">
+                <div class="mb-3">
+                  <label for="modalReservedFrom" class="form-label">Fra dato:</label>
+                  <input type="date" class="form-control" id="modalReservedFrom">
+                </div>
+                <div class="mb-3">
+                  <label for="modalReservedTo" class="form-label">Til dato:</label>
+                  <input type="date" class="form-control" id="modalReservedTo">
+                </div>
+                <div class="mb-3">
+                  <label for="modalAdminNotes" class="form-label">Admin notater:</label>
+                  <textarea class="form-control" id="modalAdminNotes" rows="3" placeholder="Interne notater..."></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Costumes List -->
+        <div class="mt-4">
+          <h6><i class="fas fa-mask me-2"></i>Kostymer i reservasjon</h6>
+          <div id="modalCostumesList" class="border rounded p-3 bg-light" style="max-height: 300px; overflow-y: auto;">
+            <!-- Costumes will be populated here -->
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Lukk</button>
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-success" id="approveBtn" onclick="updateReservationStatus('approved')">
+            <i class="fas fa-check me-1"></i>Godkjenn
+          </button>
+          <button type="button" class="btn btn-info" id="rentedBtn" onclick="updateReservationStatus('rented')">
+            <i class="fas fa-handshake me-1"></i>Merk som utleid
+          </button>
+          <button type="button" class="btn btn-warning" id="returnedBtn" onclick="updateReservationStatus('returned')">
+            <i class="fas fa-undo me-1"></i>Merk som returnert
+          </button>
+          <button type="button" class="btn btn-danger" id="declineBtn" onclick="updateReservationStatus('declined')">
+            <i class="fas fa-times me-1"></i>Avslå
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Remove Costume Modal -->
+<div class="modal fade" id="removeCostumeModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Fjern kostyme fra reservasjon</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p>Er du sikker på at du vil fjerne dette kostymet fra reservasjonen?</p>
+        <div class="border rounded p-3 bg-light" id="removeCostumeInfo">
+          <!-- Costume info will be populated here -->
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Avbryt</button>
+        <button type="button" class="btn btn-danger" id="confirmRemoveCostume">
+          <i class="fas fa-trash me-1"></i>Fjern kostyme
+        </button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -76,6 +288,8 @@
     }
 </script>
 <script src="adminPanel.js"></script>
+<script src="kostymeReservasjoner.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

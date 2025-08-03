@@ -76,6 +76,7 @@ async function submitCostumeMetadata(imagecname, imagecbase64, imagecurl = "") {
       title,
       subcategory,
       size,
+      amount,
       description,
       imagecname,
       imagecurl,

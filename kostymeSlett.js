@@ -45,6 +45,7 @@ function loadCostumeForDelete(card) {
   const title = card.getAttribute('data-title');
   const subcategory = card.getAttribute('data-subcategory');
   const size = card.getAttribute('data-size');
+  const amount = card.getAttribute('data-amount');
   const description = card.getAttribute('data-description');
   const imageUrl = card.getAttribute('data-image-url');
 
@@ -54,6 +55,7 @@ function loadCostumeForDelete(card) {
     title,
     subcategory,
     size,
+    amount,
     description,
     imageUrl
   };
@@ -62,6 +64,7 @@ function loadCostumeForDelete(card) {
   document.getElementById('deleteTitle').textContent = title || 'Ikke angitt';
   document.getElementById('deleteSubcategory').textContent = subcategory || 'Ikke angitt';
   document.getElementById('deleteSize').textContent = size || 'Ikke angitt';
+  document.getElementById('deleteAmount').textContent = amount || '1';
   document.getElementById('deleteDescription').textContent = description || 'Ingen beskrivelse';
   document.getElementById('deleteKostymeId').textContent = kostymeId;
 
@@ -146,6 +149,7 @@ document.getElementById('confirmDelete').addEventListener('click', async functio
         title: fullCostume.title,
         subcategory: fullCostume.subcategory,
         size: fullCostume.size,
+        amount: fullCostume.amount,
         description: fullCostume.description,
         imagecname: fullCostume.imagecname,
         imagecurl: fullCostume.imagecurl,

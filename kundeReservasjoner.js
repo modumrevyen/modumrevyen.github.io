@@ -54,6 +54,7 @@ async function handleReservationSubmit(event) {
         customeremail: customerEmail || "",
         customerphone: customerPhone,
         notes: reservationNotes || "",
+        adminnotes: "",
         reservedfrom: "", // Will be filled when admin approves
         reservedto: "",   // Will be filled when admin approves
         status: "pending",

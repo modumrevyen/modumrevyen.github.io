@@ -55,7 +55,7 @@
     
     <div class="d-flex gap-4 admin-two-column">
       <div style="flex: 1;">
-        <h2 class="mb-4">Registrer Kostyme</h2>
+        <h2 class="mb-4">Kostyme</h2>
         <form id="costumeForm" onsubmit="event.preventDefault();">
 
         <div class="mb-3">
@@ -66,9 +66,15 @@
           <label for="subcategory" class="form-label">Underkategori</label>
           <input type="text" class="form-control" id="subcategory">
         </div>
-        <div class="mb-3">
-          <label for="size" class="form-label">Størrelse</label>
-          <input type="text" class="form-control" id="size">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="size" class="form-label">Størrelse</label>
+            <input type="text" class="form-control" id="size">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="amount" class="form-label">Antall</label>
+            <input type="number" class="form-control" id="amount" min="1" value="1">
+          </div>
         </div>
         <div class="mb-3">
           <label for="description" class="form-label">Beskrivelse</label>
@@ -78,7 +84,7 @@
           <label for="imageInput" class="form-label">Last opp bilde</label>
           <input class="form-control" type="file" id="imageInput" accept="image/*" required>
         </div>
-        <button type="submit" class="btn btn-primary">Registrer Kostyme</button>
+        <button type="submit" class="btn btn-primary">Legg til Kostyme</button>
       </form>
 
       <div class="alert alert-info mt-4 d-none" id="messageBox"></div>

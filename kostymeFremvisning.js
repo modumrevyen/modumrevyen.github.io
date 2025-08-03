@@ -31,6 +31,12 @@ async function loadCostumesFromSheety() {
         .filter(c => !c.deleted)
         .sort((a, b) => a.kostymeid.localeCompare(b.kostymeid));
       
+      // Show filter count immediately after data is loaded
+      const filterCount = document.getElementById('filterCount');
+      if (filterCount) {
+        filterCount.textContent = `Viser alle ${allCostumes.length} kostymer`;
+      }
+      
       // Initially show all costumes
       filteredCostumes = [...allCostumes];
       
@@ -109,8 +115,13 @@ function populateFilters() {
   
   if (!titleFilter || !subcategoryFilter) return;
 
-  // Get unique titles
-  const uniqueTitles = [...new Set(allCostumes.map(c => c.title))].sort();
+  // Get unique titles - only show titles that have at least one non-deleted costume
+  const uniqueTitles = [...new Set(
+    allCostumes
+      .filter(c => !c.deleted) // Only include non-deleted costumes
+      .map(c => c.title)
+      .filter(title => title && title.trim() !== '') // Ensure title exists and is not empty
+  )].sort();
   
   // Clear and populate title filter
   titleFilter.innerHTML = '<option value="">Alle kategorier</option>';
@@ -134,12 +145,12 @@ function updateSubcategoryFilter(selectedTitle) {
     return;
   }
 
-  // Get unique subcategories for the selected title
+  // Get unique subcategories for the selected title from non-deleted costumes only
   const uniqueSubcategories = [...new Set(
     allCostumes
-      .filter(c => c.title === selectedTitle)
+      .filter(c => !c.deleted && c.title === selectedTitle)
       .map(c => c.subcategory)
-      .filter(sub => sub && sub.trim() !== '')
+      .filter(sub => sub && typeof sub === 'string' && sub.trim() !== '')
   )].sort();
 
   if (uniqueSubcategories.length > 0) {
