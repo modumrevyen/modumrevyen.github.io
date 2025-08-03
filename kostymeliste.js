@@ -68,7 +68,7 @@ kostymeliste.addEditableCostumeCard = function({ kostymeid, title, subcategory, 
 
   let directImageUrl, fullImageUrl;
   // console log for imagecurl
-    console.log("📷 Image URL:", imagecurl);
+    // console.log("📷 Image URL:", imagecurl);
   if (imagecurl && imagecurl.startsWith("https://drive.google.com/")) {
     // Case 1: Google Drive image — extract ID and use thumbnail
     const imageId = imagecurl.match(/[-\w]{25,}/)?.[0];

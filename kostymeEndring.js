@@ -172,6 +172,7 @@ editForm.addEventListener('submit', async function(e) {
         imagecurl,
         imagecbase64,
         createdat: currentEditingCostume.createdat,
+        reservasjonid: currentEditingCostume.reservasjonid || "",
         reservedname: currentEditingCostume.reservedname || "",
         reservedphone: currentEditingCostume.reservedphone || "",
         reservedemail: currentEditingCostume.reservedemail || "",
@@ -184,10 +185,11 @@ editForm.addEventListener('submit', async function(e) {
 
     // Submit to Google Apps Script using PUT for updates
     const response = await fetch(proxiedUrl, {
-      method: "PUT",
+      method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updateData)
     });
+
 
     const result = await response.text();
     console.log("📄 Google Script response:", result);
