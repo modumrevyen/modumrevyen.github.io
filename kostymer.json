@@ -4939,6 +4939,25 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1754244300179",
+      "title": "test5",
+      "subcategory": "t",
+      "size": 5,
+      "description": "tes",
+      "imagecname": "compressed_1754244300116_ChatGPT-Image-Aug-1,-2025,-01_45_47-AM.png",
+      "imagecurl": "https://drive.google.com/file/d/1E6BL7SoMUGjl9r6zqtP47Zlt5-sKvXl9/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-08-02T22:00:00.000Z",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
