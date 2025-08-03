@@ -17,6 +17,12 @@ let currentEditingCostume = null;
 document.addEventListener('DOMContentLoaded', function() {
   // Edit functionality will be handled by kostymeliste.js automatically
   // based on detecting the presence of editForm element
+  
+  // Add image preview functionality for edit image input
+  const editImageInput = document.getElementById('editImageInput');
+  if (editImageInput) {
+    editImageInput.addEventListener('change', handleImagePreview);
+  }
 });
 
 // Handle edit button clicks
@@ -112,6 +118,44 @@ function loadCostumeForEdit(card) {
   }
   
   console.log('🔝 All scroll commands executed');
+}
+
+// Handle image preview when new image is selected
+async function handleImagePreview(event) {
+  const file = event.target.files[0];
+  const currentImage = document.getElementById('currentImage');
+  
+  if (!file || !currentImage) {
+    return;
+  }
+  
+  try {
+    // Show loading state
+    showEditMessage('⏳ Forhåndsviser nytt bilde...', 'info');
+    
+    // Compress the image for preview
+    const compressedImage = await compressImage(file, 0.9);
+    if (!compressedImage) {
+      throw new Error("Feil under bildekomprimering for forhåndsvisning.");
+    }
+    
+    // Convert to base64 for preview
+    const previewBase64 = await imageToBase64(compressedImage);
+    const previewUrl = `data:image/jpeg;base64,${previewBase64}`;
+    
+    // Update the current image display with the new preview
+    currentImage.src = previewUrl;
+    currentImage.setAttribute('data-img', previewUrl); // For modal functionality
+    
+    // Clear the loading message
+    editMessageBox.classList.add('d-none');
+    
+    console.log('📷 Image preview updated');
+    
+  } catch (error) {
+    console.error('❌ Preview error:', error);
+    showEditMessage(`❌ Feil ved forhåndsvisning: ${error.message}`, 'danger');
+  }
 }
 
 // Handle form submission
