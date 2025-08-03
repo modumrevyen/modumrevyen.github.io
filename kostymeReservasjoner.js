@@ -46,18 +46,21 @@ async function loadAllData() {
     try {
         showLoadingSpinner(true);
         
+        // Add timestamp for cache-busting
+        const timestamp = Date.now();
+        
         // Load reservations
-        const reservationsResponse = await fetch('reservasjoner.json');
+        const reservationsResponse = await fetch(`reservasjoner.json?ts=${timestamp}`);
         const reservationsData = await reservationsResponse.json();
         allReservations = reservationsData.sheet2 || [];
         
         // Load costume-reservation links
-        const linksResponse = await fetch('kostymer_til_reservering.json');
+        const linksResponse = await fetch(`kostymer_til_reservering.json?ts=${timestamp}`);
         const linksData = await linksResponse.json();
         costumeReservationLinks = linksData.sheet3 || [];
         
         // Load costumes
-        const costumesResponse = await fetch('kostymer.json');
+        const costumesResponse = await fetch(`kostymer.json?ts=${timestamp}`);
         const costumesData = await costumesResponse.json();
         allCostumes = costumesData.sheet1 || [];
         
