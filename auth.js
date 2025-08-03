@@ -9,11 +9,9 @@ class Auth {
         
         // Admin user hashes - format: username: sha256(password)
         this.adminUsers = {
-            // Username: admin1, Password: SecureAdmin2025!
             "admin1": "aa7e25a89b1c97bb11dff5df219aa1ac0e1a0d31628436f327b887312d885065",
-            // Username: admin2, Password: RevyenAdmin456#
+            "Maya": "1a9fcee0a6271626ac2a9ac874d92c5490a330ac3bb8440b14b9c5d1a81ea2ed",
             "admin2": "a1b2c3d4e5f6789012345678901234567890abcdef123456789abcdef0123456",
-            // Username: admin3, Password: KostymeChef789$
             "admin3": "123456789abcdef0123456789abcdef01234567890abcdef123456789abcdef012"
         };
         
