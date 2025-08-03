@@ -1,0 +1,15 @@
+{
+  "sheet2": [
+    {
+      "reservasjonid": "r_1754250661242",
+      "customername": "Martin Johansen Sønsterud",
+      "customeremail": "FakeXn@sayver.net",
+      "customerphone": 41257038,
+      "notes": "tester",
+      "reservedfrom": "",
+      "reservedto": "",
+      "status": "pending",
+      "createdat": "2025-08-02T22:00:00.000Z"
+    }
+  ]
+}
