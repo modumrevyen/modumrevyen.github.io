@@ -65,18 +65,6 @@ function addCostumeCard(c) {
     ? `https://drive.google.com/thumbnail?id=${imageId}&sz=s4000`
     : "placeholder.png";
 
-  // Determine what to show in the second line based on category
-  let secondLineContent;
-  if (c.title && c.title.toLowerCase() === "rekvisitter") {
-    // For "Rekvisitter" category, show description instead of size
-    secondLineContent = c.description && c.description.trim() 
-      ? `<p><strong>Beskrivelse:</strong> ${c.description}</p>`
-      : `<p><strong>Beskrivelse:</strong> <em>Ingen beskrivelse</em></p>`;
-  } else {
-    // For all other categories, show size
-    secondLineContent = `<p><strong>Størrelse:</strong> ${c.size || 'Ikke angitt'}</p>`;
-  }
-
   const col = document.createElement("div");
   col.className = "col-sm-6 col-md-4 col-lg-3 mb-4";
 
@@ -94,13 +82,16 @@ function addCostumeCard(c) {
                   data-costume-subcategory="${c.subcategory || ''}"
                   data-costume-size="${c.size || ''}"
                   data-costume-description="${c.description || ''}"
+                  data-costume-amount="${c.amount || 1}"
                   data-costume-image="${thumbUrl}">
             <i class="fas fa-plus"></i>
             <span class="d-none d-sm-inline ms-1">Legg til</span>
           </button>
         </div>
         <p class="mb-1"><strong>Underkategori:</strong> ${c.subcategory || 'Ikke angitt'}</p>
-        ${secondLineContent}
+        <p class="mb-1"><strong>Størrelse:</strong> ${c.size || 'Ikke angitt'}</p>
+        <p class="mb-1"><strong>Antall:</strong> ${c.amount || 1}</p>
+        <p class="mb-1"><strong>Beskrivelse:</strong> ${c.description && c.description.trim() ? c.description : 'Ingen beskrivelse'}</p>
       </div>
     </div>
   `;
