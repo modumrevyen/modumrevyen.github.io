@@ -182,8 +182,8 @@ editForm.addEventListener('submit', async function(e) {
     };
 
     // ✅ Only include new image base64 if a new file was uploaded
-    if (imageFile && imagecbase64) {
-      sheet1.imagecbase64 = imagecbase64;
+    if (imageFile) {
+      sheet1.imagecbase64 = imagecbase64 || "";
     }
 
     const updateData = {
@@ -191,6 +191,8 @@ editForm.addEventListener('submit', async function(e) {
       kostymeid: kostymeId,
       sheet1: sheet1
     };
+
+    console.log("📄 Update data:", updateData);
 
     // Submit to Google Apps Script using PUT for updates
     const response = await fetch(proxiedUrl, {
