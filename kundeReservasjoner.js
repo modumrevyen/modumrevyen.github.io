@@ -73,27 +73,27 @@ async function handleReservationSubmit(event) {
     const reservationResult = await reservationResponse.text();
     console.log("� Sheet2 response:", reservationResult);
     
-    // Step 2: Create costume-reservation links in Sheet3
-    for (const item of cartItems) {
-      const linkData = {
-        sheet: "Sheet3",
-        Sheet3: {
-          kostymeid: item.id, // Use the correct ID field
-          reservasjonid: reservationId
-        }
-      };
-      
-      console.log("🔗 Creating costume link in Sheet3:", linkData);
-      
-      const linkResponse = await fetch(proxiedUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(linkData)
-      });
-      
-      const linkResult = await linkResponse.text();
-      console.log("📄 Sheet3 response for", item.id, ":", linkResult);
-    }
+    // Step 2: Create costume-reservation links in Sheet3 (batched)
+    const linkDataArray = cartItems.map(item => ({
+      kostymeid: item.id,
+      reservasjonid: reservationId
+    }));
+
+    const payload = {
+      sheet: "Sheet3",
+      Sheet3: linkDataArray
+    };
+
+    console.log("🔗 Creating batched costume links in Sheet3:", payload);
+
+    const response = await fetch(proxiedUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+
+    const resultText = await response.text();
+    console.log("📄 Batched Sheet3 response:", resultText);
     
     // Show success message
     showReservationSuccess(reservationId, customerName, cartItems.length);
