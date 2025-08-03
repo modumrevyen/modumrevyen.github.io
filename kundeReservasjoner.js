@@ -47,6 +47,7 @@ async function handleReservationSubmit(event) {
     
     // Step 1: Create reservation in Sheet2
     const reservationData = {
+      sheet: "Sheet2",
       Sheet2: {
         reservasjonid: reservationId,
         customername: customerName,
@@ -75,6 +76,7 @@ async function handleReservationSubmit(event) {
     // Step 2: Create costume-reservation links in Sheet3
     for (const item of cartItems) {
       const linkData = {
+        sheet: "Sheet3",
         Sheet3: {
           kostymeid: item.id, // Use the correct ID field
           reservasjonid: reservationId
@@ -101,13 +103,7 @@ async function handleReservationSubmit(event) {
       cart.clearCartExternal();
     }
     
-    // Close reservation modal after short delay
-    setTimeout(() => {
-      const reservationModal = bootstrap.Modal.getInstance(document.getElementById('reservationModal'));
-      if (reservationModal) {
-        reservationModal.hide();
-      }
-    }, 4000);
+    // Note: Modal will stay open for customer to read the confirmation message
     
   } catch (error) {
     console.error('❌ Reservation error:', error);
@@ -139,7 +135,8 @@ function showReservationSuccess(reservationId, customerName, costumeCount) {
     <strong>Reservasjons-ID:</strong> ${reservationId}<br>
     <strong>Kunde:</strong> ${customerName}<br>
     <strong>Antall kostymer:</strong> ${costumeCount}<br><br>
-    Din reservasjon er mottatt og venter på godkjenning. Vi vil kontakte deg på telefonnummeret du oppga.
+    Din reservasjon er mottatt og venter på godkjenning. Vi vil kontakte deg på telefonnummeret du oppga.<br><br>
+    <small class="text-muted"><i class="fas fa-info-circle me-1"></i>Du kan lukke dette vinduet når du er ferdig med å lese.</small>
   `;
   
   // Insert at the top of modal body
@@ -177,6 +174,27 @@ function showReservationError(errorMessage) {
 function generateReservationId() {
   return `r_${Date.now()}_${Math.random().toString(36).substr(2, 5)}`;
 }
+
+// Clear reservation message when modal is closed
+document.addEventListener('DOMContentLoaded', function() {
+  const reservationModal = document.getElementById('reservationModal');
+  if (reservationModal) {
+    reservationModal.addEventListener('hidden.bs.modal', function() {
+      // Remove any success/error alerts when modal is closed
+      const modalBody = reservationModal.querySelector('.modal-body');
+      const existingAlert = modalBody.querySelector('.alert');
+      if (existingAlert) {
+        existingAlert.remove();
+      }
+      
+      // Reset the form as well
+      const form = document.getElementById('reservationForm');
+      if (form) {
+        form.reset();
+      }
+    });
+  }
+});
 
 // Export for potential use by other modules
 if (typeof module !== 'undefined' && module.exports) {
