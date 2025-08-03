@@ -141,7 +141,7 @@ document.getElementById('confirmDelete').addEventListener('click', async functio
       sheet: "Sheet1",
       action: 'update',
       kostymeid: currentDeletingCostume.id,
-      sheet1: {
+      Sheet1: {
         kostymeid: currentDeletingCostume.id,
         title: fullCostume.title,
         subcategory: fullCostume.subcategory,

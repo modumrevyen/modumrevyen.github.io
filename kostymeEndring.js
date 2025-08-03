@@ -218,7 +218,7 @@ editForm.addEventListener('submit', async function(e) {
     }
 
     // Prepare update data
-    const sheet1 = {
+    const Sheet1 = {
       kostymeid: kostymeId,
       title,
       subcategory,
@@ -239,16 +239,16 @@ editForm.addEventListener('submit', async function(e) {
 
     // ✅ Only include new image base64 if a new file was uploaded
     if (imageFile) {
-      sheet1.imagecbase64 = imagecbase64 || "";
+      Sheet1.imagecbase64 = imagecbase64 || "";
     }
 
-    console.log("📄 Costume data to update:", sheet1)
+    console.log("📄 Costume data to update:", Sheet1)
     ;
     const updateData = {
       sheet: "Sheet1",
       action: 'update',
       kostymeid: kostymeId,
-      sheet1: sheet1
+      Sheet1: Sheet1
     };
 
     console.log("📄 Update data:", updateData);

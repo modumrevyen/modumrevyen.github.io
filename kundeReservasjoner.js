@@ -47,7 +47,7 @@ async function handleReservationSubmit(event) {
     
     // Step 1: Create reservation in Sheet2
     const reservationData = {
-      sheet2: {
+      Sheet2: {
         reservasjonid: reservationId,
         customername: customerName,
         customeremail: customerEmail || "",
@@ -75,7 +75,7 @@ async function handleReservationSubmit(event) {
     // Step 2: Create costume-reservation links in Sheet3
     for (const item of cartItems) {
       const linkData = {
-        sheet3: {
+        Sheet3: {
           kostymeid: item.id, // Use the correct ID field
           reservasjonid: reservationId
         }
