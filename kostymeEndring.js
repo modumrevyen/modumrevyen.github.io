@@ -162,28 +162,34 @@ editForm.addEventListener('submit', async function(e) {
     }
 
     // Prepare update data
+    const sheet1 = {
+      kostymeid: kostymeId,
+      title,
+      subcategory,
+      size,
+      description,
+      createdat,
+      reservasjonid: currentEditingCostume.reservasjonid || "",
+      reservedname: currentEditingCostume.reservedname || "",
+      reservedphone: currentEditingCostume.reservedphone || "",
+      reservedemail: currentEditingCostume.reservedemail || "",
+      reservedfrom: currentEditingCostume.reservedfrom || "",
+      reservedto: currentEditingCostume.reservedto || "",
+      returned: currentEditingCostume.returned || false,
+      deleted: false
+    };
+
+    // ✅ Only include new image data if a new file was uploaded
+    if (imageFile) {
+      sheet1.imagecname = imagecname;
+      sheet1.imagecurl = imagecurl;
+      sheet1.imagecbase64 = imagecbase64;
+    }
+
     const updateData = {
       action: 'update',
       kostymeid: kostymeId,
-      sheet1: {
-        kostymeid: kostymeId,
-        title,
-        subcategory,
-        size,
-        description,
-        imagecname,
-        imagecurl,
-        imagecbase64,
-        createdat: currentEditingCostume.createdat,
-        reservasjonid: currentEditingCostume.reservasjonid || "",
-        reservedname: currentEditingCostume.reservedname || "",
-        reservedphone: currentEditingCostume.reservedphone || "",
-        reservedemail: currentEditingCostume.reservedemail || "",
-        reservedfrom: currentEditingCostume.reservedfrom || "",
-        reservedto: currentEditingCostume.reservedto || "",
-        returned: currentEditingCostume.returned || false,
-        deleted: false
-      }
+      sheet1: sheet1
     };
 
     // Submit to Google Apps Script using PUT for updates
