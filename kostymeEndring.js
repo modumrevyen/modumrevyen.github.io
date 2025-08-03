@@ -168,6 +168,8 @@ editForm.addEventListener('submit', async function(e) {
       subcategory,
       size,
       description,
+      imagecname,
+      imagecurl,
       createdat: currentEditingCostume.createdat,
       reservasjonid: currentEditingCostume.reservasjonid || "",
       reservedname: currentEditingCostume.reservedname || "",
@@ -179,10 +181,8 @@ editForm.addEventListener('submit', async function(e) {
       deleted: false
     };
 
-    // ✅ Only include new image data if a new file was uploaded
-    if (imageFile) {
-      sheet1.imagecname = imagecname;
-      sheet1.imagecurl = imagecurl;
+    // ✅ Only include new image base64 if a new file was uploaded
+    if (imageFile && imagecbase64) {
       sheet1.imagecbase64 = imagecbase64;
     }
 
