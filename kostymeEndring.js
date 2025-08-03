@@ -155,7 +155,7 @@ editForm.addEventListener('submit', async function(e) {
       imagecbase64 = await imageToBase64(compressedImage);
       console.log("📦 Original file name:", imageFile.name);
       console.log("📦 Compressed file name:", imagecname);
-      console.log("📷 New image base64 size:", imagecbase64.length);
+      console.log("📷 New image base64:", imagecbase64);
       const timestamp = Date.now();
       imagecname = `compressed_${timestamp}_${imageFile.name.replace(/\s+/g, "-")}`;
       imagecurl = ''; // Will be updated by Google Apps Script
