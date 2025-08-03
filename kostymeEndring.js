@@ -186,6 +186,8 @@ editForm.addEventListener('submit', async function(e) {
       sheet1.imagecbase64 = imagecbase64 || "";
     }
 
+    console.log("📄 Costume data to update:", sheet1)
+    ;
     const updateData = {
       action: 'update',
       kostymeid: kostymeId,
