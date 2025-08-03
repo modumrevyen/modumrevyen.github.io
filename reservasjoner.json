@@ -47,6 +47,18 @@
       "reservedto": "",
       "status": "pending",
       "createdat": "2025-08-02T22:00:00.000Z"
+    },
+    {
+      "reservasjonid": "r_1754260792517",
+      "customername": "Tore på sporet",
+      "customeremail": "tore@tor.no",
+      "customerphone": 48506070,
+      "notes": "her skal vi ha sko",
+      "adminnotes": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "status": "pending",
+      "createdat": "2025-08-02T22:00:00.000Z"
     }
   ]
 }
