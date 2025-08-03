@@ -62,7 +62,7 @@ class ShoppingCart {
 
         this.items.push(costume);
         this.updateCartDisplay();
-        this.showMessage('Kostyme lagt til i handlekurven!', 'success');
+        // this.showMessage('Kostyme lagt til i handlekurven!', 'success');
         
         // Update button state
         button.classList.remove('btn-primary');
@@ -76,7 +76,7 @@ class ShoppingCart {
         this.items = this.items.filter(item => item.id !== costumeId);
         this.updateCartDisplay();
         this.updateButtonStates();
-        this.showMessage('Kostyme fjernet fra handlekurven', 'info');
+        // this.showMessage('Kostyme fjernet fra handlekurven', 'info');
     }
 
     // Clear entire cart
@@ -266,42 +266,26 @@ class ShoppingCart {
     handleReservationSubmit(e) {
         e.preventDefault();
         
-        const formData = {
-            name: document.getElementById('customerName').value.trim(),
-            phone: document.getElementById('customerPhone').value.trim(),
-            email: document.getElementById('customerEmail').value.trim(),
-            notes: document.getElementById('reservationNotes').value.trim(),
-            costumes: this.items,
-            timestamp: new Date().toISOString()
-        };
-
-        // Validation
-        if (!formData.name || !formData.phone) {
-            this.showMessage('Vennligst fyll inn navn og telefonnummer', 'danger');
-            return;
+        // Check if kundeReservasjoner.js is loaded and delegate to it
+        if (typeof handleReservationSubmit === 'function') {
+            handleReservationSubmit(e);
+        } else {
+            console.error('kundeReservasjoner.js not loaded or handleReservationSubmit function not available');
+            this.showMessage('Feil: Reservasjonssystem ikke tilgjengelig', 'danger');
         }
-
-        // For now, just show a success message and clear the cart
-        this.processReservation(formData);
     }
 
-    // Process the reservation (placeholder for now)
-    processReservation(reservationData) {
-        console.log('Reservation data:', reservationData);
-        
-        // Show success message
-        const reservationModal = bootstrap.Modal.getInstance(document.getElementById('reservationModal'));
-        reservationModal.hide();
-        
-        setTimeout(() => {
-            alert(`Takk ${reservationData.name}! Din reservasjon er mottatt.\n\nKostymer: ${reservationData.costumes.length} stk\nTelefon: ${reservationData.phone}\n\nMerk: Dette er en demo - reservasjonen lagres ikke ennå.`);
-            
-            // Clear cart and reset form
-            this.items = [];
-            this.updateCartDisplay();
-            this.updateButtonStates();
-            document.getElementById('reservationForm').reset();
-        }, 300);
+    // Get current cart items (for external access)
+    getItems() {
+        return [...this.items]; // Return a copy to prevent external modification
+    }
+
+    // Clear cart (for external access)
+    clearCartExternal() {
+        this.items = [];
+        this.updateCartDisplay();
+        this.updateButtonStates();
+        document.getElementById('reservationForm')?.reset();
     }
 
     // Show message to user
