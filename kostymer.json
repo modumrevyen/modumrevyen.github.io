@@ -4862,7 +4862,7 @@
       "reservedfrom": "",
       "reservedto": "",
       "returned": false,
-      "deleted": false
+      "deleted": true
     },
     {
       "kostymeid": "k_1754232503390",
