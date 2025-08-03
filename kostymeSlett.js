@@ -138,6 +138,7 @@ document.getElementById('confirmDelete').addEventListener('click', async functio
 
     // Prepare update data to mark as deleted (similar to kostymeEndring.js)
     const updateData = {
+      sheet: "Sheet1",
       action: 'update',
       kostymeid: currentDeletingCostume.id,
       sheet1: {

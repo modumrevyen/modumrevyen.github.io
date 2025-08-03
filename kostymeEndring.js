@@ -245,6 +245,7 @@ editForm.addEventListener('submit', async function(e) {
     console.log("📄 Costume data to update:", sheet1)
     ;
     const updateData = {
+      sheet: "Sheet1",
       action: 'update',
       kostymeid: kostymeId,
       sheet1: sheet1
