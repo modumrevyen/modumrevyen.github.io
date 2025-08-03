@@ -147,10 +147,22 @@ async function handleImagePreview(event) {
     currentImage.src = previewUrl;
     currentImage.setAttribute('data-img', previewUrl); // For modal functionality
     
+    // ✅ ALSO update the costume card image in the list
+    if (currentEditingCostume) {
+      const costumeCard = document.querySelector(`[data-kostyme-id="${currentEditingCostume.kostymeid}"]`);
+      if (costumeCard) {
+        const cardImage = costumeCard.querySelector('.card-img-thumbnail, .clickable-image');
+        if (cardImage) {
+          cardImage.src = previewUrl;
+          cardImage.setAttribute('data-img', previewUrl); // For modal functionality
+        }
+      }
+    }
+    
     // Clear the loading message
     editMessageBox.classList.add('d-none');
     
-    console.log('📷 Image preview updated');
+    console.log('📷 Image preview updated in both form and card');
     
   } catch (error) {
     console.error('❌ Preview error:', error);

@@ -129,54 +129,74 @@ document.getElementById('confirmDelete').addEventListener('click', async functio
     
     showMessage('Sletter kostyme...', 'info');
 
-    // Prepare data for deletion (just mark as deleted)
-    const formData = new URLSearchParams();
-    formData.append('action', 'delete');
-    formData.append('kostymeid', currentDeletingCostume.id);
+    // Find the full costume object from kostymeliste
+    const fullCostume = kostymeliste.allCostumes.find(c => c.kostymeid === currentDeletingCostume.id);
+    
+    if (!fullCostume) {
+      throw new Error('Kunne ikke finne kostyme data');
+    }
 
+    // Prepare update data to mark as deleted (similar to kostymeEndring.js)
+    const updateData = {
+      action: 'update',
+      kostymeid: currentDeletingCostume.id,
+      sheet1: {
+        kostymeid: currentDeletingCostume.id,
+        title: fullCostume.title,
+        subcategory: fullCostume.subcategory,
+        size: fullCostume.size,
+        description: fullCostume.description,
+        imagecname: fullCostume.imagecname,
+        imagecurl: fullCostume.imagecurl,
+        createdat: fullCostume.createdat,
+        reservasjonid: fullCostume.reservasjonid || "",
+        reservedname: fullCostume.reservedname || "",
+        reservedphone: fullCostume.reservedphone || "",
+        reservedemail: fullCostume.reservedemail || "",
+        reservedfrom: fullCostume.reservedfrom || "",
+        reservedto: fullCostume.reservedto || "",
+        returned: fullCostume.returned || false,
+        deleted: true // ✅ This is the key change - mark as deleted
+      }
+    };
+
+    // Submit to Google Apps Script using POST (like kostymeEndring.js)
     const response = await fetch(proxiedUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: formData
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updateData)
     });
 
     const result = await response.text();
-    console.log('Delete response:', result);
+    console.log('📄 Delete/Update response:', result);
 
-    if (result.includes('Success') || result.includes('success')) {
-      showMessage(`Kostyme "${currentDeletingCostume.title}" er slettet og vil ikke lenger vises i listen.`, 'success');
-      
-      // Remove the costume from the current view
-      const costumeCard = document.querySelector(`[data-kostyme-id="${currentDeletingCostume.id}"]`);
-      if (costumeCard) {
-        costumeCard.closest('.col').remove();
-      }
-      
-      // Update the costume data in kostymeliste
-      if (typeof kostymeliste !== 'undefined' && kostymeliste.allCostumes) {
-        const costume = kostymeliste.allCostumes.find(c => c.kostymeid === currentDeletingCostume.id);
-        if (costume) {
-          costume.deleted = true;
-        }
-        // Update filtered costumes as well
-        kostymeliste.filteredCostumes = kostymeliste.filteredCostumes.filter(c => c.kostymeid !== currentDeletingCostume.id);
-        
-        // Update filter count
-        if (typeof kostymeliste.updateFilterCount === 'function') {
-          kostymeliste.updateFilterCount();
-        }
-      }
-      
-      // Clear the delete section after successful deletion
-      setTimeout(() => {
-        cancelDelete();
-      }, 2000);
-      
-    } else {
-      throw new Error('Sletting feilet');
+    showMessage(`✅ Kostyme "${currentDeletingCostume.title}" er slettet!`, 'success');
+    
+    // Remove the costume from the current view
+    const costumeCard = document.querySelector(`[data-kostyme-id="${currentDeletingCostume.id}"]`);
+    if (costumeCard) {
+      costumeCard.closest('.col').remove();
     }
+    
+    // Update the costume data in kostymeliste
+    if (typeof kostymeliste !== 'undefined' && kostymeliste.allCostumes) {
+      const costume = kostymeliste.allCostumes.find(c => c.kostymeid === currentDeletingCostume.id);
+      if (costume) {
+        costume.deleted = true;
+      }
+      // Update filtered costumes as well
+      kostymeliste.filteredCostumes = kostymeliste.filteredCostumes.filter(c => c.kostymeid !== currentDeletingCostume.id);
+      
+      // Update filter count
+      if (typeof kostymeliste.updateFilterCount === 'function') {
+        kostymeliste.updateFilterCount();
+      }
+    }
+    
+    // Clear the delete section after successful deletion
+    setTimeout(() => {
+      cancelDelete();
+    }, 2000);
 
   } catch (error) {
     console.error('Error deleting costume:', error);
