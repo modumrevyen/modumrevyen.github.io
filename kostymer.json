@@ -4920,6 +4920,25 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1754238890289",
+      "title": "test1",
+      "subcategory": 2,
+      "size": 3,
+      "description": "",
+      "imagecname": "compressed_1754238890228_ChatGPT-Image-Aug-1,-2025,-01_45_47-AM.png",
+      "imagecurl": "https://drive.google.com/file/d/1y98VkB-HGU2ltI2umgSLv8bkxMdSL-oE/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-08-02T22:00:00.000Z",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
