@@ -6,7 +6,7 @@ window.kostymeliste = window.kostymeliste || {};
 kostymeliste.allCostumes = [];
 kostymeliste.filteredCostumes = [];
 
-kostymeliste.addCostumeCard = function({ title, subcategory, size, description, imagecurl }) {
+kostymeliste.addCostumeCard = function({ title, subcategory, size, description, imagecurl, amount }) {
 
   let directImageUrl, fullImageUrl;
   // console log for imagecurl
@@ -26,18 +26,6 @@ kostymeliste.addCostumeCard = function({ title, subcategory, size, description, 
     fullImageUrl = imagecurl || "placeholder.png";
   }
 
-  // Determine what to show in the second line based on category
-  let secondLineContent;
-  if (title && title.toLowerCase() === "rekvisitter") {
-    // For "Rekvisitter" category, show description instead of size
-    secondLineContent = description && description.trim() 
-      ? `<div><strong>Beskrivelse:</strong> ${description}</div>`
-      : `<div><strong>Beskrivelse:</strong> <em>Ingen beskrivelse</em></div>`;
-  } else {
-    // For all other categories, show size
-    secondLineContent = `<div><strong>Størrelse:</strong> ${size || 'Ikke angitt'}</div>`;
-  }
-
   const container = document.getElementById('costumeList');
   const card = document.createElement('div');
   card.className = "col";
@@ -53,7 +41,9 @@ kostymeliste.addCostumeCard = function({ title, subcategory, size, description, 
         <h6 class="mb-1">${title}</h6>
         <div style="font-size: 0.85rem;">
             <div><strong>Underkategori:</strong> ${subcategory || 'Ikke angitt'}</div>
-            ${secondLineContent}
+            <div><strong>Størrelse:</strong> ${size || 'Ikke angitt'}</div>
+            <div><strong>Antall:</strong> ${amount || 1}</div>
+            <div><strong>Beskrivelse:</strong> ${description && description.trim() ? description : 'Ingen beskrivelse'}</div>
         </div>
         </div>
     </div>
@@ -64,7 +54,7 @@ kostymeliste.addCostumeCard = function({ title, subcategory, size, description, 
 }
 
 // Function to add costume card with edit button (for endre.html)
-kostymeliste.addEditableCostumeCard = function({ kostymeid, title, subcategory, size, description, imagecurl }) {
+kostymeliste.addEditableCostumeCard = function({ kostymeid, title, subcategory, size, description, imagecurl, amount }) {
 
   let directImageUrl, fullImageUrl;
   // console log for imagecurl
@@ -84,18 +74,6 @@ kostymeliste.addEditableCostumeCard = function({ kostymeid, title, subcategory, 
     fullImageUrl = imagecurl || "placeholder.png";
   }
 
-  // Determine what to show in the second line based on category
-  let secondLineContent;
-  if (title && title.toLowerCase() === "rekvisitter") {
-    // For "Rekvisitter" category, show description instead of size
-    secondLineContent = description && description.trim() 
-      ? `<div><strong>Beskrivelse:</strong> ${description}</div>`
-      : `<div><strong>Beskrivelse:</strong> <em>Ingen beskrivelse</em></div>`;
-  } else {
-    // For all other categories, show size
-    secondLineContent = `<div><strong>Størrelse:</strong> ${size || 'Ikke angitt'}</div>`;
-  }
-
   const container = document.getElementById('costumeList');
   const card = document.createElement('div');
   card.className = "col";
@@ -107,6 +85,7 @@ kostymeliste.addEditableCostumeCard = function({ kostymeid, title, subcategory, 
          data-subcategory="${subcategory || ''}"
          data-size="${size || ''}"
          data-description="${description || ''}"
+         data-amount="${amount || 1}"
          data-image-url="${imagecurl || ''}">
 
         <img src="${directImageUrl}" class="card-img-thumbnail clickable-image" alt="Kostyme bilde"
@@ -120,7 +99,9 @@ kostymeliste.addEditableCostumeCard = function({ kostymeid, title, subcategory, 
           </div>
           <div style="font-size: 0.85rem;">
               <div><strong>Underkategori:</strong> ${subcategory || 'Ikke angitt'}</div>
-              ${secondLineContent}
+              <div><strong>Størrelse:</strong> ${size || 'Ikke angitt'}</div>
+              <div><strong>Antall:</strong> ${amount || 1}</div>
+              <div><strong>Beskrivelse:</strong> ${description && description.trim() ? description : 'Ingen beskrivelse'}</div>
           </div>
         </div>
     </div>
@@ -130,7 +111,7 @@ kostymeliste.addEditableCostumeCard = function({ kostymeid, title, subcategory, 
 }
 
 // Function to add costume card with delete button (for slett.html)
-kostymeliste.addDeletableCostumeCard = function({ kostymeid, title, subcategory, size, description, imagecurl }) {
+kostymeliste.addDeletableCostumeCard = function({ kostymeid, title, subcategory, size, description, imagecurl, amount }) {
 
   let directImageUrl, fullImageUrl;
   // console log for imagecurl
@@ -150,18 +131,6 @@ kostymeliste.addDeletableCostumeCard = function({ kostymeid, title, subcategory,
     fullImageUrl = imagecurl || "placeholder.png";
   }
 
-  // Determine what to show in the second line based on category
-  let secondLineContent;
-  if (title && title.toLowerCase() === "rekvisitter") {
-    // For "Rekvisitter" category, show description instead of size
-    secondLineContent = description && description.trim() 
-      ? `<div><strong>Beskrivelse:</strong> ${description}</div>`
-      : `<div><strong>Beskrivelse:</strong> <em>Ingen beskrivelse</em></div>`;
-  } else {
-    // For all other categories, show size
-    secondLineContent = `<div><strong>Størrelse:</strong> ${size || 'Ikke angitt'}</div>`;
-  }
-
   const container = document.getElementById('costumeList');
   const card = document.createElement('div');
   card.className = "col";
@@ -173,6 +142,7 @@ kostymeliste.addDeletableCostumeCard = function({ kostymeid, title, subcategory,
          data-subcategory="${subcategory || ''}"
          data-size="${size || ''}"
          data-description="${description || ''}"
+         data-amount="${amount || 1}"
          data-image-url="${imagecurl || ''}">
 
         <img src="${directImageUrl}" class="card-img-thumbnail clickable-image" alt="Kostyme bilde"
@@ -186,7 +156,9 @@ kostymeliste.addDeletableCostumeCard = function({ kostymeid, title, subcategory,
           </div>
           <div style="font-size: 0.85rem;">
               <div><strong>Underkategori:</strong> ${subcategory || 'Ikke angitt'}</div>
-              ${secondLineContent}
+              <div><strong>Størrelse:</strong> ${size || 'Ikke angitt'}</div>
+              <div><strong>Antall:</strong> ${amount || 1}</div>
+              <div><strong>Beskrivelse:</strong> ${description && description.trim() ? description : 'Ingen beskrivelse'}</div>
           </div>
         </div>
     </div>

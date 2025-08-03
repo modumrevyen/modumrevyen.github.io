@@ -62,6 +62,7 @@ async function submitCostumeMetadata(imagecname, imagecbase64, imagecurl = "") {
   const title = document.getElementById('title').value.trim();
   const subcategory = document.getElementById('subcategory').value.trim();
   const size = document.getElementById('size').value.trim();
+  const amount = document.getElementById('amount').value.trim() || "1"; // Default to 1 if empty
   const description = document.getElementById('description').value.trim();
 
   if (!title) {
@@ -96,7 +97,7 @@ async function submitCostumeMetadata(imagecname, imagecbase64, imagecurl = "") {
 
 
   const previewUrl = `data:image/jpeg;base64,${imagecbase64}`;
-  kostymeliste.addCostumeCard({ title, subcategory, size, imagecurl: previewUrl });
+  kostymeliste.addCostumeCard({ title, subcategory, size, amount, description, imagecurl: previewUrl });
 
   try {
     const res = await fetch(proxiedUrl, {
