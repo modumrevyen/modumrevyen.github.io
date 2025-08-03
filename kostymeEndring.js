@@ -265,10 +265,30 @@ editForm.addEventListener('submit', async function(e) {
 
     showEditMessage('✅ Kostyme oppdatert!', 'success');
     
-    // Update local data
+    // Update local data with new values including new image if uploaded
     const costumeIndex = kostymeliste.allCostumes.findIndex(c => c.kostymeid === kostymeId);
     if (costumeIndex !== -1) {
-      kostymeliste.allCostumes[costumeIndex] = { ...currentEditingCostume, title, subcategory, size, description };
+      // Create updated costume object
+      const updatedCostume = { 
+        ...currentEditingCostume, 
+        title, 
+        subcategory, 
+        size, 
+        description,
+        imagecname,
+        imagecurl
+      };
+      
+      // ✅ If new image was uploaded, preserve the preview image URL for display
+      if (imageFile) {
+        const currentImage = document.getElementById('currentImage');
+        if (currentImage && currentImage.src.startsWith('data:image/')) {
+          // Keep the base64 preview URL until the real Google Drive URL is available
+          updatedCostume.imagecurl = currentImage.src;
+        }
+      }
+      
+      kostymeliste.allCostumes[costumeIndex] = updatedCostume;
       
       // Update filtered costumes if needed
       const filteredIndex = kostymeliste.filteredCostumes.findIndex(c => c.kostymeid === kostymeId);
