@@ -44,7 +44,7 @@ form.addEventListener("submit", async (e) => {
 
     messageBox.classList.remove("alert-info");
     messageBox.classList.add("alert-success");
-    messageBox.textContent = "✅ Kostyme er lagt til!, du kan nå legge neste kostyme.";
+    messageBox.textContent = "✅ Kostyme er lagt til!";
     form.reset();
 
   } catch (err) {
