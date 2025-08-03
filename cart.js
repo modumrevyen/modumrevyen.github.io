@@ -44,6 +44,12 @@ class ShoppingCart {
 
     // Add item to cart
     addToCart(button) {
+        // Check if button is disabled (costume is out of stock)
+        if (button.disabled) {
+            this.showMessage('Dette kostymet er ikke tilgjengelig for reservasjon.', 'error');
+            return;
+        }
+
         const costume = {
             id: button.dataset.costumeId,
             title: button.dataset.costumeTitle,
@@ -58,6 +64,18 @@ class ShoppingCart {
         if (existingItem) {
             this.showMessage('Dette kostymet er allerede i handlekurven!', 'warning');
             return;
+        }
+
+        // Additional availability check if the availability functions are available
+        if (typeof getCostumeAvailability === 'function') {
+            const availability = getCostumeAvailability(costume.id);
+            if (!availability.isAvailable) {
+                this.showMessage('Dette kostymet er ikke lenger tilgjengelig for reservasjon.', 'error');
+                return;
+            }
+            if (availability.isLowStock) {
+                this.showMessage(`Kostyme lagt til! Merk: Kun ${availability.available} igjen.`, 'warning');
+            }
         }
 
         this.items.push(costume);

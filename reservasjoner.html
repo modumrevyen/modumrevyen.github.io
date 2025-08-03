@@ -89,6 +89,54 @@
       </div>
     </div>
 
+    <!-- Costume Availability Overview -->
+    <div class="card mb-4">
+      <div class="card-header">
+        <h5 class="mb-0">
+          <i class="fas fa-chart-bar me-2"></i>Kostyme tilgjengelighet
+          <button class="btn btn-outline-primary btn-sm float-end" id="toggleAvailability">
+            <i class="fas fa-eye me-1"></i>Vis detaljer
+          </button>
+        </h5>
+      </div>
+      <div class="card-body d-none" id="availabilityDetails">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card border-success">
+              <div class="card-body text-center">
+                <h6 class="card-title text-success"><i class="fas fa-check-circle me-2"></i>Tilgjengelig</h6>
+                <h4 class="text-success" id="availableCostumes">0</h4>
+                <small class="text-muted">kostymer med ledig kapasitet</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card border-warning">
+              <div class="card-body text-center">
+                <h6 class="card-title text-warning"><i class="fas fa-exclamation-triangle me-2"></i>Få igjen</h6>
+                <h4 class="text-warning" id="lowStockCostumes">0</h4>
+                <small class="text-muted">kostymer med begrenset tilgjengelighet</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card border-danger">
+              <div class="card-body text-center">
+                <h6 class="card-title text-danger"><i class="fas fa-times-circle me-2"></i>Utsolgt</h6>
+                <h4 class="text-danger" id="outOfStockCostumes">0</h4>
+                <small class="text-muted">kostymer uten ledig kapasitet</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-3">
+          <div id="availabilityList" class="row">
+            <!-- Availability details will be populated here -->
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Filter Controls -->
     <div class="card mb-4">
       <div class="card-body">
@@ -263,6 +311,20 @@
         <button type="button" class="btn btn-danger" id="confirmRemoveCostume">
           <i class="fas fa-trash me-1"></i>Fjern kostyme
         </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Image Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-transparent border-0 shadow-none">
+      <div class="position-relative">
+        <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-2" 
+                data-bs-dismiss="modal" aria-label="Close" style="z-index: 1050;"></button>
+        <img id="modalImage" src="" class="img-fluid rounded shadow-lg" 
+             style="max-height: 90vh; max-width: 90vw; border: 3px solid #fff;" alt="Full costume">
       </div>
     </div>
   </div>
