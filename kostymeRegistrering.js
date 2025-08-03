@@ -71,7 +71,7 @@ async function submitCostumeMetadata(imagecname, imagecbase64, imagecurl = "") {
 
   const costumeData = {
     sheet: "Sheet1",
-    sheet1: {
+    Sheet1: {
       kostymeid: `k_${Date.now()}`,
       title,
       subcategory,
