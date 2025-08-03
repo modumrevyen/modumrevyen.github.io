@@ -4881,7 +4881,7 @@
       "reservedfrom": "",
       "reservedto": "",
       "returned": false,
-      "deleted": false
+      "deleted": true
     },
     {
       "kostymeid": "k_1754235528765",
