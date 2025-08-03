@@ -168,7 +168,7 @@ editForm.addEventListener('submit', async function(e) {
       subcategory,
       size,
       description,
-      createdat,
+      createdat: currentEditingCostume.createdat,
       reservasjonid: currentEditingCostume.reservasjonid || "",
       reservedname: currentEditingCostume.reservedname || "",
       reservedphone: currentEditingCostume.reservedphone || "",
