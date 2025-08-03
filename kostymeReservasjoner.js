@@ -681,9 +681,12 @@ async function confirmRemoveCostume() {
         
         // Prepare removal data
         const removeData = {
+            sheet: 'Sheet3',
             action: 'delete',
-            kostymeid: costumeId,
-            reservasjonid: reservationId
+            Sheet3: {
+                kostymeid: costumeId,
+                reservasjonid: reservationId
+            }
         };
         
         console.log('📤 Removing costume from reservation:', removeData);
