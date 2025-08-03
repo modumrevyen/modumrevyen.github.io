@@ -333,32 +333,6 @@ body {
   padding-right: 0.5rem;
 }
 
-/* Only apply scroll blocking when body has .no-body-scroll */
-body.no-body-scroll {
-  height: 80vh;
-  overflow: hidden;
-}
-
-/* Allow scrolling on small screens for admin pages */
-@media (max-width: 600px) {
-  body.no-body-scroll {
-    height: 100vh;
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
-  
-  .content-area {
-    overflow-y: auto;
-    max-height: calc(100vh - 54px); /* Account for mobile navbar */
-  }
-}
-
-/* Optional: prevent horizontal scroll too */
-body.no-body-scroll,
-body.no-body-scroll html {
-  overflow-x: hidden;
-}
-
 .vertical-scroll-only {
   max-height: calc(100vh - 100px); /* Adjust if needed */
   overflow-y: auto;
