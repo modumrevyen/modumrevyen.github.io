@@ -4958,6 +4958,25 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1754248846860",
+      "title": "Sko",
+      "subcategory": 55,
+      "size": 5,
+      "description": "test",
+      "imagecname": "compressed_1754248846806_ChatGPT-Image-Aug-1,-2025,-12_44_20-AM.png",
+      "imagecurl": "https://drive.google.com/file/d/1qGuNAqX3Yr3xY3vvJ8Dd51yzJRf_f8UA/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "2025-08-02T22:00:00.000Z",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
