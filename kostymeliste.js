@@ -43,7 +43,7 @@ kostymeliste.addCostumeCard = function({ title, subcategory, size, description, 
             <div><strong>Underkategori:</strong> ${subcategory || 'Ikke angitt'}</div>
             <div><strong>Størrelse:</strong> ${size || 'Ikke angitt'}</div>
             <div><strong>Antall:</strong> ${amount || 1}</div>
-            <div><strong>Beskrivelse:</strong> ${description && description.trim() ? description : 'Ingen beskrivelse'}</div>
+            <div><strong>Beskrivelse:</strong> ${description && typeof description === 'string' && description.trim() ? description : 'Ingen beskrivelse'}</div>
         </div>
         </div>
     </div>
@@ -101,7 +101,7 @@ kostymeliste.addEditableCostumeCard = function({ kostymeid, title, subcategory, 
               <div><strong>Underkategori:</strong> ${subcategory || 'Ikke angitt'}</div>
               <div><strong>Størrelse:</strong> ${size || 'Ikke angitt'}</div>
               <div><strong>Antall:</strong> ${amount || 1}</div>
-              <div><strong>Beskrivelse:</strong> ${description && description.trim() ? description : 'Ingen beskrivelse'}</div>
+              <div><strong>Beskrivelse:</strong> ${description && typeof description === 'string' && description.trim() ? description : 'Ingen beskrivelse'}</div>
           </div>
         </div>
     </div>
@@ -158,7 +158,7 @@ kostymeliste.addDeletableCostumeCard = function({ kostymeid, title, subcategory,
               <div><strong>Underkategori:</strong> ${subcategory || 'Ikke angitt'}</div>
               <div><strong>Størrelse:</strong> ${size || 'Ikke angitt'}</div>
               <div><strong>Antall:</strong> ${amount || 1}</div>
-              <div><strong>Beskrivelse:</strong> ${description && description.trim() ? description : 'Ingen beskrivelse'}</div>
+              <div><strong>Beskrivelse:</strong> ${description && typeof description === 'string' && description.trim() ? description : 'Ingen beskrivelse'}</div>
           </div>
         </div>
     </div>
@@ -246,8 +246,12 @@ kostymeliste.populateFilters = function() {
   
   if (!titleFilter || !subcategoryFilter) return;
 
-  // Get unique titles
-  const uniqueTitles = [...new Set(kostymeliste.allCostumes.map(c => c.title))].sort();
+  // Get unique titles - only from non-deleted costumes with valid titles
+  const uniqueTitles = [...new Set(
+    kostymeliste.allCostumes
+      .filter(c => !c.deleted && c.title && c.title.trim() !== '') // Filter out deleted and empty titles
+      .map(c => c.title)
+  )].sort();
   
   // Clear and populate title filter
   titleFilter.innerHTML = '<option value="">Alle kategorier</option>';
@@ -257,6 +261,9 @@ kostymeliste.populateFilters = function() {
     option.textContent = title;
     titleFilter.appendChild(option);
   });
+
+  // Initialize filter count display
+  kostymeliste.updateFilterCount();
 };
 
 // Function to update subcategory filter based on selected title
@@ -271,12 +278,24 @@ kostymeliste.updateSubcategoryFilter = function(selectedTitle) {
     return;
   }
 
-  // Get unique subcategories for the selected title
+  // Get unique subcategories for the selected title from non-deleted costumes only
+  const costumesForTitle = kostymeliste.allCostumes.filter(c => !c.deleted && c.title === selectedTitle);
+  
   const uniqueSubcategories = [...new Set(
-    kostymeliste.allCostumes
-      .filter(c => c.title === selectedTitle)
+    costumesForTitle
       .map(c => c.subcategory)
-      .filter(sub => sub && sub.trim() !== '')
+      .filter(sub => sub !== null && sub !== undefined && sub !== '') // Filter out null/undefined/empty
+      .map(sub => {
+        // Convert everything to string and trim - handle numbers properly
+        if (typeof sub === 'number') {
+          return String(sub);
+        } else if (typeof sub === 'string') {
+          return sub.trim();
+        } else {
+          return String(sub).trim();
+        }
+      })
+      .filter(sub => sub !== '') // Remove empty strings after conversion
   )].sort();
 
   if (uniqueSubcategories.length > 0) {
@@ -303,8 +322,34 @@ kostymeliste.applyFilters = function() {
   const selectedSubcategory = subcategoryFilter.value;
 
   kostymeliste.filteredCostumes = kostymeliste.allCostumes.filter(costume => {
+    // Skip deleted costumes
+    if (costume.deleted) return false;
+    
     const titleMatch = !selectedTitle || costume.title === selectedTitle;
-    const subcategoryMatch = !selectedSubcategory || costume.subcategory === selectedSubcategory;
+    
+    // Subcategory matching logic
+    let subcategoryMatch = true;
+    
+    if (selectedSubcategory && selectedSubcategory.trim() !== '') {
+      // If a specific subcategory is selected, match exactly
+      const costumeSubcategory = costume.subcategory;
+      if (costumeSubcategory === null || costumeSubcategory === undefined || costumeSubcategory === '') {
+        subcategoryMatch = false;
+      } else {
+        // Convert both values to strings for comparison - handle numbers
+        let normalizedCostumeSubcategory;
+        if (typeof costumeSubcategory === 'number') {
+          normalizedCostumeSubcategory = String(costumeSubcategory);
+        } else if (typeof costumeSubcategory === 'string') {
+          normalizedCostumeSubcategory = costumeSubcategory.trim();
+        } else {
+          normalizedCostumeSubcategory = String(costumeSubcategory).trim();
+        }
+        subcategoryMatch = normalizedCostumeSubcategory === selectedSubcategory;
+      }
+    }
+    // If no subcategory is selected or it's empty, show ALL items in the category
+    
     return titleMatch && subcategoryMatch;
   });
 
