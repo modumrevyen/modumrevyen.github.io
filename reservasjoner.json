@@ -59,6 +59,18 @@
       "reservedto": "",
       "status": "returned",
       "createdat": "2025-08-02T22:00:00.000Z"
+    },
+    {
+      "reservasjonid": "r_1754269660538",
+      "customername": "Ola",
+      "customeremail": "ola@ola.no",
+      "customerphone": 47899652,
+      "notes": "her blir det liv",
+      "adminnotes": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "status": "approved",
+      "createdat": "04.08.2025"
     }
   ]
 }
