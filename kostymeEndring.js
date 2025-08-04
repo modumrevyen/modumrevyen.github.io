@@ -221,6 +221,16 @@ editForm.addEventListener('submit', async function(e) {
     }
 
     // Prepare update data
+    console.log("🕒 Original createdat:", currentEditingCostume.createdat, typeof currentEditingCostume.createdat);
+    
+    // Ensure createdat preserves its original format (don't let JS convert it to ISO)
+    let preservedCreatedat = currentEditingCostume.createdat;
+    if (typeof preservedCreatedat === 'string' && preservedCreatedat.includes('T')) {
+      // If it's already in ISO format, extract just the date part
+      preservedCreatedat = preservedCreatedat.split('T')[0];
+    }
+    console.log("🕒 Preserved createdat:", preservedCreatedat);
+
     const Sheet1 = {
       kostymeid: kostymeId,
       title,
@@ -230,7 +240,7 @@ editForm.addEventListener('submit', async function(e) {
       description,
       imagecname,
       imagecurl,
-      createdat: currentEditingCostume.createdat,
+      createdat: preservedCreatedat, // Use preserved format
       reservasjonid: currentEditingCostume.reservasjonid || "",
       reservedname: currentEditingCostume.reservedname || "",
       reservedphone: currentEditingCostume.reservedphone || "",

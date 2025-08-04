@@ -65,6 +65,13 @@ async function submitCostumeMetadata(imagecname, imagecbase64, imagecurl = "") {
   const amount = document.getElementById('amount').value.trim() || "1"; // Default to 1 if empty
   const description = document.getElementById('description').value.trim();
 
+  // Create date in DD.MM.YYYY format
+  const currentDate = new Date().toLocaleDateString('no-NO', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric'
+  });
+
   if (!title) {
     alert("❌ Tittel er påkrevd ved registrering av kostyme.");
     return;
@@ -82,7 +89,7 @@ async function submitCostumeMetadata(imagecname, imagecbase64, imagecurl = "") {
       imagecname,
       imagecurl,
       imagecbase64,
-      createdat: new Date().toISOString().split("T")[0],
+      createdat: currentDate, // Use DD.MM.YYYY format
       reservasjonid: "",
       reservedname: "",
       reservedphone: "",
