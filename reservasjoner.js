@@ -55,7 +55,11 @@ async function handleReservationSubmit(event) {
     
     // Create reservation data for the 3-table approach
     const reservationId = `r_${Date.now()}`;
-    const currentDate = new Date().toISOString().split("T")[0];
+    const currentDate = new Date().toLocaleDateString('no-NO', {
+      day: '2-digit',
+      month: '2-digit', 
+      year: 'numeric'
+    });
     
     // Step 1: Create reservation in Sheet2
     const reservationData = {
@@ -149,7 +153,6 @@ function showReservationSuccess(reservationId, customerName, costumeCount) {
   successAlert.innerHTML = `
     <i class="fas fa-check-circle me-2"></i>
     <strong>Reservasjon sendt!</strong><br>
-    <strong>Reservasjons-ID:</strong> ${reservationId}<br>
     <strong>Kunde:</strong> ${customerName}<br>
     <strong>Antall kostymer:</strong> ${costumeCount}<br><br>
     Din reservasjon er mottatt og venter på godkjenning. Vi vil kontakte deg på telefonnummeret du oppga.

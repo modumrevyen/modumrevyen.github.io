@@ -43,7 +43,11 @@ async function handleReservationSubmit(event) {
     
     // Create reservation data for the 3-table approach
     const reservationId = `r_${Date.now()}`;
-    const currentDate = new Date().toISOString().split("T")[0];
+    const currentDate = new Date().toLocaleDateString('no-NO', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
+    });
     
     // Step 1: Create reservation in Sheet2
     const reservationData = {
