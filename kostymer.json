@@ -5243,12 +5243,12 @@
     {
       "kostymeid": "k_1754272650136",
       "title": "Sko",
-      "subcategory": "herre",
-      "size": 22,
-      "amount": 1,
+      "subcategory": "herr",
+      "size": 21,
+      "amount": 2,
       "description": "Sko test33",
-      "imagecname": "compressed_1754274451485_ChatGPT-Image-Aug-1,-2025,-12_44_20-AM.png",
-      "imagecurl": "https://drive.google.com/file/d/1Q9uLcVjnei1NFH50PCBOPQ-oucRxmewh/view?usp=drivesdk",
+      "imagecname": "compressed_1754272650060_ChatGPT-Image-Jul-9,-2025,-11_27_06-AM.png",
+      "imagecurl": "https://drive.google.com/file/d/1JbFU8KNcFKQ0iTGAiN9guFnE1Dj7iaN9/view?usp=drivesdk",
       "imagecbase64": "",
       "createdat": "2025-08-03T22:00:00.000Z",
       "reservasjonid": "",
@@ -5258,7 +5258,7 @@
       "reservedfrom": "",
       "reservedto": "",
       "returned": false,
-      "deleted": false
+      "deleted": true
     }
   ]
 }
