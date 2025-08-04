@@ -244,12 +244,18 @@ function populateFilters() {
   
   if (!titleFilter || !subcategoryFilter) return;
 
-  // Get unique titles - only show titles that have at least one non-deleted costume
+  // Get unique titles - only show titles that have at least one available costume
   const uniqueTitles = [...new Set(
     allCostumes
-      .filter(c => !c.deleted) // Only include non-deleted costumes
+      .filter(c => {
+        if (c.deleted) return false; // Exclude deleted costumes
+        if (!c.title || c.title.trim() === '') return false; // Ensure title exists
+        
+        // Check if this costume is available (not fully allocated)
+        const availability = getCostumeAvailability(c.kostymeid);
+        return !availability.shouldHide; // Only include if costume should not be hidden
+      })
       .map(c => c.title)
-      .filter(title => title && title.trim() !== '') // Ensure title exists and is not empty
   )].sort();
   
   // Clear and populate title filter
@@ -274,12 +280,18 @@ function updateSubcategoryFilter(selectedTitle) {
     return;
   }
 
-  // Get unique subcategories for the selected title from non-deleted costumes only
+  // Get unique subcategories for the selected title from available costumes only
   const uniqueSubcategories = [...new Set(
     allCostumes
-      .filter(c => !c.deleted && c.title === selectedTitle)
+      .filter(c => {
+        if (c.deleted || c.title !== selectedTitle) return false;
+        if (!c.subcategory || typeof c.subcategory !== 'string' || c.subcategory.trim() === '') return false;
+        
+        // Check if this costume is available (not fully allocated)
+        const availability = getCostumeAvailability(c.kostymeid);
+        return !availability.shouldHide; // Only include if costume should not be hidden
+      })
       .map(c => c.subcategory)
-      .filter(sub => sub && typeof sub === 'string' && sub.trim() !== '')
   )].sort();
 
   if (uniqueSubcategories.length > 0) {
