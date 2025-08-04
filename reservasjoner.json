@@ -10,7 +10,7 @@
       "reservedfrom": "",
       "reservedto": "",
       "status": "rented",
-      "createdat": "2025-08-02T22:00:00.000Z"
+      "createdat": "04.08.2025"
     },
     {
       "reservasjonid": "r_1754250788147",
@@ -22,7 +22,7 @@
       "reservedfrom": "",
       "reservedto": "",
       "status": "pending",
-      "createdat": "2025-08-02T22:00:00.000Z"
+      "createdat": "04.08.2025"
     },
     {
       "reservasjonid": "r_1754251329997",
@@ -34,7 +34,7 @@
       "reservedfrom": "",
       "reservedto": "",
       "status": "pending",
-      "createdat": "2025-08-02T22:00:00.000Z"
+      "createdat": "04.08.2025"
     },
     {
       "reservasjonid": "r_1754260185033",
@@ -46,7 +46,7 @@
       "reservedfrom": "",
       "reservedto": "",
       "status": "pending",
-      "createdat": "2025-08-02T22:00:00.000Z"
+      "createdat": "04.08.2025"
     },
     {
       "reservasjonid": "r_1754260792517",
@@ -58,7 +58,7 @@
       "reservedfrom": "",
       "reservedto": "",
       "status": "returned",
-      "createdat": "2025-08-02T22:00:00.000Z"
+      "createdat": "04.08.2025"
     },
     {
       "reservasjonid": "r_1754269660538",
@@ -70,6 +70,18 @@
       "reservedfrom": "",
       "reservedto": "",
       "status": "approved",
+      "createdat": "04.08.2025"
+    },
+    {
+      "reservasjonid": "r_1754305380450",
+      "customername": "Kåre",
+      "customeremail": "",
+      "customerphone": 25836914,
+      "notes": "",
+      "adminnotes": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "status": "pending",
       "createdat": "04.08.2025"
     }
   ]
