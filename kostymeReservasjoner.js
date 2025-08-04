@@ -35,8 +35,11 @@ function setupEventListeners() {
     document.getElementById('clearFilters').addEventListener('click', clearFilters);
     document.getElementById('refreshData').addEventListener('click', refreshData);
     
-    // Availability overview toggle
-    document.getElementById('toggleAvailability').addEventListener('click', toggleAvailabilityDetails);
+    // Availability overview toggle (optional - may not exist)
+    const toggleAvailabilityBtn = document.getElementById('toggleAvailability');
+    if (toggleAvailabilityBtn) {
+        toggleAvailabilityBtn.addEventListener('click', toggleAvailabilityDetails);
+    }
     
     // Modal events
     document.getElementById('confirmRemoveCostume').addEventListener('click', confirmRemoveCostume);
@@ -121,15 +124,24 @@ function updateAvailabilityOverview() {
         }
     });
     
-    document.getElementById('availableCostumes').textContent = available;
-    document.getElementById('lowStockCostumes').textContent = lowStock;
-    document.getElementById('outOfStockCostumes').textContent = outOfStock;
+    // Update availability counters (optional elements)
+    const availableCostumesEl = document.getElementById('availableCostumes');
+    const lowStockCostumesEl = document.getElementById('lowStockCostumes');
+    const outOfStockCostumesEl = document.getElementById('outOfStockCostumes');
+    
+    if (availableCostumesEl) availableCostumesEl.textContent = available;
+    if (lowStockCostumesEl) lowStockCostumesEl.textContent = lowStock;
+    if (outOfStockCostumesEl) outOfStockCostumesEl.textContent = outOfStock;
 }
 
 // Toggle availability details view
 function toggleAvailabilityDetails() {
     const detailsDiv = document.getElementById('availabilityDetails');
     const toggleBtn = document.getElementById('toggleAvailability');
+    
+    // If elements don't exist, do nothing
+    if (!detailsDiv || !toggleBtn) return;
+    
     const icon = toggleBtn.querySelector('i');
     
     if (detailsDiv.classList.contains('d-none')) {
@@ -147,6 +159,9 @@ function toggleAvailabilityDetails() {
 // Populate detailed availability information
 function populateAvailabilityDetails() {
     const container = document.getElementById('availabilityList');
+    
+    // If container doesn't exist, do nothing
+    if (!container) return;
     
     // Group costumes by availability status
     const availabilityGroups = {
@@ -240,7 +255,11 @@ function displayReservations() {
     const reservationsHTML = filteredReservations.map(reservation => {
         const costumes = getCostumesForReservation(reservation.reservasjonid);
         const statusBadge = getStatusBadge(reservation.status);
-        const createdDate = new Date(reservation.createdat).toLocaleDateString('no-NO');
+        const createdDate = new Date(reservation.createdat).toLocaleDateString('no-NO', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric'
+        });
         
         return `
             <div class="card mb-3">
@@ -443,7 +462,11 @@ function openReservationModal(reservationId) {
     document.getElementById('modalCustomerName').textContent = reservation.customername;
     document.getElementById('modalCustomerPhone').textContent = reservation.customerphone;
     document.getElementById('modalCustomerEmail').textContent = reservation.customeremail || 'Ikke oppgitt';
-    document.getElementById('modalCreatedAt').textContent = new Date(reservation.createdat).toLocaleString('no-NO');
+    document.getElementById('modalCreatedAt').textContent = new Date(reservation.createdat).toLocaleDateString('no-NO', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+    });
     document.getElementById('modalNotes').textContent = reservation.notes || 'Ingen kommentarer';
     
     // Set status badge
@@ -549,6 +572,7 @@ function updateModalButtons(status) {
     switch (status) {
         case 'pending':
             returnedBtn.classList.add('d-none');
+            rentedBtn.disabled = true; // Can't rent until approved
             break;
         case 'approved':
             approveBtn.disabled = true;
@@ -568,6 +592,7 @@ function updateModalButtons(status) {
         case 'declined':
             returnedBtn.classList.add('d-none');
             declineBtn.disabled = true;
+            rentedBtn.disabled = true; // Can't rent if declined
             break;
     }
 }
@@ -576,7 +601,27 @@ function updateModalButtons(status) {
 async function updateReservationStatus(newStatus) {
     if (!currentReservationId) return;
     
+    // Get the button that was clicked and store original content
+    const buttonMap = {
+        'approved': document.getElementById('approveBtn'),
+        'rented': document.getElementById('rentedBtn'),
+        'returned': document.getElementById('returnedBtn'),
+        'declined': document.getElementById('declineBtn')
+    };
+    
+    const activeButton = buttonMap[newStatus];
+    const originalContent = activeButton ? activeButton.innerHTML : '';
+    
     try {
+        // Disable all buttons and show loading on active button
+        Object.values(buttonMap).forEach(btn => {
+            if (btn) btn.disabled = true;
+        });
+        
+        if (activeButton) {
+            activeButton.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i>Behandler...';
+        }
+        
         const reservation = allReservations.find(r => r.reservasjonid === currentReservationId);
         if (!reservation) {
             throw new Error('Reservasjon ikke funnet');
@@ -636,6 +681,23 @@ async function updateReservationStatus(newStatus) {
     } catch (error) {
         console.error('❌ Error updating reservation:', error);
         showError('Feil ved oppdatering av reservasjon: ' + error.message);
+    } finally {
+        // Restore all buttons
+        Object.values(buttonMap).forEach(btn => {
+            if (btn) btn.disabled = false;
+        });
+        
+        if (activeButton) {
+            activeButton.innerHTML = originalContent;
+        }
+        
+        // Update button states based on new status if operation was successful
+        if (currentReservationId) {
+            const reservation = allReservations.find(r => r.reservasjonid === currentReservationId);
+            if (reservation) {
+                updateModalButtons(reservation.status);
+            }
+        }
     }
 }
 

@@ -28,14 +28,14 @@
 <div class="d-flex" id="admin-wrapper">
 
   <!-- Sidebar -->
-  <nav class="bg-dark text-white p-3 sidebar" id="sidebar">
+  <nav class="bg-dark text-white p-2 sidebar" id="sidebar">
     <h4 class="mb-4 d-none d-md-block">🎭 Modum Revyen</h4>
     <ul class="nav flex-column">
-      <li class="nav-item"><a class="nav-link text-white" href="admin.html">Dashbord</a></li>
-      <li class="nav-item"><a class="nav-link text-white" href="reservasjoner.html">Reservasjoner</a></li>
-      <li class="nav-item"><a class="nav-link text-white" href="leggtil.html">Legg til</a></li>
-      <li class="nav-item"><a class="nav-link text-white" href="endre.html">Endre</a></li>
-      <li class="nav-item"><a class="nav-link text-white" href="slett.html">Slett</a></li>
+      <li class="nav-item"><a class="nav-link text-white" href="admin.html"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a></li>
+      <li class="nav-item"><a class="nav-link text-white active" href="reservasjoner.html"><i class="fas fa-calendar-alt me-2"></i>Reservasjoner</a></li>
+      <li class="nav-item"><a class="nav-link text-white" href="leggtil.html"><i class="fas fa-plus me-2"></i>Legg til</a></li>
+      <li class="nav-item"><a class="nav-link text-white" href="endre.html"><i class="fas fa-edit me-2"></i>Endre</a></li>
+      <li class="nav-item"><a class="nav-link text-white" href="slett.html"><i class="fas fa-trash me-2"></i>Slett</a></li>
       <li class="nav-item mt-3">
         <a class="nav-link text-white" href="index.html">
           <i class="fas fa-home me-1"></i>Forside
@@ -84,54 +84,6 @@
           <div class="card-body text-center">
             <h5 class="card-title"><i class="fas fa-times me-2"></i>Avslått</h5>
             <h2 id="declinedCount">0</h2>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Costume Availability Overview -->
-    <div class="card mb-4">
-      <div class="card-header">
-        <h5 class="mb-0">
-          <i class="fas fa-chart-bar me-2"></i>Kostyme tilgjengelighet
-          <button class="btn btn-outline-primary btn-sm float-end" id="toggleAvailability">
-            <i class="fas fa-eye me-1"></i>Vis detaljer
-          </button>
-        </h5>
-      </div>
-      <div class="card-body d-none" id="availabilityDetails">
-        <div class="row">
-          <div class="col-md-4">
-            <div class="card border-success">
-              <div class="card-body text-center">
-                <h6 class="card-title text-success"><i class="fas fa-check-circle me-2"></i>Tilgjengelig</h6>
-                <h4 class="text-success" id="availableCostumes">0</h4>
-                <small class="text-muted">kostymer med ledig kapasitet</small>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card border-warning">
-              <div class="card-body text-center">
-                <h6 class="card-title text-warning"><i class="fas fa-exclamation-triangle me-2"></i>Få igjen</h6>
-                <h4 class="text-warning" id="lowStockCostumes">0</h4>
-                <small class="text-muted">kostymer med begrenset tilgjengelighet</small>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card border-danger">
-              <div class="card-body text-center">
-                <h6 class="card-title text-danger"><i class="fas fa-times-circle me-2"></i>Utsolgt</h6>
-                <h4 class="text-danger" id="outOfStockCostumes">0</h4>
-                <small class="text-muted">kostymer uten ledig kapasitet</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="mt-3">
-          <div id="availabilityList" class="row">
-            <!-- Availability details will be populated here -->
           </div>
         </div>
       </div>
