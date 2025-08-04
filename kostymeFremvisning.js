@@ -6,6 +6,105 @@ const modalImage = document.getElementById("modalImage");
 // Store all costume data for filtering
 let allCostumes = [];
 let filteredCostumes = [];
+let allReservations = [];
+let costumeReservationLinks = [];
+
+// Load reservation data for availability calculation
+async function loadReservationData() {
+  try {
+    console.log("📡 Loading reservation data for availability...");
+    
+    const timestamp = Date.now();
+    
+    // Load reservations
+    const reservationsResponse = await fetch(`reservasjoner.json?ts=${timestamp}`);
+    const reservationsData = await reservationsResponse.json();
+    allReservations = reservationsData.sheet2 || [];
+    
+    // Load costume-reservation links
+    const linksResponse = await fetch(`kostymer_til_reservering.json?ts=${timestamp}`);
+    const linksData = await linksResponse.json();
+    costumeReservationLinks = linksData.sheet3 || [];
+    
+    console.log("✅ Reservation data loaded:", {
+      reservations: allReservations.length,
+      links: costumeReservationLinks.length
+    });
+    
+  } catch (error) {
+    console.warn("⚠️ Could not load reservation data:", error);
+    // Continue without availability data - will show all as available
+  }
+}
+
+// Calculate costume availability
+function getCostumeAvailability(costumeId) {
+  // Find the costume to get total amount
+  const costume = allCostumes.find(c => c.kostymeid === costumeId);
+  if (!costume) {
+    return { 
+      available: 0, 
+      total: 0, 
+      pending: 0,
+      approved: 0,
+      rented: 0,
+      isAvailable: false,
+      shouldHide: false,
+      hasPendingWhenZero: false,
+      canStillReserve: false
+    };
+  }
+  
+  const totalAmount = parseInt(costume.amount) || 1;
+  
+  // Find all reservations that have this costume
+  const reservationsWithCostume = costumeReservationLinks
+    .filter(link => link.kostymeid === costumeId)
+    .map(link => link.reservasjonid);
+  
+  // Count different types of reservations
+  const pendingReservations = allReservations.filter(r => 
+    reservationsWithCostume.includes(r.reservasjonid) && r.status === 'pending'
+  );
+  
+  const approvedReservations = allReservations.filter(r => 
+    reservationsWithCostume.includes(r.reservasjonid) && r.status === 'approved'
+  );
+  
+  const rentedReservations = allReservations.filter(r => 
+    reservationsWithCostume.includes(r.reservasjonid) && r.status === 'rented'
+  );
+  
+  const pendingCount = pendingReservations.length;
+  const approvedCount = approvedReservations.length;
+  const rentedCount = rentedReservations.length;
+  
+  // Calculate availability - ALL reservations (including pending) reduce displayed availability
+  const totalReservations = pendingCount + approvedCount + rentedCount;
+  const availableAmount = Math.max(0, totalAmount - totalReservations);
+  
+  // Only approved/rented reservations make item truly unavailable for new reservations
+  const confirmedReservations = approvedCount + rentedCount;
+  const canStillReserve = confirmedReservations < totalAmount;
+  
+  // Check if item should be hidden (approved/rented reservations use all stock)
+  const shouldHide = confirmedReservations >= totalAmount;
+  
+  // Check if there are pending reservations when displayed available is 0
+  const hasPendingWhenZero = availableAmount === 0 && pendingCount > 0 && canStillReserve;
+  
+  return {
+    available: availableAmount,
+    total: totalAmount,
+    pending: pendingCount,
+    approved: approvedCount,
+    rented: rentedCount,
+    isAvailable: availableAmount > 0,
+    shouldHide: shouldHide,
+    hasPendingWhenZero: hasPendingWhenZero,
+    canStillReserve: canStillReserve
+  };
+}
 
 async function loadCostumesFromSheety() {
   try {
@@ -30,6 +129,9 @@ async function loadCostumesFromSheety() {
       allCostumes = data.sheet1
         .filter(c => !c.deleted)
         .sort((a, b) => a.kostymeid.localeCompare(b.kostymeid));
+      
+      // Load reservation data for availability calculation
+      await loadReservationData();
       
       // Show filter count immediately after data is loaded
       const filterCount = document.getElementById('filterCount');
@@ -57,6 +159,14 @@ async function loadCostumesFromSheety() {
 }
 
 function addCostumeCard(c) {
+  // Check availability and decide if item should be hidden
+  const availability = getCostumeAvailability(c.kostymeid);
+  
+  // Hide items that are fully allocated through approved/rented reservations
+  if (availability.shouldHide) {
+    return; // Don't add this card at all
+  }
+  
   const imageId = c.imagecurl?.match(/[-\w]{25,}/)?.[0]; // Extract file ID
   const thumbUrl = imageId
     ? `https://drive.google.com/thumbnail?id=${imageId}&sz=s600`
@@ -65,14 +175,41 @@ function addCostumeCard(c) {
     ? `https://drive.google.com/thumbnail?id=${imageId}&sz=s4000`
     : "placeholder.png";
 
+  // Determine card styling based on availability
+  let cardClasses = "card shadow-sm h-100";
+  let cornerIndicator = "";
+  
+  if (availability.hasPendingWhenZero) {
+    cardClasses += " border-warning border-2"; // Orange border when 0 available but pending only
+    cornerIndicator = `
+      <div class="position-absolute top-0 end-0" style="z-index: 10; width: 0; height: 0; border-left: 30px solid transparent; border-top: 30px solid #ffc107;"
+           data-bs-toggle="tooltip" 
+           data-bs-placement="left" 
+           title="Alle reservert">
+        <i class="fas fa-clock position-absolute text-dark" style="top: -25px; right: -25px; font-size: 10px;"></i>
+      </div>`;
+  } else if (!availability.canStillReserve) {
+    cardClasses += " border-danger border-2"; // Red border when truly unavailable
+    cornerIndicator = `
+      <div class="position-absolute top-0 end-0" style="z-index: 10; width: 0; height: 0; border-left: 30px solid transparent; border-top: 30px solid #dc3545;"
+           data-bs-toggle="tooltip" 
+           data-bs-placement="left" 
+           title="Ikke tilgjengelig">
+        <i class="fas fa-times position-absolute text-white" style="top: -25px; right: -25px; font-size: 10px;"></i>
+      </div>`;
+  }
+
   const col = document.createElement("div");
   col.className = "col-sm-6 col-md-4 col-lg-3 mb-4";
 
   col.innerHTML = `
-    <div class="card shadow-sm h-100">
-      <img src="${thumbUrl}" alt="${c.title}" class="card-img-top"
-        data-bs-toggle="modal" data-bs-target="#imageModal"
-        data-img="${fullSizeUrl}" style="cursor:pointer;">
+    <div class="${cardClasses}" style="position: relative;">
+      <div class="image-container" style="position: relative; overflow: hidden;">
+        <img src="${thumbUrl}" alt="${c.title}" class="card-img-top costume-image"
+          data-bs-toggle="modal" data-bs-target="#imageModal"
+          data-img="${fullSizeUrl}" style="cursor:pointer; transition: transform 0.3s ease;">
+        ${cornerIndicator}
+      </div>
       <div class="card-body d-flex flex-column">
         <div class="d-flex justify-content-between align-items-start mb-2">
           <h5 class="card-title mb-0 flex-grow-1">${c.title}</h5>
@@ -83,14 +220,15 @@ function addCostumeCard(c) {
                   data-costume-size="${c.size || ''}"
                   data-costume-description="${c.description || ''}"
                   data-costume-amount="${c.amount || 1}"
-                  data-costume-image="${thumbUrl}">
+                  data-costume-image="${thumbUrl}"
+                  ${!availability.canStillReserve ? 'disabled' : ''}>
             <i class="fas fa-plus"></i>
             <span class="d-none d-sm-inline ms-1">Legg til</span>
           </button>
         </div>
         <p class="mb-1"><strong>Underkategori:</strong> ${c.subcategory || 'Ikke angitt'}</p>
         <p class="mb-1"><strong>Størrelse:</strong> ${c.size || 'Ikke angitt'}</p>
-        <p class="mb-1"><strong>Antall:</strong> ${c.amount || 1}</p>
+        <p class="mb-1"><strong>Antall:</strong> ${availability.available}/${availability.total}</p>
         <p class="mb-1"><strong>Beskrivelse:</strong> ${c.description && c.description.trim() ? c.description : 'Ingen beskrivelse'}</p>
       </div>
     </div>
@@ -183,6 +321,24 @@ function displayCostumes() {
   
   filteredCostumes.forEach(c => {
     addCostumeCard(c);
+  });
+  
+  // Initialize tooltips for corner indicators
+  const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+  tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl);
+  });
+  
+  // Add hover effects to images
+  const images = document.querySelectorAll('.costume-image');
+  images.forEach(img => {
+    img.addEventListener('mouseenter', function() {
+      this.style.transform = 'scale(1.1)';
+    });
+    
+    img.addEventListener('mouseleave', function() {
+      this.style.transform = 'scale(1)';
+    });
   });
   
   // Update cart button states after displaying costumes
