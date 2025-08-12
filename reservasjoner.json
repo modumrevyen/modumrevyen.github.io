@@ -131,6 +131,18 @@
       "reservedto": "",
       "status": "pending",
       "createdat": "13.08.2025"
+    },
+    {
+      "reservasjonid": "r_1755041808339",
+      "customername": "Martin Johansen Sønsterud",
+      "customeremail": "FakeXn@sayver.net",
+      "customerphone": 41257038,
+      "notes": "gfdsgfdsgdsgfds",
+      "adminnotes": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "status": "pending",
+      "createdat": "13.08.2025"
     }
   ]
 }
