@@ -3,16 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Admin Panel – Modum Revyen</title>
+  <title>Admin Panel – Modumrevyen</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <style>
-    /* Hide content until authentication is verified */
-    body.checking-auth {
-      display: none;
-    }
-  </style>
 </head>
 <body class="no-body-scroll checking-auth">
 
@@ -20,7 +15,7 @@
 <nav class="navbar navbar-dark bg-dark d-md-none fixed-top">
   <div class="container-fluid">
     <button class="btn btn-outline-light" id="menu-toggle">☰ Meny</button>
-    <span class="navbar-brand mb-0 h1 ms-auto">Modum Revyen</span>
+    <span class="navbar-brand mb-0 h1 ms-auto">🎭Modumrevyen</span>
   </div>
 </nav>
 
@@ -29,7 +24,7 @@
 
   <!-- Sidebar -->
   <nav class="bg-dark text-white p-2 sidebar" id="sidebar">
-    <h4 class="mb-4 d-none d-md-block">🎭 Modum Revyen</h4>
+    <h4 class="mb-4 d-none d-md-block">🎭Modum revyen</h4>
     <ul class="nav flex-column">
       <li class="nav-item"><a class="nav-link text-white" href="admin.html"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a></li>
       <li class="nav-item"><a class="nav-link text-white active" href="reservasjoner.html"><i class="fas fa-calendar-alt me-2"></i>Reservasjoner</a></li>
@@ -54,36 +49,44 @@
     <h1><i class="fas fa-calendar-check me-2"></i>Reservasjonsadministrasjon</h1>
     
     <!-- Stats Overview -->
-    <div class="row mb-4">
-      <div class="col-md-3">
+    <div class="row mb-2">
+      <div class="col-6 col-md-3 mb-2">
         <div class="card bg-warning text-dark">
-          <div class="card-body text-center">
-            <h5 class="card-title"><i class="fas fa-clock me-2"></i>Ventende</h5>
-            <h2 id="pendingCount">0</h2>
+          <div class="card-body text-center py-2">
+            <h6 class="card-title mb-1 d-none d-md-block"><i class="fas fa-clock me-2"></i>Ventende</h6>
+            <div class="card-title mb-1 d-md-none" style="font-size: 0.7rem;"><i class="fas fa-clock me-1"></i>Ventende</div>
+            <h3 class="mb-0 d-md-none" id="pendingCount">0</h3>
+            <h2 class="mb-0 d-none d-md-block" id="pendingCountLarge">0</h2>
           </div>
         </div>
       </div>
-      <div class="col-md-3">
+      <div class="col-6 col-md-3 mb-2">
         <div class="card bg-success text-white">
-          <div class="card-body text-center">
-            <h5 class="card-title"><i class="fas fa-check me-2"></i>Godkjent</h5>
-            <h2 id="approvedCount">0</h2>
+          <div class="card-body text-center py-2">
+            <h6 class="card-title mb-1 d-none d-md-block"><i class="fas fa-check me-2"></i>Godkjent</h6>
+            <div class="card-title mb-1 d-md-none" style="font-size: 0.7rem;"><i class="fas fa-check me-1"></i>Godkjent</div>
+            <h3 class="mb-0 d-md-none" id="approvedCount">0</h3>
+            <h2 class="mb-0 d-none d-md-block" id="approvedCountLarge">0</h2>
           </div>
         </div>
       </div>
-      <div class="col-md-3">
+      <div class="col-6 col-md-3 mb-2">
         <div class="card bg-info text-white">
-          <div class="card-body text-center">
-            <h5 class="card-title"><i class="fas fa-handshake me-2"></i>Utleid</h5>
-            <h2 id="rentedCount">0</h2>
+          <div class="card-body text-center py-2">
+            <h6 class="card-title mb-1 d-none d-md-block"><i class="fas fa-handshake me-2"></i>Utleid</h6>
+            <div class="card-title mb-1 d-md-none" style="font-size: 0.7rem;"><i class="fas fa-handshake me-1"></i>Utleid</div>
+            <h3 class="mb-0 d-md-none" id="rentedCount">0</h3>
+            <h2 class="mb-0 d-none d-md-block" id="rentedCountLarge">0</h2>
           </div>
         </div>
       </div>
-      <div class="col-md-3">
+      <div class="col-6 col-md-3 mb-2">
         <div class="card bg-danger text-white">
-          <div class="card-body text-center">
-            <h5 class="card-title"><i class="fas fa-times me-2"></i>Avslått</h5>
-            <h2 id="declinedCount">0</h2>
+          <div class="card-body text-center py-2">
+            <h6 class="card-title mb-1 d-none d-md-block"><i class="fas fa-times me-2"></i>Avslått</h6>
+            <div class="card-title mb-1 d-md-none" style="font-size: 0.7rem;"><i class="fas fa-times me-1"></i>Avslått</div>
+            <h3 class="mb-0 d-md-none" id="declinedCount">0</h3>
+            <h2 class="mb-0 d-none d-md-block" id="declinedCountLarge">0</h2>
           </div>
         </div>
       </div>
@@ -93,7 +96,7 @@
     <div class="card mb-4">
       <div class="card-body">
         <div class="row g-3">
-          <div class="col-md-3">
+          <div class="col-md-4">
             <label for="statusFilter" class="form-label">Status:</label>
             <select class="form-select" id="statusFilter">
               <option value="">Alle statuser</option>
@@ -104,15 +107,11 @@
               <option value="returned">Returnert</option>
             </select>
           </div>
-          <div class="col-md-3">
-            <label for="dateFilter" class="form-label">Opprettet dato:</label>
-            <input type="date" class="form-control" id="dateFilter">
-          </div>
-          <div class="col-md-3">
+          <div class="col-md-4">
             <label for="customerFilter" class="form-label">Kundesøk:</label>
             <input type="text" class="form-control" id="customerFilter" placeholder="Navn eller telefon...">
           </div>
-          <div class="col-md-3 d-flex align-items-end">
+          <div class="col-md-4 d-flex align-items-end">
             <button class="btn btn-outline-secondary me-2" id="clearFilters">
               <i class="fas fa-eraser me-1"></i>Nullstill
             </button>
@@ -122,7 +121,6 @@
           </div>
         </div>
       </div>
-    </div>
 
     <!-- Reservations List -->
     <div class="card">
@@ -160,55 +158,57 @@
         </h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body py-3">
         <div class="row">
           <!-- Customer Info -->
           <div class="col-md-6">
             <div class="card">
-              <div class="card-header">
-                <h6 class="mb-0"><i class="fas fa-user me-2"></i>Kundeinformasjon</h6>
+              <div class="card-header py-2">
+                <h6 class="mb-0 small"><i class="fas fa-user me-2"></i>Kundeinformasjon</h6>
               </div>
-              <div class="card-body">
-                <dl class="row">
-                  <dt class="col-sm-4">Navn:</dt>
-                  <dd class="col-sm-8" id="modalCustomerName">-</dd>
-                  <dt class="col-sm-4">Telefon:</dt>
-                  <dd class="col-sm-8" id="modalCustomerPhone">-</dd>
-                  <dt class="col-sm-4">E-post:</dt>
-                  <dd class="col-sm-8" id="modalCustomerEmail">-</dd>
-                  <dt class="col-sm-4">Opprettet:</dt>
-                  <dd class="col-sm-8" id="modalCreatedAt">-</dd>
-                  <dt class="col-sm-4">Status:</dt>
-                  <dd class="col-sm-8">
+              <div class="card-body py-2">
+                <dl class="row mb-2">
+                  <dt class="col-sm-4 small">Navn:</dt>
+                  <dd class="col-sm-8 small" id="modalCustomerName">-</dd>
+                  <dt class="col-sm-4 small">Telefon:</dt>
+                  <dd class="col-sm-8 small" id="modalCustomerPhone">-</dd>
+                  <dt class="col-sm-4 small">E-post:</dt>
+                  <dd class="col-sm-8 small" id="modalCustomerEmail">-</dd>
+                  <dt class="col-sm-4 small">Opprettet:</dt>
+                  <dd class="col-sm-8 small" id="modalCreatedAt">-</dd>
+                  <dt class="col-sm-4 small">Status:</dt>
+                  <dd class="col-sm-8 small">
                     <span class="badge" id="modalStatus">-</span>
                   </dd>
                 </dl>
-                <div class="mt-3">
-                  <label class="form-label"><strong>Kommentarer:</strong></label>
-                  <p class="border p-2 rounded bg-light" id="modalNotes">Ingen kommentarer</p>
+                <div class="mt-2">
+                  <label class="form-label small fw-bold">Kommentarer:</label>
+                  <p class="border p-2 rounded bg-light small mb-0" id="modalNotes">Ingen kommentarer</p>
                 </div>
               </div>
             </div>
           </div>
           
-          <!-- Rental Dates -->
+          <!-- Admin Notes -->
           <div class="col-md-6">
             <div class="card">
-              <div class="card-header">
-                <h6 class="mb-0"><i class="fas fa-calendar me-2"></i>Utleieperiode</h6>
+              <div class="card-header py-2">
+                <h6 class="mb-0 small">
+                  <button class="btn btn-link p-0 text-decoration-none text-dark fw-semibold small" type="button" 
+                          data-bs-toggle="collapse" data-bs-target="#adminNotesCollapse" 
+                          aria-expanded="false" aria-controls="adminNotesCollapse">
+                    <i class="fas fa-sticky-note me-2"></i>Admin notater
+                    <i class="fas fa-chevron-down ms-2 collapse-icon"></i>
+                  </button>
+                </h6>
               </div>
-              <div class="card-body">
-                <div class="mb-3">
-                  <label for="modalReservedFrom" class="form-label">Fra dato:</label>
-                  <input type="date" class="form-control" id="modalReservedFrom">
-                </div>
-                <div class="mb-3">
-                  <label for="modalReservedTo" class="form-label">Til dato:</label>
-                  <input type="date" class="form-control" id="modalReservedTo">
-                </div>
-                <div class="mb-3">
-                  <label for="modalAdminNotes" class="form-label">Admin notater:</label>
-                  <textarea class="form-control" id="modalAdminNotes" rows="3" placeholder="Interne notater..."></textarea>
+              <div class="collapse" id="adminNotesCollapse">
+                <div class="card-body py-2">
+                  <div class="mb-2">
+                    <label for="modalAdminNotes" class="form-label small">Interne notater:</label>
+                    <textarea class="form-control form-control-sm" id="modalAdminNotes" rows="3" placeholder="Legg til interne notater her..."></textarea>
+                    <div class="form-text small">Disse notatene er kun synlige for administratorer</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -216,24 +216,30 @@
         </div>
         
         <!-- Costumes List -->
-        <div class="mt-4">
-          <h6><i class="fas fa-mask me-2"></i>Kostymer i reservasjon</h6>
-          <div id="modalCostumesList" class="border rounded p-3 bg-light" style="max-height: 300px; overflow-y: auto;">
+        <div class="mt-3">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <h6 class="mb-0"><i class="fas fa-mask me-2"></i>Kostymer i reservasjon</h6>
+            <button type="button" class="btn btn-outline-secondary btn-sm" id="expandCostumesBtn" 
+                    title="Utvid kostymeoversikt">
+              <i class="fas fa-expand-arrows-alt me-1"></i>Utvid
+            </button>
+          </div>
+          <div id="modalCostumesList" class="border rounded p-2 bg-light costume-list-compact" style="max-height: 180px; overflow-y: auto; transition: max-height 0.3s ease;">
             <!-- Costumes will be populated here -->
           </div>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Lukk</button>
-        <div class="btn-group" role="group">
+      <div class="modal-footer py-2">
+        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Lukk</button>
+        <div class="btn-group btn-group-sm" role="group">
           <button type="button" class="btn btn-success" id="approveBtn" onclick="updateReservationStatus('approved')">
             <i class="fas fa-check me-1"></i>Godkjenn
           </button>
           <button type="button" class="btn btn-info" id="rentedBtn" onclick="updateReservationStatus('rented')">
-            <i class="fas fa-handshake me-1"></i>Merk som utleid
+            <i class="fas fa-handshake me-1"></i>Utleid
           </button>
           <button type="button" class="btn btn-warning" id="returnedBtn" onclick="updateReservationStatus('returned')">
-            <i class="fas fa-undo me-1"></i>Merk som returnert
+            <i class="fas fa-undo me-1"></i>Returnert
           </button>
           <button type="button" class="btn btn-danger" id="declineBtn" onclick="updateReservationStatus('declined')">
             <i class="fas fa-times me-1"></i>Avslå
@@ -300,6 +306,32 @@
             }
         });
     }
+    
+    // Setup costume list expand/collapse functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const expandBtn = document.getElementById('expandCostumesBtn');
+        const costumesList = document.getElementById('modalCostumesList');
+        
+        if (expandBtn && costumesList) {
+            expandBtn.addEventListener('click', function() {
+                const isExpanded = costumesList.classList.contains('costume-list-expanded');
+                
+                if (isExpanded) {
+                    // Collapse
+                    costumesList.classList.remove('costume-list-expanded');
+                    costumesList.classList.add('costume-list-compact');
+                    expandBtn.innerHTML = '<i class="fas fa-expand-arrows-alt me-1"></i>Utvid';
+                    expandBtn.title = 'Utvid kostymeoversikt';
+                } else {
+                    // Expand
+                    costumesList.classList.remove('costume-list-compact');
+                    costumesList.classList.add('costume-list-expanded');
+                    expandBtn.innerHTML = '<i class="fas fa-compress-arrows-alt me-1"></i>Komprimer';
+                    expandBtn.title = 'Komprimer kostymeoversikt';
+                }
+            });
+        }
+    });
 </script>
 <script src="adminPanel.js"></script>
 <script src="kostymeReservasjoner.js"></script>

@@ -30,7 +30,6 @@ async function initializeAdminReservations() {
 function setupEventListeners() {
     // Filter controls
     document.getElementById('statusFilter').addEventListener('change', filterReservations);
-    document.getElementById('dateFilter').addEventListener('change', filterReservations);
     document.getElementById('customerFilter').addEventListener('input', debounce(filterReservations, 300));
     document.getElementById('clearFilters').addEventListener('click', clearFilters);
     document.getElementById('refreshData').addEventListener('click', refreshData);
@@ -98,10 +97,22 @@ function updateStatistics() {
         declined: allReservations.filter(r => r.status === 'declined').length
     };
     
+    // Update mobile displays
     document.getElementById('pendingCount').textContent = stats.pending;
     document.getElementById('approvedCount').textContent = stats.approved;
     document.getElementById('rentedCount').textContent = stats.rented;
     document.getElementById('declinedCount').textContent = stats.declined;
+    
+    // Update desktop displays
+    const pendingCountLarge = document.getElementById('pendingCountLarge');
+    const approvedCountLarge = document.getElementById('approvedCountLarge');
+    const rentedCountLarge = document.getElementById('rentedCountLarge');
+    const declinedCountLarge = document.getElementById('declinedCountLarge');
+    
+    if (pendingCountLarge) pendingCountLarge.textContent = stats.pending;
+    if (approvedCountLarge) approvedCountLarge.textContent = stats.approved;
+    if (rentedCountLarge) rentedCountLarge.textContent = stats.rented;
+    if (declinedCountLarge) declinedCountLarge.textContent = stats.declined;
     
     // Update costume availability overview
     updateAvailabilityOverview();
@@ -329,15 +340,6 @@ function getFilteredReservations() {
         filtered = filtered.filter(r => r.status === statusFilter);
     }
     
-    // Date filter
-    const dateFilter = document.getElementById('dateFilter').value;
-    if (dateFilter) {
-        filtered = filtered.filter(r => {
-            const reservationDate = new Date(r.createdat).toISOString().split('T')[0];
-            return reservationDate === dateFilter;
-        });
-    }
-    
     // Customer filter
     const customerFilter = document.getElementById('customerFilter').value.toLowerCase();
     if (customerFilter) {
@@ -474,9 +476,7 @@ function openReservationModal(reservationId) {
     statusElement.className = `badge ${getStatusClass(reservation.status)}`;
     statusElement.textContent = getStatusText(reservation.status);
     
-    // Set dates
-    document.getElementById('modalReservedFrom').value = reservation.reservedfrom || '';
-    document.getElementById('modalReservedTo').value = reservation.reservedto || '';
+    // Set admin notes
     document.getElementById('modalAdminNotes').value = reservation.adminnotes || '';
     
     // Populate costumes list
@@ -627,12 +627,10 @@ async function updateReservationStatus(newStatus) {
             throw new Error('Reservasjon ikke funnet');
         }
         
-        // Get updated dates and notes
-        const reservedFrom = document.getElementById('modalReservedFrom').value;
-        const reservedTo = document.getElementById('modalReservedTo').value;
+        // Get updated admin notes (keep existing date values from the reservation)
         const adminNotes = document.getElementById('modalAdminNotes').value;
         
-        // Prepare update data
+        // Prepare update data (keep existing date values)
         const updateData = {
             sheet: "Sheet2",
             action: 'update',
@@ -643,8 +641,8 @@ async function updateReservationStatus(newStatus) {
                 customeremail: reservation.customeremail || "",
                 notes: reservation.notes || "",
                 adminnotes: adminNotes,
-                reservedfrom: reservedFrom,
-                reservedto: reservedTo,
+                reservedfrom: reservation.reservedfrom || "",
+                reservedto: reservation.reservedto || "",
                 status: newStatus,
                 createdat: reservation.createdat // Keep original creation date
             }
@@ -662,10 +660,8 @@ async function updateReservationStatus(newStatus) {
         const result = await response.text();
         console.log('📥 Update response:', result);
         
-        // Update local data
+        // Update local data (keep existing date values)
         reservation.status = newStatus;
-        reservation.reservedfrom = reservedFrom;
-        reservation.reservedto = reservedTo;
         reservation.adminnotes = adminNotes;
         
         // Refresh display
@@ -738,7 +734,14 @@ function openRemoveCostumeModal(costumeId, reservationId) {
 async function confirmRemoveCostume() {
     if (!window.costumeToRemove) return;
     
+    const confirmBtn = document.getElementById('confirmRemoveCostume');
+    const originalBtnContent = confirmBtn.innerHTML;
+    
     try {
+        // Disable button and show loading
+        confirmBtn.disabled = true;
+        confirmBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i>Fjerner...';
+        
         const { costumeId, reservationId } = window.costumeToRemove;
         
         // Prepare removal data
@@ -783,6 +786,10 @@ async function confirmRemoveCostume() {
     } catch (error) {
         console.error('❌ Error removing costume:', error);
         showError('Feil ved fjerning av kostyme: ' + error.message);
+    } finally {
+        // Restore button state
+        confirmBtn.disabled = false;
+        confirmBtn.innerHTML = originalBtnContent;
     }
     
     window.costumeToRemove = null;
@@ -796,7 +803,6 @@ function filterReservations() {
 // Clear all filters
 function clearFilters() {
     document.getElementById('statusFilter').value = '';
-    document.getElementById('dateFilter').value = '';
     document.getElementById('customerFilter').value = '';
     displayReservations();
 }
@@ -865,7 +871,7 @@ function showError(message) {
 function showToast(message, type) {
     const toast = document.createElement('div');
     toast.className = `alert alert-${type} alert-dismissible fade show position-fixed`;
-    toast.style.cssText = 'top: 20px; right: 20px; z-index: 9999; max-width: 400px;';
+    toast.style.cssText = 'top: 20px; left: 50%; transform: translateX(-50%); z-index: 9999; max-width: 400px;';
     toast.innerHTML = `
         ${message}
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>

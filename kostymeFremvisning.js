@@ -12,8 +12,6 @@ let costumeReservationLinks = [];
 // Load reservation data for availability calculation
 async function loadReservationData() {
   try {
-    console.log("📡 Loading reservation data for availability...");
-    
     const timestamp = Date.now();
     
     // Load reservations
@@ -25,11 +23,6 @@ async function loadReservationData() {
     const linksResponse = await fetch(`kostymer_til_reservering.json?ts=${timestamp}`);
     const linksData = await linksResponse.json();
     costumeReservationLinks = linksData.sheet3 || [];
-    
-    console.log("✅ Reservation data loaded:", {
-      reservations: allReservations.length,
-      links: costumeReservationLinks.length
-    });
     
   } catch (error) {
     console.warn("⚠️ Could not load reservation data:", error);
@@ -108,21 +101,16 @@ function getCostumeAvailability(costumeId) {
 
 async function loadCostumesFromSheety() {
   try {
-    console.log("📡 Fetching costumes from GitHub...");
-
     // const githubUrl = "https://modumrevyen.github.io/kostymer.json"; // caching json as normal
     const githubUrl = "https://modumrevyen.github.io/kostymer.json?ts=" + Date.now(); // no json caching
 
     const res = await fetch(githubUrl);
-
-    console.log("📡 Response status:", res.status);
 
     if (!res.ok) {
       throw new Error(`❌ HTTP error! status: ${res.status}`);
     }
 
     const data = await res.json();
-    console.log("✅ Costume data received:", data);
 
     if (data.sheet1 && Array.isArray(data.sheet1)) {
       // Store all costumes for filtering
@@ -148,7 +136,6 @@ async function loadCostumesFromSheety() {
       // Display costumes
       displayCostumes();
       
-      console.log(`🎭 Displaying ${allCostumes.length} costumes`);
     } else {
       console.warn("⚠️ sheet1 data not found or not an array");
     }
@@ -156,85 +143,6 @@ async function loadCostumesFromSheety() {
   } catch (err) {
     console.error("❌ Feil ved lasting av kostymer:", err.message);
   }
-}
-
-function addCostumeCard(c) {
-  // Check availability and decide if item should be hidden
-  const availability = getCostumeAvailability(c.kostymeid);
-  
-  // Hide items that are fully allocated through approved/rented reservations
-  if (availability.shouldHide) {
-    return; // Don't add this card at all
-  }
-  
-  const imageId = c.imagecurl?.match(/[-\w]{25,}/)?.[0]; // Extract file ID
-  const thumbUrl = imageId
-    ? `https://drive.google.com/thumbnail?id=${imageId}&sz=s600`
-    : "placeholder.png";
-  const fullSizeUrl = imageId
-    ? `https://drive.google.com/thumbnail?id=${imageId}&sz=s4000`
-    : "placeholder.png";
-
-  // Determine card styling based on availability
-  let cardClasses = "card shadow-sm h-100";
-  let cornerIndicator = "";
-  
-  if (availability.hasPendingWhenZero) {
-    cardClasses += " border-warning border-2"; // Orange border when 0 available but pending only
-    cornerIndicator = `
-      <div class="position-absolute top-0 end-0" style="z-index: 10; width: 0; height: 0; border-left: 30px solid transparent; border-top: 30px solid #ffc107;"
-           data-bs-toggle="tooltip" 
-           data-bs-placement="left" 
-           title="Alle reservert">
-        <i class="fas fa-clock position-absolute text-dark" style="top: -25px; right: -25px; font-size: 10px;"></i>
-      </div>`;
-  } else if (!availability.canStillReserve) {
-    cardClasses += " border-danger border-2"; // Red border when truly unavailable
-    cornerIndicator = `
-      <div class="position-absolute top-0 end-0" style="z-index: 10; width: 0; height: 0; border-left: 30px solid transparent; border-top: 30px solid #dc3545;"
-           data-bs-toggle="tooltip" 
-           data-bs-placement="left" 
-           title="Ikke tilgjengelig">
-        <i class="fas fa-times position-absolute text-white" style="top: -25px; right: -25px; font-size: 10px;"></i>
-      </div>`;
-  }
-
-  const col = document.createElement("div");
-  col.className = "col-sm-6 col-md-4 col-lg-3 mb-4";
-
-  col.innerHTML = `
-    <div class="${cardClasses}" style="position: relative;">
-      <div class="image-container" style="position: relative; overflow: hidden;">
-        <img src="${thumbUrl}" alt="${c.title}" class="card-img-top costume-image"
-          data-bs-toggle="modal" data-bs-target="#imageModal"
-          data-img="${fullSizeUrl}" style="cursor:pointer; transition: transform 0.3s ease;">
-        ${cornerIndicator}
-      </div>
-      <div class="card-body d-flex flex-column">
-        <div class="d-flex justify-content-between align-items-start mb-2">
-          <h5 class="card-title mb-0 flex-grow-1">${c.title}</h5>
-          <button class="btn btn-primary btn-sm add-to-cart-btn ms-2" 
-                  data-costume-id="${c.kostymeid}" 
-                  data-costume-title="${c.title}"
-                  data-costume-subcategory="${c.subcategory || ''}"
-                  data-costume-size="${c.size || ''}"
-                  data-costume-description="${c.description || ''}"
-                  data-costume-amount="${c.amount || 1}"
-                  data-costume-image="${thumbUrl}"
-                  ${!availability.canStillReserve ? 'disabled' : ''}>
-            <i class="fas fa-plus"></i>
-            <span class="d-none d-sm-inline ms-1">Legg til</span>
-          </button>
-        </div>
-        <p class="mb-1"><strong>Underkategori:</strong> ${c.subcategory || 'Ikke angitt'}</p>
-        <p class="mb-1"><strong>Størrelse:</strong> ${c.size || 'Ikke angitt'}</p>
-        <p class="mb-1"><strong>Antall:</strong> ${availability.available}/${availability.total}</p>
-        <p class="mb-1"><strong>Beskrivelse:</strong> ${c.description && c.description.trim() ? c.description : 'Ingen beskrivelse'}</p>
-      </div>
-    </div>
-  `;
-
-  container.appendChild(col);
 }
 
 // Function to populate filter dropdowns
@@ -280,18 +188,24 @@ function updateSubcategoryFilter(selectedTitle) {
     return;
   }
 
-  // Get unique subcategories for the selected title from available costumes only
+  // Get unique subcategories for the selected title from non-deleted costumes only
+  const costumesForTitle = allCostumes.filter(c => !c.deleted && c.title === selectedTitle);
+  
   const uniqueSubcategories = [...new Set(
-    allCostumes
-      .filter(c => {
-        if (c.deleted || c.title !== selectedTitle) return false;
-        if (!c.subcategory || typeof c.subcategory !== 'string' || c.subcategory.trim() === '') return false;
-        
-        // Check if this costume is available (not fully allocated)
-        const availability = getCostumeAvailability(c.kostymeid);
-        return !availability.shouldHide; // Only include if costume should not be hidden
-      })
+    costumesForTitle
       .map(c => c.subcategory)
+      .filter(sub => sub !== null && sub !== undefined && sub !== '') // Filter out null/undefined/empty
+      .map(sub => {
+        // Convert everything to string and trim - handle numbers properly
+        if (typeof sub === 'number') {
+          return String(sub);
+        } else if (typeof sub === 'string') {
+          return sub.trim();
+        } else {
+          return String(sub).trim();
+        }
+      })
+      .filter(sub => sub !== '') // Remove empty strings after conversion
   )].sort();
 
   if (uniqueSubcategories.length > 0) {
@@ -318,8 +232,34 @@ function applyFilters() {
   const selectedSubcategory = subcategoryFilter.value;
 
   filteredCostumes = allCostumes.filter(costume => {
+    // Skip deleted costumes
+    if (costume.deleted) return false;
+    
     const titleMatch = !selectedTitle || costume.title === selectedTitle;
-    const subcategoryMatch = !selectedSubcategory || costume.subcategory === selectedSubcategory;
+    
+    // Subcategory matching logic
+    let subcategoryMatch = true;
+    
+    if (selectedSubcategory && selectedSubcategory.trim() !== '') {
+      // If a specific subcategory is selected, match exactly
+      const costumeSubcategory = costume.subcategory;
+      if (costumeSubcategory === null || costumeSubcategory === undefined || costumeSubcategory === '') {
+        subcategoryMatch = false;
+      } else {
+        // Convert both values to strings for comparison - handle numbers
+        let normalizedCostumeSubcategory;
+        if (typeof costumeSubcategory === 'number') {
+          normalizedCostumeSubcategory = String(costumeSubcategory);
+        } else if (typeof costumeSubcategory === 'string') {
+          normalizedCostumeSubcategory = costumeSubcategory.trim();
+        } else {
+          normalizedCostumeSubcategory = String(costumeSubcategory).trim();
+        }
+        subcategoryMatch = normalizedCostumeSubcategory === selectedSubcategory;
+      }
+    }
+    // If no subcategory is selected or it's empty, show ALL items in the category
+    
     return titleMatch && subcategoryMatch;
   });
 
@@ -332,7 +272,82 @@ function displayCostumes() {
   container.innerHTML = '';
   
   filteredCostumes.forEach(c => {
-    addCostumeCard(c);
+    // Check availability and decide if item should be hidden
+    const availability = getCostumeAvailability(c.kostymeid);
+    
+    // Hide items that are fully allocated through approved/rented reservations
+    if (availability.shouldHide) {
+      return; // Don't add this card at all
+    }
+    
+    const imageId = c.imagecurl?.match(/[-\w]{25,}/)?.[0]; // Extract file ID
+    const thumbUrl = imageId
+      ? `https://drive.google.com/thumbnail?id=${imageId}&sz=s600`
+      : "placeholder.png";
+    const fullSizeUrl = imageId
+      ? `https://drive.google.com/thumbnail?id=${imageId}&sz=s4000`
+      : "placeholder.png";
+
+    // Determine card styling based on availability
+    let cardClasses = "card shadow-sm h-100";
+    let cornerIndicator = "";
+    
+    if (availability.hasPendingWhenZero) {
+      cardClasses += " border-warning border-2"; // Orange border when 0 available but pending only
+      cornerIndicator = `
+        <div class="position-absolute top-0 end-0" style="z-index: 10; width: 0; height: 0; border-left: 30px solid transparent; border-top: 30px solid #ffc107;"
+             data-bs-toggle="tooltip" 
+             data-bs-placement="left" 
+             title="Alle reservert">
+          <i class="fas fa-clock position-absolute text-dark" style="top: -25px; right: -25px; font-size: 10px;"></i>
+        </div>`;
+    } else if (!availability.canStillReserve) {
+      cardClasses += " border-danger border-2"; // Red border when truly unavailable
+      cornerIndicator = `
+        <div class="position-absolute top-0 end-0" style="z-index: 10; width: 0; height: 0; border-left: 30px solid transparent; border-top: 30px solid #dc3545;"
+             data-bs-toggle="tooltip" 
+             data-bs-placement="left" 
+             title="Ikke tilgjengelig">
+          <i class="fas fa-times position-absolute text-white" style="top: -25px; right: -25px; font-size: 10px;"></i>
+        </div>`;
+    }
+
+    const col = document.createElement("div");
+    col.className = "col-sm-6 col-md-4 col-lg-3 mb-4";
+
+    col.innerHTML = `
+      <div class="${cardClasses}" style="position: relative;">
+        <div class="image-container" style="position: relative; overflow: hidden;">
+          <img src="${thumbUrl}" alt="${c.title}" class="card-img-top costume-image"
+            data-bs-toggle="modal" data-bs-target="#imageModal"
+            data-img="${fullSizeUrl}" style="cursor:pointer; transition: transform 0.3s ease;">
+          ${cornerIndicator}
+        </div>
+        <div class="card-body d-flex flex-column">
+          <div class="d-flex justify-content-between align-items-start mb-2">
+            <h5 class="card-title mb-0 flex-grow-1">${c.title}</h5>
+            <button class="btn btn-primary btn-sm add-to-cart-btn ms-2" 
+                    data-costume-id="${c.kostymeid}" 
+                    data-costume-title="${c.title}"
+                    data-costume-subcategory="${c.subcategory || ''}"
+                    data-costume-size="${c.size || ''}"
+                    data-costume-description="${c.description || ''}"
+                    data-costume-amount="${c.amount || 1}"
+                    data-costume-image="${thumbUrl}"
+                    ${!availability.canStillReserve ? 'disabled' : ''}>
+              <i class="fas fa-plus"></i>
+              <span class="d-none d-sm-inline ms-1">Legg til</span>
+            </button>
+          </div>
+          <p class="mb-1"><strong>Underkategori:</strong> ${c.subcategory || 'Ikke angitt'}</p>
+          <p class="mb-1"><strong>Størrelse:</strong> ${c.size || 'Ikke angitt'}</p>
+          <p class="mb-1"><strong>Antall:</strong> ${availability.available}/${availability.total}</p>
+          <p class="mb-1"><strong>Beskrivelse:</strong> ${c.description && typeof c.description === 'string' && c.description.trim() ? c.description : 'Ingen beskrivelse'}</p>
+        </div>
+      </div>
+    `;
+
+    container.appendChild(col);
   });
   
   // Initialize tooltips for corner indicators

@@ -495,6 +495,33 @@ body.checking-auth {
   opacity: 1;
 }
 
+/* Reservation Admin specific styles */
+/* Collapse icon rotation */
+.collapse-icon {
+  transition: transform 0.2s ease;
+}
+
+.btn[aria-expanded="true"] .collapse-icon {
+  transform: rotate(180deg);
+}
+
+/* Costume list expansion */
+.costume-list-compact {
+  max-height: 180px !important;
+}
+
+.costume-list-expanded {
+  max-height: 400px !important;
+}
+
+#expandCostumesBtn i {
+  transition: transform 0.2s ease;
+}
+
+.costume-list-expanded + .mt-3 #expandCostumesBtn i {
+  transform: rotate(45deg);
+}
+
 .costume-delete-card .delete-costume-btn:hover {
   transform: scale(1.1);
 }
@@ -528,9 +555,80 @@ header {
   }
 }
 
+/* Card layout consistency fixes */
+/* Keep 2 cards per row from 768px-991px */
+@media (min-width: 768px) and (max-width: 991px) {
+    .col-md-4 {
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+    }
+}
+
+/* 3 cards per row from 992px-1199px */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .col-lg-3 {
+        flex: 0 0 33.333333% !important;
+        max-width: 33.333333% !important;
+    }
+}
+
+/* 4 cards per row for screens 1200px+ */
+@media (min-width: 1200px) {
+    .col-lg-3 {
+        flex: 0 0 25% !important;
+        max-width: 25% !important;
+    }
+}
+
 /* Remove any conflicting styles for mobile */
 @media (max-width: 768px) {
   .main-content h1 {
     margin-top: 1rem !important;
+  }
+}
+
+/* Mobile optimization for topbar buttons - hide text below 520px */
+@media (max-width: 520px) {
+  /* Hide button text but keep icons */
+  #adminPanelBtn {
+    font-size: 0 !important;
+  }
+  
+  #logoutBtn {
+    font-size: 0 !important;
+  }
+  
+  #cartBtn {
+    font-size: 0 !important;
+  }
+  
+  /* Keep icons visible by restoring font-size for icon elements */
+  #adminPanelBtn i,
+  #logoutBtn i,
+  #cartBtn i {
+    font-size: 0.875rem !important;
+  }
+  
+  /* Keep cart badge visible and properly positioned */
+  #cartBtn .badge:not(.d-none) {
+    font-size: 0.75rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 1rem !important;
+    height: 1rem !important;
+    line-height: 1 !important;
+  }
+  
+  /* Ensure hidden badge stays hidden */
+  #cartBtn .badge.d-none {
+    display: none !important;
+  }
+  
+  /* Reduce button padding for smaller size */
+  #adminPanelBtn,
+  #logoutBtn,
+  #cartBtn {
+    padding: 0.375rem 0.5rem !important;
   }
 }

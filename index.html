@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Velkommen | Modum Revyen</title>
+  <title>Velkommen | Modumrevyen</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -20,10 +21,16 @@
     <!-- Header with navigation buttons -->
     <header class="bg-white shadow-sm">
         <div class="container-fluid">
-            <div class="d-flex justify-content-end align-items-center py-2">
+            <div class="d-flex justify-content-between align-items-center py-2">
+                <div class="d-flex align-items-center gap-3">
+                    <h5 class="mb-0 text-dark">🎭 Modumrevyen</h5>
+                    <button class="btn btn-outline-info btn-sm" id="helpBtn" data-bs-toggle="tooltip" title="Hjelp og instruksjoner">
+                        <i class="fas fa-info-circle"></i>
+                    </button>
+                </div>
                 <div class="d-flex gap-2">
                     <button class="btn btn-outline-primary btn-sm d-none" id="adminPanelBtn">
-                        <i class="fas fa-tools me-1"></i>Admin Panel
+                        <i class="fas fa-tools me-1"></i>Admin
                     </button>
                     <button class="btn btn-outline-danger btn-sm" id="logoutBtn">
                         <i class="fas fa-sign-out-alt me-1"></i>Logg ut
@@ -42,14 +49,9 @@
 
     <!-- Main content -->
     <main class="main-content">
-        <h1 class="text-center mb-4 mt-4">🎭 Modum Revyen's Kostymer</h1>
-        <!-- Legg til informasjon om at denne nettsiden er under utvikling og reservering av kostymer fungerer ikke ennå -->
-        <div class="alert alert-warning alert-dismissible fade show text-center mb-4 mx-3" role="alert">
-            <strong>⚠️ Merk:</strong> Denne nettsiden er under utvikling. Reservasjon av kostymer fungerer ikke ennå.
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Lukk"></button>
-        </div>
+        <h1 class="text-center mb-2 mt-4">🎭 Modumrevyen's Kostymer</h1>
 
-    <div class="container py-4">
+    <div class="container py-2">
         <!-- Filter Controls -->
         <div class="mb-4">
             <div class="row g-2">
@@ -167,7 +169,7 @@
                         </div>
                         <div class="alert alert-info">
                             <i class="fas fa-info-circle me-2"></i>
-                            <strong>Merk:</strong> Dette er foreløpig en demo. Reservasjoner blir ikke faktisk lagret ennå.
+                            <strong>Merk:</strong> Det tar litt tid å bekrefte reservasjonen, vær tålmodig etter å ha trykket på "Bekreft reservasjon".
                         </div>
                     </form>
                 </div>
@@ -184,36 +186,71 @@
         </div>
     </div>
 
+    <!-- Help Modal -->
+    <div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="helpModalLabel">
+                        <i class="fas fa-info-circle me-2"></i>
+                        Hvordan bruke kostymesystemet
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h6><i class="fas fa-search me-2 text-primary"></i>Søke etter kostymer</h6>
+                            <ul class="mb-4">
+                                <li>Bruk <strong>kategori-filteret</strong> for å velge type kostyme (f.eks. Sko, Hatter, etc.)</li>
+                                <li>Velg <strong>underkategori</strong> for mer spesifikke søk</li>
+                                <li>Klikk <strong>"Fjern alle filtre"</strong> for å se alle tilgjengelige kostymer</li>
+                            </ul>
+
+                            <h6><i class="fas fa-plus-circle me-2 text-success"></i>Legge til kostymer i handlekurven</h6>
+                            <ul class="mb-4">
+                                <li>Klikk på <strong>"+ Legg til"</strong> knappen på kostymene du ønsker</li>
+                                <li>Grønne kostymer er tilgjengelige for reservasjon</li>
+                                <li>Kostymer med gul kant har kun ventende reservasjoner</li>
+                                <li>Kostymer med rød kant er ikke tilgjengelige</li>
+                            </ul>
+
+                            <h6><i class="fas fa-shopping-cart me-2 text-info"></i>Handlekurv og reservasjon</h6>
+                            <ul class="mb-4">
+                                <li>Klikk på <strong>"Handlekurv"</strong> for å se valgte kostymer</li>
+                                <li>Du kan fjerne enkelt kostymer eller tømme hele kurven</li>
+                                <li>Klikk <strong>"Gå til reservasjon"</strong> når du er klar</li>
+                                <li>Fyll ut kontaktinformasjon og send inn reservasjonen</li>
+                            </ul>
+
+                            <h6><i class="fas fa-images me-2 text-warning"></i>Se bilder</h6>
+                            <ul class="mb-4">
+                                <li>Klikk på kostymebilde for å se det i full størrelse</li>
+                                <li>Bruk musescroll eller knapper for å zoome inn/ut</li>
+                            </ul>
+
+                            <div class="alert alert-info">
+                                <i class="fas fa-exclamation-triangle me-2"></i>
+                                <strong>Viktig:</strong> Dette systemet er under utvikling. Reservasjoner blir foreløpig ikke lagret i systemet. 
+                                Ta kontakt med administratoren for å bekrefte din reservasjon.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                        <i class="fas fa-check me-1"></i>Forstått
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
   <script src="auth.js"></script>
   <script src="cart.js"></script>
   <script src="kundeReservasjoner.js"></script>
-  <script>
-      // Check authentication immediately and show content only if authenticated
-      if (!auth.requireMemberAuth()) {
-          // Will redirect to login.html if not authenticated
-          // Keep body hidden during redirect
-      } else {
-          // Authentication successful - show the page content
-          document.body.classList.remove('checking-auth');
-          
-          // Check if user is also an admin and show admin panel button
-          if (auth.isAdminAuthenticated()) {
-              document.getElementById('adminPanelBtn').classList.remove('d-none');
-              document.getElementById('adminPanelBtn').addEventListener('click', function() {
-                  window.location.href = 'admin.html';
-              });
-          }
-          
-          // Setup logout functionality
-          document.getElementById('logoutBtn').addEventListener('click', function() {
-              if (confirm('Er du sikker på at du vil logge ut?')) {
-                  auth.logoutMember();
-                  window.location.href = 'velkommen.html';
-              }
-          });
-      }
-  </script>
+  <script src="indexMain.js"></script>
   <script src="kostymeFremvisning.js"></script>
   <script src="kostymeZoom.js"></script>
 
