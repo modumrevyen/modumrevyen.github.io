@@ -108,16 +108,20 @@ async function handleReservationSubmit(event) {
       cart.clearCartExternal();
     }
     
+    // Keep button disabled after successful reservation - will be re-enabled when modal closes
+    confirmBtn.innerHTML = '<i class="fas fa-check-circle me-1"></i>Reservasjon sendt';
+    
     // Note: Modal will stay open for customer to read the confirmation message
     
   } catch (error) {
     console.error('❌ Reservation error:', error);
     showReservationError(error.message);
-  } finally {
-    // Re-enable button
+    
+    // Re-enable button only on error
     confirmBtn.disabled = false;
     confirmBtn.innerHTML = originalBtnText;
   }
+  // Note: Button will be re-enabled when modal is closed (see modal event handler below)
 }
 
 // Show success message
@@ -196,6 +200,13 @@ document.addEventListener('DOMContentLoaded', function() {
       const form = document.getElementById('reservationForm');
       if (form) {
         form.reset();
+      }
+      
+      // Re-enable the confirmation button and restore original text
+      const confirmBtn = document.getElementById('confirmReservationBtn');
+      if (confirmBtn) {
+        confirmBtn.disabled = false;
+        confirmBtn.innerHTML = '<i class="fas fa-check me-1"></i>Bekreft reservasjon';
       }
     });
   }
