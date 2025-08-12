@@ -83,6 +83,18 @@
       "reservedto": "",
       "status": "pending",
       "createdat": "04.08.2025"
+    },
+    {
+      "reservasjonid": "r_1754995821674",
+      "customername": "Tura",
+      "customeremail": "Tura@tura.no",
+      "customerphone": 40506070,
+      "notes": "her trenger jeg stuff",
+      "adminnotes": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "status": "pending",
+      "createdat": "12.08.2025"
     }
   ]
 }
