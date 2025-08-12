@@ -45,7 +45,7 @@
   </nav>
 
   <!-- Main content -->
-  <div class="flex-grow-1 px-3 py-3 content-area">
+  <div class="flex-grow-1 px-3 py-2 content-area">
     <h1><i class="fas fa-calendar-check me-2"></i>Reservasjonsadministrasjon</h1>
     
     <!-- Stats Overview -->
@@ -289,6 +289,67 @@
 </div>
 
 <script src="auth.js"></script>
+
+
+
+
+
+
+
+
+                    costumesList.classList.remove('costume-list-expanded');
+                    costumesList.classList.add('costume-list-compact');
+                    expandBtn.innerHTML = '<i class="fas fa-expand-arrows-alt me-1"></i>Utvid';
+                    expandBtn.title = 'Utvid kostymeoversikt';
+                } else {
+                    // Expand
+                    costumesList.classList.remove('costume-list-compact');
+                    costumesList.classList.add('costume-list-expanded');
+                    expandBtn.innerHTML = '<i class="fas fa-compress-arrows-alt me-1"></i>Komprimer';
+                    expandBtn.title = 'Komprimer kostymeoversikt';
+                }
+            });
+        }
+        
+        // Setup stats card click functionality
+        const statsCards = document.querySelectorAll('.stats-card');
+        const statusFilter = document.getElementById('statusFilter');
+        
+        statsCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const status = this.getAttribute('data-status');
+                
+                // Update the status filter dropdown
+                if (statusFilter) {
+                    statusFilter.value = status;
+                    
+                    // Trigger the change event to apply the filter
+                    statusFilter.dispatchEvent(new Event('change'));
+                    
+                    // Visual feedback - briefly highlight the card
+                    this.style.transform = 'scale(0.98)';
+                    this.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
+                    
+                    setTimeout(() => {
+                        this.style.transform = '';
+                        this.style.boxShadow = '';
+                    }, 150);
+                }
+            });
+            
+            // Add hover effect
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px)';
+                this.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+                this.style.boxShadow = '';
+            });
+        });
+    });
+</script>
 <script src="adminPanel.js"></script>
 <script src="kostymeReservasjoner.js"></script>
 <script src="reservasjoner.js"></script>

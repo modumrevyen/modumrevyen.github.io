@@ -1,10 +1,7 @@
 // reservasjoner.js
 // Handle reservation functionality for cart items
 
-// Google Apps Script URL and proxy setup (same as registration)
-const googleurl = 'https://script.google.com/macros/s/AKfycbz0z5LgJHF8bzjz9nofyBT2hc0XEke_-QVxlRWSzIVr-MKlktakP19krYjIIfNIDKUO9g/exec';
-const proxy = "https://modumrevyen.sayver.net/proxy.php";
-const proxiedUrl = `${proxy}?url=${encodeURIComponent(googleurl)}`;
+// Note: Google Apps Script URL and proxy are already defined in kostymeReservasjoner.js
 
 // Initialize reservation functionality when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
@@ -190,6 +187,94 @@ function showReservationError(errorMessage) {
 function generateReservationId() {
   return `r_${Date.now()}_${Math.random().toString(36).substr(2, 5)}`;
 }
+
+// Admin-specific functionality for reservasjoner.html
+// Check authentication immediately and show content only if authenticated
+if (typeof auth !== 'undefined') {
+  if (!auth.requireAdminAuth()) {
+    // Will redirect to admin-login.html if not authenticated
+    // Keep body hidden during redirect
+  } else {
+    // Authentication successful - show the page content
+    document.body.classList.remove('checking-auth');
+    
+    // Setup logout functionality
+    const logoutBtn = document.getElementById('logoutBtn');
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', function() {
+        if (confirm('Er du sikker på at du vil logge ut?')) {
+          auth.logoutAdmin();
+          window.location.href = 'velkommen.html';
+        }
+      });
+    }
+  }
+}
+
+// Setup costume list expand/collapse functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const expandBtn = document.getElementById('expandCostumesBtn');
+  const costumesList = document.getElementById('modalCostumesList');
+  
+  if (expandBtn && costumesList) {
+    expandBtn.addEventListener('click', function() {
+      const isCompact = costumesList.classList.contains('costume-list-compact');
+      
+      if (isCompact) {
+        // Expand
+        costumesList.classList.remove('costume-list-compact');
+        costumesList.classList.add('costume-list-expanded');
+        expandBtn.innerHTML = '<i class="fas fa-compress-arrows-alt me-1"></i>Komprimer';
+        expandBtn.title = 'Komprimer kostymeoversikt';
+      } else {
+        // Compact
+        costumesList.classList.remove('costume-list-expanded');
+        costumesList.classList.add('costume-list-compact');
+        expandBtn.innerHTML = '<i class="fas fa-expand-arrows-alt me-1"></i>Utvid';
+        expandBtn.title = 'Utvid kostymeoversikt';
+      }
+    });
+  }
+
+  // Setup stats cards with click-to-filter functionality
+  const statsCards = document.querySelectorAll('.stats-card');
+  
+  if (statsCards.length > 0) {
+    statsCards.forEach(card => {
+      card.addEventListener('click', function() {
+        const status = this.dataset.status;
+        const statusFilter = document.getElementById('statusFilter');
+        
+        if (statusFilter) {
+          // Set the filter to the clicked status
+          statusFilter.value = status;
+          
+          // Trigger the filter function if it exists
+          if (typeof filterReservations === 'function') {
+            filterReservations();
+          }
+          
+          // Visual feedback - briefly highlight the card
+          this.style.transform = 'scale(0.95)';
+          setTimeout(() => {
+            this.style.transform = '';
+          }, 150);
+        }
+      });
+      
+      // Add hover effects
+      card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-2px)';
+        this.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
+      });
+      
+      card.addEventListener('mouseleave', function() {
+        this.style.transform = '';
+        this.style.boxShadow = '';
+      });
+    });
+  }
+});
 
 // Export for potential use by other modules
 if (typeof module !== 'undefined' && module.exports) {
