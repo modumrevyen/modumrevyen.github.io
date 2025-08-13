@@ -86,7 +86,8 @@ async function handleReservationSubmit(event) {
 
     const payload = {
       sheet: "Sheet3",
-      Sheet3: linkDataArray
+      Sheet3: linkDataArray,
+      sendEmailReceived: true
     };
 
     console.log("🔗 Creating batched costume links in Sheet3:", payload);
