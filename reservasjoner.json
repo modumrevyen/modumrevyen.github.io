@@ -23,6 +23,18 @@
       "reservedto": "",
       "status": "pending",
       "createdat": "13.08.2025 - 03:09"
+    },
+    {
+      "reservasjonid": "r_1755085145505",
+      "customername": "May-Brit",
+      "customeremail": "maya-finn@hotmail.com",
+      "customerphone": 92822695,
+      "notes": "",
+      "adminnotes": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "status": "pending",
+      "createdat": "13.08.2025 - 13:39"
     }
   ]
 }
