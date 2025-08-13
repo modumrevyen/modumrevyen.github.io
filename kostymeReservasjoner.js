@@ -6,6 +6,24 @@ const googleurl = 'https://script.google.com/macros/s/AKfycbz0z5LgJHF8bzjz9nofyB
 const proxy = "https://modumrevyen.sayver.net/proxy.php";
 const proxiedUrl = `${proxy}?url=${encodeURIComponent(googleurl)}`;
 
+// Helper function to parse Norwegian date format "DD.MM.YYYY - HH:MM"
+function parseNorwegianDate(dateString) {
+    if (!dateString || typeof dateString !== 'string') {
+        return new Date(); // Return current date if invalid
+    }
+    
+    // Handle the format "DD.MM.YYYY - HH:MM"
+    const match = dateString.match(/^(\d{2})\.(\d{2})\.(\d{4})\s*-\s*(\d{2}):(\d{2})$/);
+    if (match) {
+        const [, day, month, year, hour, minute] = match;
+        return new Date(parseInt(year), parseInt(month) - 1, parseInt(day), parseInt(hour), parseInt(minute));
+    }
+    
+    // Fallback: try to parse as regular date
+    const fallbackDate = new Date(dateString);
+    return isNaN(fallbackDate.getTime()) ? new Date() : fallbackDate;
+}
+
 // Global variables
 let allReservations = [];
 let allCostumes = [];
@@ -266,11 +284,14 @@ function displayReservations() {
     const reservationsHTML = filteredReservations.map(reservation => {
         const costumes = getCostumesForReservation(reservation.reservasjonid);
         const statusBadge = getStatusBadge(reservation.status);
-        const createdDate = new Date(reservation.createdat).toLocaleDateString('no-NO', {
+        const createdDate = parseNorwegianDate(reservation.createdat).toLocaleString('no-NO', {
             day: '2-digit',
             month: '2-digit',
-            year: 'numeric'
-        });
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false
+        }).replace(',', ' -');
         
         return `
             <div class="card mb-3">
@@ -352,8 +373,8 @@ function getFilteredReservations() {
     
     // Sort by creation date - pending reservations show oldest first, others show newest first
     filtered.sort((a, b) => {
-        const dateA = new Date(a.createdat);
-        const dateB = new Date(b.createdat);
+        const dateA = parseNorwegianDate(a.createdat);
+        const dateB = parseNorwegianDate(b.createdat);
         
         // If filtering by pending status only, or if both are pending, show oldest first
         const statusFilter = document.getElementById('statusFilter').value;
@@ -464,11 +485,14 @@ function openReservationModal(reservationId) {
     document.getElementById('modalCustomerName').textContent = reservation.customername;
     document.getElementById('modalCustomerPhone').textContent = reservation.customerphone;
     document.getElementById('modalCustomerEmail').textContent = reservation.customeremail || 'Ikke oppgitt';
-    document.getElementById('modalCreatedAt').textContent = new Date(reservation.createdat).toLocaleDateString('no-NO', {
+    document.getElementById('modalCreatedAt').textContent = parseNorwegianDate(reservation.createdat).toLocaleString('no-NO', {
         day: '2-digit',
         month: '2-digit',
-        year: 'numeric'
-    });
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+    }).replace(',', ' -');
     document.getElementById('modalNotes').textContent = reservation.notes || 'Ingen kommentarer';
     
     // Set status badge

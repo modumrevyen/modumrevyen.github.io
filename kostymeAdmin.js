@@ -1,4 +1,23 @@
-// kostymeAdmin.js - Admin Dashboard Functionality
+// kostymeAdmin.js
+// Admin dashboard functionality
+
+// Helper function to parse Norwegian date format "DD.MM.YYYY - HH:MM"
+function parseNorwegianDate(dateString) {
+    if (!dateString || typeof dateString !== 'string') {
+        return new Date(); // Return current date if invalid
+    }
+    
+    // Handle the format "DD.MM.YYYY - HH:MM"
+    const match = dateString.match(/^(\d{2})\.(\d{2})\.(\d{4})\s*-\s*(\d{2}):(\d{2})$/);
+    if (match) {
+        const [, day, month, year, hour, minute] = match;
+        return new Date(parseInt(year), parseInt(month) - 1, parseInt(day), parseInt(hour), parseInt(minute));
+    }
+    
+    // Fallback: try to parse as regular date
+    const fallbackDate = new Date(dateString);
+    return isNaN(fallbackDate.getTime()) ? new Date() : fallbackDate;
+}
 
 // Check authentication immediately and show content only if authenticated
 if (!auth.requireAdminAuth()) {
@@ -118,7 +137,7 @@ function displayRecentReservations(recentReservations) {
     const html = recentReservations.map(reservation => {
         const statusClass = getStatusClass(reservation.status);
         const statusText = getStatusText(reservation.status);
-        const createdDate = new Date(reservation.createdat).toLocaleDateString('no-NO', {
+        const createdDate = parseNorwegianDate(reservation.createdat).toLocaleDateString('no-NO', {
             day: '2-digit',
             month: '2-digit',
             year: 'numeric'
