@@ -5118,7 +5118,7 @@
       "reservedfrom": "",
       "reservedto": "",
       "returned": false,
-      "deleted": false
+      "deleted": true
     }
   ]
 }
