@@ -31,7 +31,7 @@ kostymeliste.addCostumeCard = function({ title, subcategory, size, description, 
   card.className = "col";
 
     card.innerHTML = `
-    <div class="card small-costume-card shadow-sm"
+    <div class="card stats-card small-costume-card shadow-sm"
         data-bs-toggle="modal"
         data-bs-target="#imageModal"
         data-img="${fullImageUrl}">
@@ -79,7 +79,7 @@ kostymeliste.addEditableCostumeCard = function({ kostymeid, title, subcategory, 
   card.className = "col";
 
     card.innerHTML = `
-    <div class="card small-costume-card shadow-sm costume-edit-card" 
+    <div class="card stats-card small-costume-card shadow-sm costume-edit-card" 
          data-kostyme-id="${kostymeid}"
          data-title="${title || ''}"
          data-subcategory="${subcategory || ''}"
@@ -136,7 +136,7 @@ kostymeliste.addDeletableCostumeCard = function({ kostymeid, title, subcategory,
   card.className = "col";
 
     card.innerHTML = `
-    <div class="card small-costume-card shadow-sm costume-delete-card" 
+    <div class="card stats-card small-costume-card shadow-sm costume-delete-card" 
          data-kostyme-id="${kostymeid}"
          data-title="${title || ''}"
          data-subcategory="${subcategory || ''}"

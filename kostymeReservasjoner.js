@@ -294,7 +294,7 @@ function displayReservations() {
         }).replace(',', ' -');
         
         return `
-            <div class="card mb-3">
+            <div class="card mb-3 reservation-card" onclick="openReservationModal('${reservation.reservasjonid}')" style="cursor: pointer;">
                 <div class="card-header">
                     <div class="row align-items-center">
                         <div class="col-md-6">
@@ -338,7 +338,7 @@ function displayReservations() {
                             ` : ''}
                         </div>
                         <div class="col-md-4 text-md-end">
-                            <button class="btn btn-primary btn-sm" onclick="openReservationModal('${reservation.reservasjonid}')">
+                            <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openReservationModal('${reservation.reservasjonid}')">
                                 <i class="fas fa-edit me-1"></i>Administrer
                             </button>
                         </div>
