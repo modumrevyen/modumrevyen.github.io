@@ -258,10 +258,10 @@
       "customeremail": "FakeXn@sayver.net",
       "customerphone": 41257038,
       "notes": "dadsadasdasd",
-      "adminnotes": "",
+      "adminnotes": "Denne må bli hentet",
       "reservedfrom": "",
       "reservedto": "",
-      "status": "approved",
+      "status": "rented",
       "createdat": "13.08.2025 - 02:50"
     }
   ]
