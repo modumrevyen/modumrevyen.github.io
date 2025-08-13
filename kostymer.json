@@ -5099,6 +5099,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1755049321037",
+      "title": "test6",
+      "subcategory": "te",
+      "size": 33,
+      "amount": 13,
+      "description": 33,
+      "imagecname": "compressed_1755049320959_modumrevyen.png",
+      "imagecurl": "https://drive.google.com/file/d/1BI3mXCA4qwsFvYWDAuSiBUgb0rxMQ1F7/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "13.08.2025",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
