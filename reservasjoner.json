@@ -11,6 +11,18 @@
       "reservedto": "",
       "status": "pending",
       "createdat": "04.02.2026 - 15:14"
+    },
+    {
+      "reservasjonid": "r_1770218478380",
+      "customername": "Kirsti Haugan Laupet",
+      "customeremail": "",
+      "customerphone": 93429015,
+      "notes": "",
+      "adminnotes": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "status": "pending",
+      "createdat": "04.02.2026 - 16:21"
     }
   ]
 }
