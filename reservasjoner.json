@@ -35,6 +35,18 @@
       "reservedto": "",
       "status": "pending",
       "createdat": "04.02.2026 - 21:22"
+    },
+    {
+      "reservasjonid": "r_1770236867159",
+      "customername": "Lise Helen Hansen",
+      "customeremail": "lissa.jahr.lh@gmail.com",
+      "customerphone": "907 32 603",
+      "notes": "",
+      "adminnotes": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "status": "pending",
+      "createdat": "04.02.2026 - 21:27"
     }
   ]
 }
