@@ -23,6 +23,18 @@
       "reservedto": "",
       "status": "pending",
       "createdat": "04.02.2026 - 16:21"
+    },
+    {
+      "reservasjonid": "r_1770236579445",
+      "customername": "Runar Wam",
+      "customeremail": "runar@herreavdelingen.no",
+      "customerphone": 48071911,
+      "notes": "",
+      "adminnotes": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "status": "pending",
+      "createdat": "04.02.2026 - 21:22"
     }
   ]
 }
