@@ -1,16 +1,16 @@
 {
   "sheet2": [
     {
-      "reservasjonid": "r_1755115979316",
-      "customername": "test",
-      "customeremail": "martin@sayver.net",
-      "customerphone": 12345678,
-      "notes": "test reservasjon",
+      "reservasjonid": "r_1770214447297",
+      "customername": "Anne Buttingsrud Aslaksen",
+      "customeremail": "anneaslaksen123@gmail.com",
+      "customerphone": 48461046,
+      "notes": "",
       "adminnotes": "",
       "reservedfrom": "",
       "reservedto": "",
-      "status": "declined",
-      "createdat": "13.08.2025 - 22:12"
+      "status": "pending",
+      "createdat": "04.02.2026 - 15:14"
     }
   ]
 }
