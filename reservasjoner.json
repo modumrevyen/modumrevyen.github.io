@@ -47,6 +47,18 @@
       "reservedto": "",
       "status": "approved",
       "createdat": "04.02.2026 - 21:27"
+    },
+    {
+      "reservasjonid": "r_1770295608151",
+      "customername": "May-Brit Johansen Finnerud",
+      "customeremail": "maya-finn@hotmail.com",
+      "customerphone": 92822695,
+      "notes": "",
+      "adminnotes": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "status": "pending",
+      "createdat": "05.02.2026 - 13:46"
     }
   ]
 }
