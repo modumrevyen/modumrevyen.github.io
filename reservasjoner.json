@@ -95,6 +95,18 @@
       "reservedto": "",
       "status": "pending",
       "createdat": "05.02.2026 - 18:39"
+    },
+    {
+      "reservasjonid": "r_1770323977756",
+      "customername": "Mayvelin Solheim",
+      "customeremail": "mayvelin@gmail.com",
+      "customerphone": 41184880,
+      "notes": "",
+      "adminnotes": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "status": "pending",
+      "createdat": "05.02.2026 - 21:39"
     }
   ]
 }
