@@ -71,6 +71,18 @@
       "reservedto": "",
       "status": "pending",
       "createdat": "05.02.2026 - 17:45"
+    },
+    {
+      "reservasjonid": "r_1770313012230",
+      "customername": "Anne aslaksen",
+      "customeremail": "anneaslaksen123@gmail.com",
+      "customerphone": 48461046,
+      "notes": "",
+      "adminnotes": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "status": "pending",
+      "createdat": "05.02.2026 - 18:36"
     }
   ]
 }
