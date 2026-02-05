@@ -83,6 +83,18 @@
       "reservedto": "",
       "status": "pending",
       "createdat": "05.02.2026 - 18:36"
+    },
+    {
+      "reservasjonid": "r_1770313146109",
+      "customername": "Torunn Vik Andresen",
+      "customeremail": "torunnva@hotmail.com",
+      "customerphone": "481 08 200",
+      "notes": "Stor str",
+      "adminnotes": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "status": "pending",
+      "createdat": "05.02.2026 - 18:39"
     }
   ]
 }
