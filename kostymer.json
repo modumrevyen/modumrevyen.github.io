@@ -6699,6 +6699,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772140649420",
+      "title": "Jakke",
+      "subcategory": "",
+      "size": "L",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772140649012_1000002699.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1n2V5ZbLvAUJV0iFJ8cXM-0w5wphYul5x/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "26.02.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
