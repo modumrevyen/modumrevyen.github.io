@@ -6679,6 +6679,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772140521377",
+      "title": "Jakke",
+      "subcategory": "Arbeidsjakke",
+      "size": "XXL",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772140520969_1000002703.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1Pw6oE9jnTA1qt5ezMaurfxeBQuKmW3sI/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "26.02.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
