@@ -5539,6 +5539,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772134390030",
+      "title": "Overdel",
+      "subcategory": "Strikka genser",
+      "size": "L",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772134389629_1000002760.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1RNEKUTENb_8T6l2y0Gx6bhtjdPFH_AwP/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "26.02.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
