@@ -6719,6 +6719,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772140729269",
+      "title": "Overdel",
+      "subcategory": "Treningsjakke Åmot",
+      "size": "S",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772140728891_1000002718.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1enOL5_AX54U0-6p5GTiAvOxkwVxvugLb/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "26.02.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
