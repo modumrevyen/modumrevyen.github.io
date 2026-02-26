@@ -5499,6 +5499,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772133553787",
+      "title": "Sko",
+      "subcategory": "Jogge sko",
+      "size": 40,
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772133553401_1000002688.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1ShKkh5ge6KHzSJ5wHzRbjtT46y3j5qMT/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "26.02.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
