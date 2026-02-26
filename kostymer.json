@@ -6919,6 +6919,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772146764669",
+      "title": "Kjole",
+      "subcategory": "",
+      "size": "XL",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772146764284_1000002656.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1exjaEoHPcoKibk-WB_Z4X8d6oT4FdWl7/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "26.02.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
