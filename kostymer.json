@@ -5419,6 +5419,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772133315582",
+      "title": "Sko",
+      "subcategory": "Sandaler",
+      "size": 38,
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772133315199_1000002675.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1QyK4quGflS2HqmVPqw1kesCaOWHwVKD6/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "26.02.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
