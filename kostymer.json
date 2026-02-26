@@ -6819,6 +6819,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772141165355",
+      "title": "Overdel",
+      "subcategory": "Jakke",
+      "size": "L",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772141164955_1000002785.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1P5K9UXuF7xWW6u4058xjq-EPksk3JH6u/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "26.02.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
