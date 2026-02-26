@@ -5219,6 +5219,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772132673275",
+      "title": "Sko",
+      "subcategory": "Høye hæler",
+      "size": 40,
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772132672880_1000002647.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1bpjrH7DJWVcfzBrMugw8cHU9xXy9ZLxG/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "26.02.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
