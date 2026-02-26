@@ -5359,6 +5359,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772133068868",
+      "title": "Sko",
+      "subcategory": "Støvletter",
+      "size": 40,
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772133068499_1000002691.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1gCnI2I7VrkL5F_7hviyuc1TZYz7ZRsIv/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "26.02.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
