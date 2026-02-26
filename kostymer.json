@@ -7219,6 +7219,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772147697328",
+      "title": "K",
+      "subcategory": "",
+      "size": "L",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772147696818_1000002667.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1naE0MGUeJOv8Y0_FyddrZfznCidUE2oV/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "27.02.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
