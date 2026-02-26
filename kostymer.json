@@ -5699,6 +5699,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772134975242",
+      "title": "Overdel",
+      "subcategory": "Tunika",
+      "size": "XXL",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772134974741_1000002727.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1_0DtHMo_tZxOaABE_Zk3ewJqEa3eZ01h/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "26.02.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
