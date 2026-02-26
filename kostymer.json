@@ -7359,6 +7359,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772148433036",
+      "title": "Kjole",
+      "subcategory": "Safari",
+      "size": "XL",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772148432577_1000002694.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1_4UyW2ejKEdkyRcGcz6LvnYA_gkwYCua/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "27.02.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
