@@ -6639,6 +6639,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772140418703",
+      "title": "Jakke",
+      "subcategory": "Skinn",
+      "size": "XL",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772140418244_1000002702.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1LxUjTwb1_OXqo16qA3J1E5AMJFajPZI8/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "26.02.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
