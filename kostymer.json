@@ -6039,6 +6039,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772136458082",
+      "title": "Overdel",
+      "subcategory": "T-shorte",
+      "size": "M",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772136457581_1000002731.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1yZh5MlEFwya8I3rqx69jYglt3UIKIDKI/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "26.02.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
