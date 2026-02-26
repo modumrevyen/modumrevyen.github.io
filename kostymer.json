@@ -5639,6 +5639,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772134700810",
+      "title": "Overdel",
+      "subcategory": "Genser",
+      "size": "S",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772134700291_1000002736.jpg",
+      "imagecurl": "https://drive.google.com/file/d/19bHDpHMyjlZlZC86-LrL3XbtTAQV7k0y/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "26.02.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
