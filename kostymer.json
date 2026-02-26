@@ -5399,6 +5399,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772133245560",
+      "title": "Sko",
+      "subcategory": "Pensko",
+      "size": 38,
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772133245165_1000002674.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1G6WGGJ7gAu7asOCQ2EEdBj3c0Rzvf1A2/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "26.02.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
