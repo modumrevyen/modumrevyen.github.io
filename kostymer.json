@@ -6779,6 +6779,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772140997984",
+      "title": "Overdel",
+      "subcategory": "Strikka jakke",
+      "size": "M",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772140997533_1000002712.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1lGymceacZk0CP0A6QJbNHbHyu8-hr8Ai/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "26.02.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
