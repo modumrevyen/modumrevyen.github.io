@@ -6479,6 +6479,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772137768007",
+      "title": "Overdel",
+      "subcategory": "Skjorte",
+      "size": "M",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772137767571_1000002748.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1m1OhhzNF8C5SM3fvsk80uEQxLnVBwulv/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "26.02.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
