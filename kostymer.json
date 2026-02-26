@@ -6539,6 +6539,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772137978451",
+      "title": "Overdel",
+      "subcategory": "Bluse",
+      "size": "XL",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772137977904_1000002719.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1vhf03vvo3GwagDtKt_iwLMm1PxxhnDLQ/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "26.02.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
