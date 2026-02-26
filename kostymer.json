@@ -6099,6 +6099,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772136680569",
+      "title": "Overdel",
+      "subcategory": "T-shorte Politi",
+      "size": "L",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772136680201_1000002769.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1UJtV8na2e_Ejz9tYlz4RBuX9Dl5Af19P/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "26.02.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
