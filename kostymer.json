@@ -7699,6 +7699,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772468540651",
+      "title": "Underdel",
+      "subcategory": "Bukse",
+      "size": "M",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772468540266_1000002803.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1wglzJj_IrrLQwHlHGrYO8Wrgv6q2yXeW/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "02.03.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
