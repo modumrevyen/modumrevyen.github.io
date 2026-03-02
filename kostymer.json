@@ -8199,6 +8199,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772470542069",
+      "title": "Overdel",
+      "subcategory": "Bolero",
+      "size": "M",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772470541716_1000002782.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1DHBLB59wfU3dkwhMk9a0UChwqSMusdOu/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "02.03.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
