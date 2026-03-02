@@ -7619,6 +7619,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772468239743",
+      "title": "Shorts",
+      "subcategory": "",
+      "size": 36,
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772468239170_1000002793.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1wgkwD7wMpqx2aW3qaDHOIxu6UBjjz3IL/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "02.03.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
