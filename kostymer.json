@@ -8159,6 +8159,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772470485673",
+      "title": "Overdel",
+      "subcategory": "Vest",
+      "size": "XL",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772470485287_1000002790.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1PR8wSE1VpLq9_zQ22ryulQGRvif6bCWs/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "02.03.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
