@@ -7779,6 +7779,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772468834242",
+      "title": "Underdel",
+      "subcategory": "Skinntights",
+      "size": "XL",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772468833829_1000002799.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1x7I45dOAkf8o6NkziJfI5Uq0LAER7cTC/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "02.03.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
