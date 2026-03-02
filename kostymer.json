@@ -7999,6 +7999,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772469920198",
+      "title": "Underdel",
+      "subcategory": "Skjørt",
+      "size": "S",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772469919800_1000002778.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1shnATf6vEfhhUolo1EnpUF7wd5plpTIA/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "02.03.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
