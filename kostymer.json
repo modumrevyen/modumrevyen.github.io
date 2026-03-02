@@ -7919,6 +7919,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772469672579",
+      "title": "Underdel",
+      "subcategory": "Tights",
+      "size": "S",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772469672190_1000002795.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1HFlC9chzm8i-9yFuTZ9_gyAF8DuZrrsU/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "02.03.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
