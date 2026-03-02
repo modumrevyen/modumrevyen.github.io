@@ -8239,6 +8239,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772470746358",
+      "title": "Overdel",
+      "subcategory": "Badedrakt",
+      "size": "XL",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772470745959_1000002788.jpg",
+      "imagecurl": "https://drive.google.com/file/d/16rjnI7q3T3G4v2vMOvEDQTaQHOYQUfu6/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "02.03.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
