@@ -7679,6 +7679,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772468365495",
+      "title": "Morgenkåpe",
+      "subcategory": "",
+      "size": "M",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772468365139_1000002784.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1G7j4CcOijJE7Qf3JH_K7N4RM-XsmnMGM/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "02.03.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
