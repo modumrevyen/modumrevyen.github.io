@@ -8119,6 +8119,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772470309350",
+      "title": "Overdel",
+      "subcategory": "Frakk",
+      "size": "XXL",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772470308936_1000002662.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1hWOWzFrJpoCm-VOMO2svKrjFETnoWdrw/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "02.03.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
