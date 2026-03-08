@@ -8259,6 +8259,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772987024189",
+      "title": "Onepiece",
+      "subcategory": "Skinn",
+      "size": "M, XXXL",
+      "amount": 3,
+      "description": "",
+      "imagecname": "compressed_1772987023108_1000002848.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1HSis7QUI1njGw9ostnJ_PjKD4FXUkNqq/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "08.03.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
