@@ -8799,6 +8799,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772990575431",
+      "title": "Underdel",
+      "subcategory": "Strømpebukse",
+      "size": "Uniseks onezei",
+      "amount": 4,
+      "description": "",
+      "imagecname": "compressed_1772990575039_1000002861.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1LmMfhM7-SLvlI7_UxGXEnXxOgWwaKiE1/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "08.03.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
