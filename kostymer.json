@@ -8339,6 +8339,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772987402431",
+      "title": "Overdel",
+      "subcategory": "Singlet",
+      "size": "M",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772987402012_1000002964.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1kUcw2bg48vXAJo2H0qVT457lY8lQoaUi/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "08.03.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
