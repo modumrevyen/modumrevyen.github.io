@@ -8719,6 +8719,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772990304277",
+      "title": "Overdel",
+      "subcategory": "BH",
+      "size": "90 D",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772990303912_1000002863.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1AXwIBjU-4v-xw1-P-UjoeleHH1cOwVcd/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "08.03.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
