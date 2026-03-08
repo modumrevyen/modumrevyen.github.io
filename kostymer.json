@@ -8819,6 +8819,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772990624648",
+      "title": "Underdel",
+      "subcategory": "Strømpebukse",
+      "size": "M/L",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772990624244_1000002860.jpg",
+      "imagecurl": "https://drive.google.com/file/d/17dBJufBZXFX7GFbVKMuXpYfu0SXV07xL/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "08.03.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
