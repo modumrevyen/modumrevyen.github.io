@@ -8319,6 +8319,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772987283403",
+      "title": "Onepiece",
+      "subcategory": "",
+      "size": "S",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772987282976_1000002852.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1JDwloZkDjHyE_zXlY9zBlut-94X9c2Jy/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "08.03.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
