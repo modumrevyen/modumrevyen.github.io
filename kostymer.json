@@ -8559,6 +8559,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772989436081",
+      "title": "Kjortel",
+      "subcategory": "",
+      "size": "",
+      "amount": 2,
+      "description": "",
+      "imagecname": "compressed_1772989435689_1000002696.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1tCBMrPaIuCpS9LCUsBlUoalfBv6rqw7V/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "08.03.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
