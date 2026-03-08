@@ -9159,6 +9159,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772991729871",
+      "title": "Rekvisitter",
+      "subcategory": "Kanin ører",
+      "size": "",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772991729529_1000002885.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1HR5UNTMr8EWp5ISVKZeLxmd_4Pq0r93i/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "08.03.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
