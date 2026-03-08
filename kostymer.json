@@ -8499,6 +8499,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772988247611",
+      "title": "Underdel",
+      "subcategory": "Olabukse",
+      "size": "34/32",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772988247252_1000002962.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1zCwNQmGZ4uc9JsiNYG7wWp-hmmvQoKZp/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "08.03.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
