@@ -8579,6 +8579,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772989871058",
+      "title": "Onepiece",
+      "subcategory": "Morgenkåpe",
+      "size": "Uniseks",
+      "amount": 10,
+      "description": "",
+      "imagecname": "compressed_1772989870689_1000001389.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1yISDxhLmlTJ115-vhhH24Ip0V7AOz__V/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "08.03.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
