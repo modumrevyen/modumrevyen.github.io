@@ -8999,6 +8999,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772991377560",
+      "title": "Skjerf",
+      "subcategory": "",
+      "size": "",
+      "amount": 2,
+      "description": "",
+      "imagecname": "compressed_1772991377149_1000002878.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1FKWGv1wx0z0nvcSyE1fKylK_Lx9GQSut/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "08.03.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
