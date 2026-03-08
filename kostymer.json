@@ -9099,6 +9099,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772991595904",
+      "title": "Hodeplagg",
+      "subcategory": "Lue",
+      "size": "",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772991595520_1000002884.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1OF9oDoBkWu9DDcGsAhciOxkIgpFyVdKK/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "08.03.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
