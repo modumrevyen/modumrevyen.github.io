@@ -9219,6 +9219,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772991862619",
+      "title": "Rekvisitter",
+      "subcategory": "Slør",
+      "size": "",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772991862253_1000002855.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1g6uj3zvR5yQyJTYSxHHmVkoDWhJYzmE2/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "08.03.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
