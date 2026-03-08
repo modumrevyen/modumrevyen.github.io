@@ -9139,6 +9139,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772991684578",
+      "title": "Hodeplagg",
+      "subcategory": "Kyse",
+      "size": "",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772991684224_1000002886.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1ADvVljuJovTnEci7AWmqSJ1PQbnm7Xjp/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "08.03.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
