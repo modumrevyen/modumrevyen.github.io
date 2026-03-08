@@ -8879,6 +8879,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772990905995",
+      "title": "Parykk",
+      "subcategory": "Hårnett",
+      "size": "",
+      "amount": 6,
+      "description": "",
+      "imagecname": "compressed_1772990905637_1000002871.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1OlGsU7l2BgYfC530l9U2_Y-w_Sgurxu2/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "08.03.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
