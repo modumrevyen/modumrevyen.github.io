@@ -9039,6 +9039,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772991465555",
+      "title": "Rekvisitter",
+      "subcategory": "Bånd",
+      "size": "",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772991465164_1000002877.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1cLVkrn7cDItwfqs5OQgzB8jz-qLBwds6/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "08.03.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
