@@ -8659,6 +8659,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772990150203",
+      "title": "Belte",
+      "subcategory": "",
+      "size": "",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772990149852_1000002865.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1Qs7KdTszzUf-00inV1rFkM6y_mIMtbJA/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "08.03.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
