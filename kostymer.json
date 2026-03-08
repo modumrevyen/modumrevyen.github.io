@@ -8419,6 +8419,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772987941184",
+      "title": "Overdel",
+      "subcategory": "Skinnjakke",
+      "size": "L",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772987940758_1000002961.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1mqq_rLSANc48nM2nnRDA6UUI9F1hDUyb/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "08.03.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
