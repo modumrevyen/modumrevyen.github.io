@@ -8899,6 +8899,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772990997212",
+      "title": "Rekvisitter",
+      "subcategory": "Sommerfugl",
+      "size": "",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772990996796_1000002887.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1rto9MIyKPbxk4xerBR4eBaqaXsKAJcjK/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "08.03.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
