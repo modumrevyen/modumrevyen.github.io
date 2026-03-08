@@ -8779,6 +8779,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772990484476",
+      "title": "Underdel",
+      "subcategory": "G-Streng",
+      "size": "XXXL",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772990484092_1000002870.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1DHu-XE8F_EN1FH-Q6-MA8-Y3hdwnerlP/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "08.03.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
