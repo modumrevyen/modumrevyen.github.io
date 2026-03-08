@@ -8479,6 +8479,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772988184146",
+      "title": "Dress",
+      "subcategory": "Dame",
+      "size": "XL",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772988183743_1000002847.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1mkdOb1OtM7ptUxzi-QrK1INar6J1MvQm/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "08.03.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
