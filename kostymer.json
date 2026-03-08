@@ -8839,6 +8839,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772990768336",
+      "title": "Underdel",
+      "subcategory": "Leggvarmere",
+      "size": "Rosa, blå, grønn, gul, svart, hvit og grå",
+      "amount": 7,
+      "description": "",
+      "imagecname": "compressed_1772990767963_1000002858.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1RBqFrLsdZaeOu7XrSdXgv3vZqH07Eusa/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "08.03.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
