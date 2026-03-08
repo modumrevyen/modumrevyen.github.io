@@ -9079,6 +9079,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772991553295",
+      "title": "Hodeplagg",
+      "subcategory": "Nisselue",
+      "size": "",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772991552919_1000002883.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1jJZOuqyDHkoqTSIoc0haT0_uciERObld/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "08.03.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
