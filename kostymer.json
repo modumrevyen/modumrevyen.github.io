@@ -9179,6 +9179,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772991764996",
+      "title": "Rekvisitter",
+      "subcategory": "Hårbøyle",
+      "size": "",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772991764611_1000002947.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1tgBMBeEEjfSy5bUpDinsJvjIjU8H_BPL/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "08.03.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
