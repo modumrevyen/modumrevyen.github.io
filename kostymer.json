@@ -8859,6 +8859,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1772990853279",
+      "title": "Trening",
+      "subcategory": "Pannebånd og svettebånd",
+      "size": "",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1772990852905_1000002859.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1EwD-RNxvpHThl1azWEUJKEzye8_9nrJY/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "08.03.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
