@@ -9499,6 +9499,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1773040638158",
+      "title": "Skjerf",
+      "subcategory": "Fjær",
+      "size": "",
+      "amount": 1,
+      "description": "",
+      "imagecname": "compressed_1773040637764_1000001751.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1p5yPlpiOrzN77LmUR8__Hc3h8qlRWnaF/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "09.03.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
