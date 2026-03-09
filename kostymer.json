@@ -9439,6 +9439,26 @@
       "reservedto": "",
       "returned": false,
       "deleted": false
+    },
+    {
+      "kostymeid": "k_1773040369362",
+      "title": "Belte",
+      "subcategory": "Silke",
+      "size": "",
+      "amount": 1,
+      "description": "Til swingkjole",
+      "imagecname": "compressed_1773040368972_1000001730.jpg",
+      "imagecurl": "https://drive.google.com/file/d/1HcUwxh4ZH_DqLrNp8btcR5NJpwIcr83m/view?usp=drivesdk",
+      "imagecbase64": "",
+      "createdat": "09.03.2026",
+      "reservasjonid": "",
+      "reservedname": "",
+      "reservedphone": "",
+      "reservedemail": "",
+      "reservedfrom": "",
+      "reservedto": "",
+      "returned": false,
+      "deleted": false
     }
   ]
 }
